@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DD462212B23015200D200B3 /* RestoRaterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */; };
-		3DD462232B23015200D200B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462222B23015200D200B3 /* ContentView.swift */; };
+		3DD462212B23015200D200B3 /* RestoRaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462202B23015200D200B3 /* RestoRaterApp.swift */; };
 		3DD462252B23015300D200B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD462242B23015300D200B3 /* Assets.xcassets */; };
 		3DD462282B23015300D200B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD462272B23015300D200B3 /* Preview Assets.xcassets */; };
 		3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462292B23015300D200B3 /* Persistence.swift */; };
@@ -16,6 +15,10 @@
 		3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462362B23015300D200B3 /* RestoRaterAppTests.swift */; };
 		3DD462412B23015400D200B3 /* RestoRaterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462402B23015400D200B3 /* RestoRaterAppUITests.swift */; };
 		3DD462432B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */; };
+		3DD462612B2306DC00D200B3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4625F2B2306DC00D200B3 /* User+CoreDataClass.swift */; };
+		3DD462622B2306DC00D200B3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462602B2306DC00D200B3 /* User+CoreDataProperties.swift */; };
+		3DD462652B23085B00D200B3 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462642B23085B00D200B3 /* RegisterViewModel.swift */; };
+		3DD462682B23098F00D200B3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462672B23098F00D200B3 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +40,7 @@
 
 /* Begin PBXFileReference section */
 		3DD4621D2B23015200D200B3 /* RestoRaterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoRaterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppApp.swift; sourceTree = "<group>"; };
-		3DD462222B23015200D200B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3DD462202B23015200D200B3 /* RestoRaterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterApp.swift; sourceTree = "<group>"; };
 		3DD462242B23015300D200B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DD462272B23015300D200B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3DD462292B23015300D200B3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -48,6 +50,10 @@
 		3DD4623C2B23015400D200B3 /* RestoRaterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestoRaterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD462402B23015400D200B3 /* RestoRaterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppUITests.swift; sourceTree = "<group>"; };
 		3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3DD4625F2B2306DC00D200B3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3DD462602B2306DC00D200B3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3DD462642B23085B00D200B3 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		3DD462672B23098F00D200B3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,8 @@
 		3DD462142B23015200D200B3 = {
 			isa = PBXGroup;
 			children = (
+				3DD4625F2B2306DC00D200B3 /* User+CoreDataClass.swift */,
+				3DD462602B2306DC00D200B3 /* User+CoreDataProperties.swift */,
 				3DD4621F2B23015200D200B3 /* RestoRaterApp */,
 				3DD462352B23015300D200B3 /* RestoRaterAppTests */,
 				3DD4623F2B23015400D200B3 /* RestoRaterAppUITests */,
@@ -98,8 +106,9 @@
 		3DD4621F2B23015200D200B3 /* RestoRaterApp */ = {
 			isa = PBXGroup;
 			children = (
-				3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */,
-				3DD462222B23015200D200B3 /* ContentView.swift */,
+				3DD462662B23097100D200B3 /* Views */,
+				3DD462632B23084900D200B3 /* ViewModels */,
+				3DD462202B23015200D200B3 /* RestoRaterApp.swift */,
 				3DD462242B23015300D200B3 /* Assets.xcassets */,
 				3DD462292B23015300D200B3 /* Persistence.swift */,
 				3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */,
@@ -131,6 +140,22 @@
 				3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */,
 			);
 			path = RestoRaterAppUITests;
+			sourceTree = "<group>";
+		};
+		3DD462632B23084900D200B3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462642B23085B00D200B3 /* RegisterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3DD462662B23097100D200B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462672B23098F00D200B3 /* RegisterView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */,
-				3DD462232B23015200D200B3 /* ContentView.swift in Sources */,
+				3DD462652B23085B00D200B3 /* RegisterViewModel.swift in Sources */,
+				3DD462622B2306DC00D200B3 /* User+CoreDataProperties.swift in Sources */,
 				3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */,
-				3DD462212B23015200D200B3 /* RestoRaterAppApp.swift in Sources */,
+				3DD462682B23098F00D200B3 /* RegisterView.swift in Sources */,
+				3DD462212B23015200D200B3 /* RestoRaterApp.swift in Sources */,
+				3DD462612B2306DC00D200B3 /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

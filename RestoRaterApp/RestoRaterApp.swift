@@ -8,12 +8,12 @@
 import SwiftUI
 
 @main
-struct RestoRaterAppApp: App {
+struct RestoRaterApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RegisterView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
