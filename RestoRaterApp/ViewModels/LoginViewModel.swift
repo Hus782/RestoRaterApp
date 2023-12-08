@@ -16,7 +16,7 @@ final class LoginViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var alertMessage = ""
     
-    func loginUser(context: NSManagedObjectContext) {
+    func loginUser(context: NSManagedObjectContext, userManager: UserManager) {
         // Logic to check user credentials
         // For simplicity, this is just a placeholder logic
         let fetchRequest: NSFetchRequest<User> = User.createFetchRequest()
@@ -26,6 +26,7 @@ final class LoginViewModel: ObservableObject {
             let results = try context.fetch(fetchRequest)
             if let user = results.first, user.password == password { // Consider hashing the password
                 loginSuccessful = true
+                userManager.loginUser(user: user)
             } else {
                 alertMessage = "Invalid credentials"
                 showingAlert = true

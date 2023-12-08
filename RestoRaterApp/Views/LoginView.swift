@@ -28,7 +28,7 @@ struct LoginView: View {
             Divider()
             
             Button(
-                action: { viewModel.loginUser(context: viewContext) },
+                action: { viewModel.loginUser(context: viewContext, userManager: userManager) },
                 label: {
                     Text("Login")
                         .font(.system(size: 24, weight: .bold, design: .default))
