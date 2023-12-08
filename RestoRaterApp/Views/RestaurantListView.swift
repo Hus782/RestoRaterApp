@@ -14,7 +14,10 @@ struct RestaurantListView: View {
     var body: some View {
         NavigationStack {
             List(viewModel.restaurants, id: \.self) { restaurant in
-                Text(restaurant.name)
+                NavigationLink(destination: RestaurantDetailView(restaurant: restaurant)) {
+                    Text(restaurant.name)
+                }
+
             }
             .navigationBarTitle("Restaurants")
         }

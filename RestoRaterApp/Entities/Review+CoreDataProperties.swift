@@ -16,9 +16,9 @@ extension Review {
         return NSFetchRequest<Review>(entityName: "Review")
     }
 
-    @NSManaged public var rating: Int16
-    @NSManaged public var dateVisited: Date
     @NSManaged public var comment: String
+    @NSManaged public var dateVisited: Date
+    @NSManaged public var rating: Double
     @NSManaged public var restaurant: Restaurant
 
 }
