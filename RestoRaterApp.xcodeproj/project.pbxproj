@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DD462212B23015200D200B3 /* RestoRaterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */; };
+		3DD462232B23015200D200B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462222B23015200D200B3 /* ContentView.swift */; };
+		3DD462252B23015300D200B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD462242B23015300D200B3 /* Assets.xcassets */; };
+		3DD462282B23015300D200B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD462272B23015300D200B3 /* Preview Assets.xcassets */; };
+		3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462292B23015300D200B3 /* Persistence.swift */; };
+		3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */; };
+		3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462362B23015300D200B3 /* RestoRaterAppTests.swift */; };
+		3DD462412B23015400D200B3 /* RestoRaterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462402B23015400D200B3 /* RestoRaterAppUITests.swift */; };
+		3DD462432B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DD462332B23015300D200B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DD462152B23015200D200B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DD4621C2B23015200D200B3;
+			remoteInfo = RestoRaterApp;
+		};
+		3DD4623D2B23015400D200B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DD462152B23015200D200B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DD4621C2B23015200D200B3;
+			remoteInfo = RestoRaterApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DD4621D2B23015200D200B3 /* RestoRaterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoRaterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppApp.swift; sourceTree = "<group>"; };
+		3DD462222B23015200D200B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3DD462242B23015300D200B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DD462272B23015300D200B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3DD462292B23015300D200B3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		3DD4622C2B23015300D200B3 /* RestoRaterApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RestoRaterApp.xcdatamodel; sourceTree = "<group>"; };
+		3DD462322B23015300D200B3 /* RestoRaterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestoRaterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD462362B23015300D200B3 /* RestoRaterAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppTests.swift; sourceTree = "<group>"; };
+		3DD4623C2B23015400D200B3 /* RestoRaterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestoRaterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD462402B23015400D200B3 /* RestoRaterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppUITests.swift; sourceTree = "<group>"; };
+		3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoRaterAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DD4621A2B23015200D200B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD4622F2B23015300D200B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD462392B23015400D200B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DD462142B23015200D200B3 = {
+			isa = PBXGroup;
+			children = (
+				3DD4621F2B23015200D200B3 /* RestoRaterApp */,
+				3DD462352B23015300D200B3 /* RestoRaterAppTests */,
+				3DD4623F2B23015400D200B3 /* RestoRaterAppUITests */,
+				3DD4621E2B23015200D200B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DD4621E2B23015200D200B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DD4621D2B23015200D200B3 /* RestoRaterApp.app */,
+				3DD462322B23015300D200B3 /* RestoRaterAppTests.xctest */,
+				3DD4623C2B23015400D200B3 /* RestoRaterAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DD4621F2B23015200D200B3 /* RestoRaterApp */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462202B23015200D200B3 /* RestoRaterAppApp.swift */,
+				3DD462222B23015200D200B3 /* ContentView.swift */,
+				3DD462242B23015300D200B3 /* Assets.xcassets */,
+				3DD462292B23015300D200B3 /* Persistence.swift */,
+				3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */,
+				3DD462262B23015300D200B3 /* Preview Content */,
+			);
+			path = RestoRaterApp;
+			sourceTree = "<group>";
+		};
+		3DD462262B23015300D200B3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462272B23015300D200B3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3DD462352B23015300D200B3 /* RestoRaterAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462362B23015300D200B3 /* RestoRaterAppTests.swift */,
+			);
+			path = RestoRaterAppTests;
+			sourceTree = "<group>";
+		};
+		3DD4623F2B23015400D200B3 /* RestoRaterAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3DD462402B23015400D200B3 /* RestoRaterAppUITests.swift */,
+				3DD462422B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift */,
+			);
+			path = RestoRaterAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DD4621C2B23015200D200B3 /* RestoRaterApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DD462462B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterApp" */;
+			buildPhases = (
+				3DD462192B23015200D200B3 /* Sources */,
+				3DD4621A2B23015200D200B3 /* Frameworks */,
+				3DD4621B2B23015200D200B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RestoRaterApp;
+			productName = RestoRaterApp;
+			productReference = 3DD4621D2B23015200D200B3 /* RestoRaterApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DD462312B23015300D200B3 /* RestoRaterAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DD462492B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterAppTests" */;
+			buildPhases = (
+				3DD4622E2B23015300D200B3 /* Sources */,
+				3DD4622F2B23015300D200B3 /* Frameworks */,
+				3DD462302B23015300D200B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DD462342B23015300D200B3 /* PBXTargetDependency */,
+			);
+			name = RestoRaterAppTests;
+			productName = RestoRaterAppTests;
+			productReference = 3DD462322B23015300D200B3 /* RestoRaterAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3DD4623B2B23015400D200B3 /* RestoRaterAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DD4624C2B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterAppUITests" */;
+			buildPhases = (
+				3DD462382B23015400D200B3 /* Sources */,
+				3DD462392B23015400D200B3 /* Frameworks */,
+				3DD4623A2B23015400D200B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DD4623E2B23015400D200B3 /* PBXTargetDependency */,
+			);
+			name = RestoRaterAppUITests;
+			productName = RestoRaterAppUITests;
+			productReference = 3DD4623C2B23015400D200B3 /* RestoRaterAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DD462152B23015200D200B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					3DD4621C2B23015200D200B3 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					3DD462312B23015300D200B3 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 3DD4621C2B23015200D200B3;
+					};
+					3DD4623B2B23015400D200B3 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 3DD4621C2B23015200D200B3;
+					};
+				};
+			};
+			buildConfigurationList = 3DD462182B23015200D200B3 /* Build configuration list for PBXProject "RestoRaterApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DD462142B23015200D200B3;
+			productRefGroup = 3DD4621E2B23015200D200B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DD4621C2B23015200D200B3 /* RestoRaterApp */,
+				3DD462312B23015300D200B3 /* RestoRaterAppTests */,
+				3DD4623B2B23015400D200B3 /* RestoRaterAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DD4621B2B23015200D200B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD462282B23015300D200B3 /* Preview Assets.xcassets in Resources */,
+				3DD462252B23015300D200B3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD462302B23015300D200B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD4623A2B23015400D200B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DD462192B23015200D200B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */,
+				3DD462232B23015200D200B3 /* ContentView.swift in Sources */,
+				3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */,
+				3DD462212B23015200D200B3 /* RestoRaterAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD4622E2B23015300D200B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD462382B23015400D200B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD462412B23015400D200B3 /* RestoRaterAppUITests.swift in Sources */,
+				3DD462432B23015400D200B3 /* RestoRaterAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DD462342B23015300D200B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DD4621C2B23015200D200B3 /* RestoRaterApp */;
+			targetProxy = 3DD462332B23015300D200B3 /* PBXContainerItemProxy */;
+		};
+		3DD4623E2B23015400D200B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DD4621C2B23015200D200B3 /* RestoRaterApp */;
+			targetProxy = 3DD4623D2B23015400D200B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3DD462442B23015400D200B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DD462452B23015400D200B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DD462472B23015400D200B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RestoRaterApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3DD462482B23015400D200B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RestoRaterApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3DD4624A2B23015400D200B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestoRaterApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RestoRaterApp";
+			};
+			name = Debug;
+		};
+		3DD4624B2B23015400D200B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestoRaterApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RestoRaterApp";
+			};
+			name = Release;
+		};
+		3DD4624D2B23015400D200B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestoRaterApp;
+			};
+			name = Debug;
+		};
+		3DD4624E2B23015400D200B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hus.RestoRaterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestoRaterApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DD462182B23015200D200B3 /* Build configuration list for PBXProject "RestoRaterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD462442B23015400D200B3 /* Debug */,
+				3DD462452B23015400D200B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DD462462B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD462472B23015400D200B3 /* Debug */,
+				3DD462482B23015400D200B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DD462492B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD4624A2B23015400D200B3 /* Debug */,
+				3DD4624B2B23015400D200B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DD4624C2B23015400D200B3 /* Build configuration list for PBXNativeTarget "RestoRaterAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD4624D2B23015400D200B3 /* Debug */,
+				3DD4624E2B23015400D200B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3DD4622C2B23015300D200B3 /* RestoRaterApp.xcdatamodel */,
+			);
+			currentVersion = 3DD4622C2B23015300D200B3 /* RestoRaterApp.xcdatamodel */;
+			path = RestoRaterApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3DD462152B23015200D200B3 /* Project object */;
+}
