@@ -1,0 +1,28 @@
+//
+//  Review+CoreDataProperties.swift
+//  RestoRaterApp
+//
+//  Created by user249550 on 12/8/23.
+//
+//
+
+import Foundation
+import CoreData
+
+
+extension Review {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Review> {
+        return NSFetchRequest<Review>(entityName: "Review")
+    }
+
+    @NSManaged public var rating: Int16
+    @NSManaged public var dateVisited: Date?
+    @NSManaged public var comment: String?
+    @NSManaged public var restaurant: Restaurant?
+
+}
+
+extension Review : Identifiable {
+
+}
