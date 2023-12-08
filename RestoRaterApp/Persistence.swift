@@ -53,4 +53,53 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
+    func populateInitialDataIfNeeded() {
+        let isPrePopulated = UserDefaults.standard.bool(forKey: "isPrePopulated")
+        
+        if !isPrePopulated {
+            insertInitialData()
+        }
+    }
+    
+    func insertInitialData() {
+        // Insert initial data here
+        let context = container.viewContext
+        
+        let restaurant1 = Restaurant(context: context)
+        restaurant1.name = "Restaurant 1"
+        restaurant1.address = "123 Main St"
+        restaurant1.image = "123 Main St"
+        
+        let restaurant2 = Restaurant(context: context)
+        restaurant2.name = "Restaurant 2"
+        restaurant2.address = "123 Main St"
+        restaurant2.image = "123 Main St"
+        
+        let restaurant3 = Restaurant(context: context)
+        restaurant3.name = "Restaurant 3"
+        restaurant3.address = "123 Main St"
+        restaurant3.image = "123 Main St"
+        
+        let user1 = User(context: context)
+        user1.name = "User A"
+        user1.password = "test"
+        user1.email = "test"
+        user1.isAdmin = false
+
+        let user2 = User(context: context)
+        user2.name = "Admin"
+        user2.password = "admin"
+        user2.email = "admin"
+        user2.isAdmin = true
+
+        
+        do {
+            try context.save()
+            UserDefaults.standard.set(true, forKey: "isPrePopulated")
+
+        } catch {
+            print("Failed to save initial data: \(error)")
+        }
+    }
 }

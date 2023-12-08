@@ -16,6 +16,9 @@ struct RestoRaterApp: App {
             RootView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(UserManager.shared)
+                .onAppear {
+                    persistenceController.populateInitialDataIfNeeded()
+                }
         }
     }
 }
