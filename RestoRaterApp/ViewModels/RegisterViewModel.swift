@@ -14,6 +14,10 @@ final class RegisterViewModel: ObservableObject {
     @Published var name = ""
     @Published var isAdmin = false
 
+    @Published var showingAlert = false
+    @Published var alertMessage = ""
+    @Published var registrationSuccessful = false
+
     func registerUser(context: NSManagedObjectContext) {
         let newUser = User(context: context)
         newUser.email = email
@@ -23,9 +27,12 @@ final class RegisterViewModel: ObservableObject {
 
         do {
             try context.save()
+            registrationSuccessful = true
         } catch {
             // Handle the error appropriately
             print("Error saving context: \(error)")
+            alertMessage = "Registration Failed: \(error.localizedDescription)"
+            showingAlert = true
         }
     }
 }
