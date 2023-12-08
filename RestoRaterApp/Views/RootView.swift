@@ -12,7 +12,7 @@ struct RootView: View {
     
     var body: some View {
         if userManager.isLoggedIn {
-            EmptyView() // Add view later
+            RestaurantListView() 
         } else if userManager.isRegistering {
             RegisterView()
         } else {

@@ -12,14 +12,14 @@ import CoreData
 
 extension Restaurant {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Restaurant> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Restaurant> {
         return NSFetchRequest<Restaurant>(entityName: "Restaurant")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var address: String?
-    @NSManaged public var image: String?
-    @NSManaged public var reviews: NSSet?
+    @NSManaged public var name: String
+    @NSManaged public var address: String
+    @NSManaged public var image: String
+    @NSManaged public var reviews: NSSet
 
 }
 
