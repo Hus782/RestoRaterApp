@@ -21,6 +21,8 @@
 		3DD462682B23098F00D200B3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462672B23098F00D200B3 /* RegisterView.swift */; };
 		3DD4626A2B230EA100D200B3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD462692B230EA100D200B3 /* LoginViewModel.swift */; };
 		3DD4626C2B230F0A00D200B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4626B2B230F0A00D200B3 /* LoginView.swift */; };
+		3DD4626E2B2316F500D200B3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4626D2B2316F500D200B3 /* UserManager.swift */; };
+		3DD462702B23176900D200B3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4626F2B23176900D200B3 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		3DD462672B23098F00D200B3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		3DD462692B230EA100D200B3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3DD4626B2B230F0A00D200B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3DD4626D2B2316F500D200B3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		3DD4626F2B23176900D200B3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 				3DD462292B23015300D200B3 /* Persistence.swift */,
 				3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */,
 				3DD462262B23015300D200B3 /* Preview Content */,
+				3DD4626D2B2316F500D200B3 /* UserManager.swift */,
 			);
 			path = RestoRaterApp;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			children = (
 				3DD462672B23098F00D200B3 /* RegisterView.swift */,
 				3DD4626B2B230F0A00D200B3 /* LoginView.swift */,
+				3DD4626F2B23176900D200B3 /* RootView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,7 +308,9 @@
 				3DD4626A2B230EA100D200B3 /* LoginViewModel.swift in Sources */,
 				3DD462682B23098F00D200B3 /* RegisterView.swift in Sources */,
 				3DD462212B23015200D200B3 /* RestoRaterApp.swift in Sources */,
+				3DD4626E2B2316F500D200B3 /* UserManager.swift in Sources */,
 				3DD462612B2306DC00D200B3 /* User+CoreDataClass.swift in Sources */,
+				3DD462702B23176900D200B3 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

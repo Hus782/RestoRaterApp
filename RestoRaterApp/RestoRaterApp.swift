@@ -13,8 +13,9 @@ struct RestoRaterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RegisterView()
+            RootView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(UserManager.shared)
         }
     }
 }

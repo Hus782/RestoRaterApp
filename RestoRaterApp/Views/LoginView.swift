@@ -10,8 +10,9 @@ import CoreData
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
-
+    @EnvironmentObject private var userManager: UserManager
+    @ObservedObject private var viewModel: LoginViewModel = LoginViewModel()
+    
     var body: some View {
         VStack {
             TextField("Email", text: $viewModel.email)
@@ -37,6 +38,9 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
             )
+            Button("Register", action: {
+                userManager.isRegistering = true // Switch back to registration flow
+            })
             .alert(isPresented: $viewModel.showingAlert) {
                 Alert(title: Text("Login"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }

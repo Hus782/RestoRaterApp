@@ -9,12 +9,14 @@ import SwiftUI
 
 struct RegisterView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel: RegisterViewModel = RegisterViewModel()
-
+    @EnvironmentObject private var userManager: UserManager
+    
+    @ObservedObject private var viewModel: RegisterViewModel = RegisterViewModel()
+    
     var body: some View {
         VStack {
             Spacer()
-
+            
             VStack {
                 TextField("Email", text: $viewModel.email)
                     .autocapitalization(.none)
@@ -32,17 +34,17 @@ struct RegisterView: View {
                     .padding(.top, 20)
                 
                 Divider()
-
+                
                 Toggle(isOn: $viewModel.isAdmin) {
                     Text("Is Admin")
                 }
                 .padding(.top, 20)
             }
-
+            
             Spacer()
-
+            
             Button(
-                action: { viewModel.registerUser(context: viewContext) },
+                action: { viewModel.registerUser(context: viewContext, userManager: userManager) },
                 label: {
                     Text("Register")
                         .font(.system(size: 24, weight: .bold, design: .default))
@@ -52,9 +54,16 @@ struct RegisterView: View {
                         .cornerRadius(10)
                 }
             )
+            Button("Login", action: {
+                userManager.isRegistering = false
+            })
+            
+            
         }
         .padding(30)
+        
     }
+    
 }
 
 struct RegisterScreen_Previews: PreviewProvider {
