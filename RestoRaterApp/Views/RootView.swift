@@ -12,7 +12,7 @@ struct RootView: View {
     
     var body: some View {
         if userManager.isLoggedIn {
-            RestaurantListView()
+            TabsView()
         } else if userManager.isRegistering {
             RegisterView()
         } else {
@@ -20,4 +20,3 @@ struct RootView: View {
         }
     }
 }
-

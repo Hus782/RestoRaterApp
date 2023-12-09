@@ -56,7 +56,7 @@ final class UserManager: ObservableObject {
         if isLoggedIn {
             let email = UserDefaults.standard.string(forKey: userEmailKey) ?? ""
             let name = UserDefaults.standard.string(forKey: userNameKey) ?? ""
-            let isAdmin = UserDefaults.standard.bool(forKey: isLoggedInKey)
+            let isAdmin = UserDefaults.standard.bool(forKey: isAdminKey) ?? false
 
             // Create a user object with the stored values
             let user = UserData(name: name, email: email, isAdmin: isAdmin)
