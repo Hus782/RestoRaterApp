@@ -19,7 +19,7 @@ struct TabsView: View {
                 Text("Users").tabItem {
                     Label("Users", systemImage: "person.3.fill")
                 }
-                Text("Profile").tabItem {
+                ProfileView().tabItem {
                     Label("Profile", systemImage: "person.fill")
                 }
                 
@@ -27,7 +27,7 @@ struct TabsView: View {
                 RestaurantListView().tabItem {
                     Label("Restaurants", systemImage: "list.dash")
                 }
-                Text("Profile").tabItem {
+                ProfileView().tabItem {
                     Label("Profile", systemImage: "person.fill")
                 }
                 
