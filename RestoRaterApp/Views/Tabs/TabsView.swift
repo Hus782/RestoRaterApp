@@ -16,7 +16,7 @@ struct TabsView: View {
                 RestaurantListView().tabItem {
                     Label("Restaurants", systemImage: "list.dash")
                 }
-                Text("Users").tabItem {
+                UsersListView().tabItem {
                     Label("Users", systemImage: "person.3.fill")
                 }
                 ProfileView().tabItem {
