@@ -15,12 +15,14 @@ enum UserViewScenario {
 struct AddEditUserView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = AddEditUserViewModel()
+    @StateObject private var viewModel: AddEditUserViewModel
     private let scenario: UserViewScenario
     var onAddCompletion: (() -> Void)?
     
-    init(scenario: UserViewScenario) {
+    init(scenario: UserViewScenario, user: User? = nil) {
         self.scenario = scenario
+        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, user: user))
+
     }
     
     var body: some View {
@@ -44,14 +46,22 @@ struct AddEditUserView: View {
                     Image(systemName: "xmark")
                 },
                 trailing: Button("Save") {
-                    viewModel.addUser(context: viewContext)
+                    handleSave()
                     presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
                 }
             )
             .onAppear {
-                viewModel.scenario = scenario
+
             }
         }
     }
     
+    private func handleSave() {
+        switch scenario {
+        case .add:
+            viewModel.addUser(context: viewContext)
+        case .edit:
+            viewModel.editUser(context: viewContext)
+        }
+    }
 }

@@ -11,12 +11,14 @@ struct UsersListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject var viewModel = UsersViewModel()
     @State private var showingAddUserView = false
-
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.users, id: \.self) { user in
-                    Text(user.name)
+                    NavigationLink(destination: UserDetailsView(user: user)) {
+                        Text(user.name)
+                    }
                 }
                 .onDelete(perform: viewModel.deleteUser)
             }
