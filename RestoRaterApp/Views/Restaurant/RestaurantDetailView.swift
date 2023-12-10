@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
+    @State private var showingEditRestaurantView = false
     let restaurant: Restaurant
 
     var body: some View {
@@ -42,5 +43,16 @@ struct RestaurantDetailView: View {
             .padding()
         }
         .navigationBarTitle("Restaurant Details", displayMode: .inline)
+        .navigationBarItems(
+            trailing: Button(action: {
+                showingEditRestaurantView = true
+            }) {
+                Text("Edit")
+            }
+        )
+        .sheet(isPresented: $showingEditRestaurantView) {
+            AddEditRestaurantView(scenario: .edit, restaurant: restaurant)
+        }
     }
+    
 }

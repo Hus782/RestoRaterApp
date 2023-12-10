@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantListView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State private var showingAddRestaurantView = false
     @ObservedObject var viewModel: RestaurantViewModel = RestaurantViewModel()
 
     var body: some View {
@@ -19,10 +20,21 @@ struct RestaurantListView: View {
                 }
 
             }
-            .navigationBarTitle("Restaurants")
+            .navigationBarTitle("Restaurants", displayMode: .inline)
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
+                    showingAddRestaurantView = true
+                }) {
+                    Image(systemName: "plus")
+                }
+            )
         }
         .onAppear {
             viewModel.fetchRestaurants(context: viewContext)
+        }
+        .sheet(isPresented: $showingAddRestaurantView) {
+            AddEditRestaurantView(scenario: .edit)
         }
     }
 }

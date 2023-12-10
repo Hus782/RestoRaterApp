@@ -1,52 +1,49 @@
 //
-//  AddEditUserViewModel.swift
+//  AddEditRestaurantViewModel.swift
 //  RestoRaterApp
 //
-//  Created by user249550 on 12/9/23.
+//  Created by user249550 on 12/10/23.
 //
 
 import Foundation
 import CoreData.NSManagedObjectContext
 
-final class AddEditUserViewModel: ObservableObject {
+final class AddEditRestaurantViewModel: ObservableObject {
     var onAddCompletion: (() -> Void)?
     @Published var name: String = ""
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var isAdmin: Bool = false
-    private let scenario: UserViewScenario
-    private let user: User?
+    @Published var address: String = ""
+    @Published var image: String = ""
+    private let scenario: RestaurantScenario
+    private let restaurant: Restaurant?
     
     
     var title: String {
         switch scenario {
         case .add:
-            return "Create user"
+            return "Create restaurant"
         case .edit:
-            return "Edit user"
+            return "Edit restaurant"
         }
     }
     
-    init(scenario: UserViewScenario, user: User? = nil) {
-        if let user = user {
-            self.name = user.name
-            self.email = user.email
-            self.password = user.password
-            self.isAdmin = user.isAdmin
+    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil) {
+        if let restaurant = restaurant {
+            self.name = restaurant.name
+            self.address = restaurant.address
+            self.image = restaurant.image
             self.scenario = .edit
-            self.user = user
+            self.restaurant = restaurant
         } else {
             self.scenario = .add
-            self.user = nil
+            self.restaurant = nil
         }
     }
     
-    func addUser(context: NSManagedObjectContext) {
-        let user = User(context: context)
+    func addRestaurant(context: NSManagedObjectContext) {
+        let user = Restaurant(context: context)
         user.name = name
-        user.email = email
-        user.password = password
-        user.isAdmin = isAdmin
+        user.address = address
+        user.image = image
         
         do {
             try context.save()
@@ -58,12 +55,11 @@ final class AddEditUserViewModel: ObservableObject {
         }
     }
     
-    func editUser(context: NSManagedObjectContext) {
-        guard let user = user else { return }
-        user.name = name
-        user.email = email
-        user.password = password
-        user.isAdmin = isAdmin
+    func editRestaurant(context: NSManagedObjectContext) {
+        guard let restaurant = restaurant else { return }
+        restaurant.name = name
+        restaurant.address = address
+        restaurant.image = image
         
         do {
             try context.save()
