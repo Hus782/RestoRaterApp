@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewView: View {
-    let review: Review 
+    let review: Review
     let title: String
     
     var body: some View {
@@ -17,7 +17,8 @@ struct ReviewView: View {
                 .font(.headline)
             
             Text("Rating: \(review.rating)/5")
-            Text("Date: \(review.dateVisited)")
+            Text("Visited on: \(review.dateVisited, formatter: dateFormatter)")
+                                .font(.subheadline)
             Text(review.comment)
                 .font(.body)
         }
@@ -25,4 +26,11 @@ struct ReviewView: View {
         .background(Color.gray.opacity(0.1))
         .cornerRadius(8)
     }
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }
+    
 }

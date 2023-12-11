@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantDetailView: View {
     @State private var showingEditRestaurantView = false
+    @State private var showingAddRReviewView = false
     let restaurant: Restaurant
 
     var body: some View {
@@ -39,6 +40,10 @@ struct RestaurantDetailView: View {
                 if let latestReview = restaurant.latestReview {
                     ReviewView(review: latestReview, title: "Latest Review")
                 }
+                
+                Button("Add Review") {
+                    showingAddRReviewView = true
+                }
             }
             .padding()
         }
@@ -52,6 +57,9 @@ struct RestaurantDetailView: View {
         )
         .sheet(isPresented: $showingEditRestaurantView) {
             AddEditRestaurantView(scenario: .edit, restaurant: restaurant)
+        }
+        .sheet(isPresented: $showingAddRReviewView) {
+            AddEditReviewView(scenario: .add, restaurant: restaurant)
         }
     }
     
