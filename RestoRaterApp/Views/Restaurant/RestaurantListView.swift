@@ -34,7 +34,7 @@ struct RestaurantListView: View {
             viewModel.fetchRestaurants(context: viewContext)
         }
         .sheet(isPresented: $showingAddRestaurantView) {
-            AddEditRestaurantView(scenario: .edit)
+            AddEditRestaurantView(scenario: .add)
         }
     }
 }

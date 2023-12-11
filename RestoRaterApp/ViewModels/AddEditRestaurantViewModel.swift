@@ -12,7 +12,7 @@ final class AddEditRestaurantViewModel: ObservableObject {
     var onAddCompletion: (() -> Void)?
     @Published var name: String = ""
     @Published var address: String = ""
-    @Published var image: String = ""
+    @Published var image: Data?
     private let scenario: RestaurantScenario
     private let restaurant: Restaurant?
     
@@ -30,7 +30,7 @@ final class AddEditRestaurantViewModel: ObservableObject {
         if let restaurant = restaurant {
             self.name = restaurant.name
             self.address = restaurant.address
-            self.image = restaurant.image
+//            self.image = restaurant.image
             self.scenario = .edit
             self.restaurant = restaurant
         } else {
@@ -40,10 +40,12 @@ final class AddEditRestaurantViewModel: ObservableObject {
     }
     
     func addRestaurant(context: NSManagedObjectContext) {
-        let user = Restaurant(context: context)
-        user.name = name
-        user.address = address
-        user.image = image
+        let restaurant = Restaurant(context: context)
+        restaurant.name = name
+        restaurant.address = address
+        if let image = image {
+            restaurant.image = image
+        }
         
         do {
             try context.save()
@@ -59,7 +61,9 @@ final class AddEditRestaurantViewModel: ObservableObject {
         guard let restaurant = restaurant else { return }
         restaurant.name = name
         restaurant.address = address
-        restaurant.image = image
+        if let image = image {
+            restaurant.image = image
+        }
         
         do {
             try context.save()

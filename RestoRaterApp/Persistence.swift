@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit.UIImage
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -63,23 +64,35 @@ struct PersistenceController {
     }
     
     func insertInitialData() {
+        let imageNames = ["restaurant1", "restaurant2", "restaurant3"]
+
         // Insert initial data here
         let context = container.viewContext
         
         let restaurant1 = Restaurant(context: context)
         restaurant1.name = "Restaurant 1"
         restaurant1.address = "123 Main St"
-        restaurant1.image = "123 Main St"
-        
+//        Should extract this in a separate class to avoid importing UIKit
+        if let image = UIImage(named: "restaurant_image1"),
+           let imageData = image.jpegData(compressionQuality: 1.0) {
+            restaurant1.image = imageData
+        }
+
         let restaurant2 = Restaurant(context: context)
         restaurant2.name = "Restaurant 2"
         restaurant2.address = "123 Main St"
-        restaurant2.image = "123 Main St"
-        
+        if let image = UIImage(named: "restaurant_image2"),
+           let imageData = image.jpegData(compressionQuality: 1.0) {
+            restaurant2.image = imageData
+        }
+
         let restaurant3 = Restaurant(context: context)
         restaurant3.name = "Restaurant 3"
         restaurant3.address = "123 Main St"
-        restaurant3.image = "123 Main St"
+        if let image = UIImage(named: "restaurant_image3"),
+           let imageData = image.jpegData(compressionQuality: 1.0) {
+            restaurant3.image = imageData
+        }
         
         let user1 = User(context: context)
         user1.name = "User A"

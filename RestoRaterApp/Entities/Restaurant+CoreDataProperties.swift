@@ -2,7 +2,7 @@
 //  Restaurant+CoreDataProperties.swift
 //  RestoRaterApp
 //
-//  Created by user249550 on 12/8/23.
+//  Created by user249550 on 12/11/23.
 //
 //
 
@@ -17,9 +17,9 @@ extension Restaurant {
     }
     
     @NSManaged public var address: String
-    @NSManaged public var image: String
+    @NSManaged public var image: Data?
     @NSManaged public var name: String
-    @NSManaged public var reviews: NSSet
+    @NSManaged public var reviews: NSSet?
     
 }
 
@@ -41,22 +41,22 @@ extension Restaurant {
 }
 
 extension Restaurant : Identifiable {
-//    These methods are not very efficient, for large number of reviews it is better to save each in core data
+    //    These methods are not very efficient, for large number of reviews it is better to save each in core data
     var averageRating: Double {
-        guard let reviews = reviews.allObjects as? [Review], !reviews.isEmpty else { return 0.0 }
+        guard let reviews = reviews?.allObjects as? [Review], !reviews.isEmpty else { return 0.0 }
         let totalRating = reviews.reduce(0) { $0 + $1.rating }
         return totalRating / Double(reviews.count)
     }
     
     var highestRatedReview: Review? {
-        return (reviews.allObjects as? [Review])?.max(by: { $0.rating < $1.rating })
+        return (reviews?.allObjects as? [Review])?.max(by: { $0.rating < $1.rating })
     }
     
     var lowestRatedReview: Review? {
-        return (reviews.allObjects as? [Review])?.min(by: { $0.rating < $1.rating })
+        return (reviews?.allObjects as? [Review])?.min(by: { $0.rating < $1.rating })
     }
     
     var latestReview: Review? {
-        return (reviews.allObjects as? [Review])?.max(by: { $0.dateVisited < $1.dateVisited })
+        return (reviews?.allObjects as? [Review])?.max(by: { $0.dateVisited < $1.dateVisited })
     }
 }

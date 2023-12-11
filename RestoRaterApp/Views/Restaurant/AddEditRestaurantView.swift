@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 enum RestaurantScenario {
     case add
@@ -16,13 +17,15 @@ struct AddEditRestaurantView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: AddEditRestaurantViewModel
+    @State private var restaurantItem: PhotosPickerItem?
+    @State private var restaurantImage: Image?
     private let scenario: RestaurantScenario
     var onAddCompletion: (() -> Void)?
     
     init(scenario: RestaurantScenario, restaurant: Restaurant? = nil) {
         self.scenario = scenario
         _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, restaurant: restaurant))
-
+        
     }
     
     var body: some View {
@@ -31,10 +34,28 @@ struct AddEditRestaurantView: View {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $viewModel.name)
                     TextField("Address", text: $viewModel.address)
-                    TextField("Image", text: $viewModel.image)
+                    PhotosPicker("Select image", selection: $restaurantItem, matching: .images)
+                    
+                    restaurantImage?
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 200)
+                        .clipped()
                 }
                 
             }
+            .onChange(of: restaurantItem, perform: { newItem  in
+                Task {
+                    guard let imageData = try? await newItem?.loadTransferable(type: Data.self) else {
+                        return
+                    }
+                    if let image = UIImage(data: imageData) {
+                        restaurantImage = Image(uiImage: image)
+                        viewModel.image = imageData
+                    }
+                    
+                }
+            })
             .navigationBarTitle(viewModel.title, displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
@@ -47,9 +68,6 @@ struct AddEditRestaurantView: View {
                     presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
                 }
             )
-            .onAppear {
-
-            }
         }
     }
     
