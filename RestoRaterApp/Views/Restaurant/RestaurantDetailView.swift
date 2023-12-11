@@ -15,11 +15,17 @@ struct RestaurantDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                if let imageData = restaurant.image, let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
+                if let image = restaurant.image?.toImage() {
+                    image
                         .resizable()
                         .scaledToFill()
                         .frame(height: 200)
+                        .clipped()
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 150)
                         .clipped()
                 }
 
