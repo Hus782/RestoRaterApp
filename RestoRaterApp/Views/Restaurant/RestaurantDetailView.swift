@@ -38,6 +38,7 @@ struct RestaurantDetailView: View {
 
                 Divider()
 
+                DisplayRatingView(rating: restaurant.averageRating)
                 Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
 
                 // Highest Rated Review

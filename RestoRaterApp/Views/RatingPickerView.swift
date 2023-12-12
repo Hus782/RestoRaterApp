@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RatingView: View {
+struct RatingPickerView: View {
     @Binding var rating: Int
 
     let maximumRating = 5

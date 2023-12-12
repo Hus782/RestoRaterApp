@@ -15,7 +15,7 @@ struct ReviewView: View {
         VStack(alignment: .leading) {
             Text(title)
                 .font(.headline)
-            
+            DisplayRatingView(rating: Double(review.rating))
             Text("Rating: \(review.rating)/5")
             Text("Visited on: \(review.dateVisited, formatter: dateFormatter)")
                                 .font(.subheadline)

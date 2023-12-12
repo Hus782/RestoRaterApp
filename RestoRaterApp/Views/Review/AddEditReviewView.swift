@@ -35,7 +35,7 @@ struct AddEditReviewView: View {
 //                            Text("\(number)")
 //                        }
 //                    }
-                    RatingView(rating: $viewModel.rating)
+                    RatingPickerView(rating: $viewModel.rating)
                     
                     .pickerStyle(SegmentedPickerStyle())
                 }
