@@ -18,7 +18,7 @@ extension Review {
 
     @NSManaged public var comment: String
     @NSManaged public var dateVisited: Date
-    @NSManaged public var rating: Double
+    @NSManaged public var rating: Int
     @NSManaged public var restaurant: Restaurant
 
 }

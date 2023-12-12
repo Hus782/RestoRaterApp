@@ -30,11 +30,13 @@ struct AddEditReviewView: View {
         NavigationStack {
             Form {
                 Section(header: Text("Rating")) {
-                    Picker("Rating", selection: $viewModel.rating) {
-                        ForEach(0..<6) { number in
-                            Text("\(number)")
-                        }
-                    }
+//                    Picker("Rating", selection: $viewModel.rating) {
+//                        ForEach(0..<6) { number in
+//                            Text("\(number)")
+//                        }
+//                    }
+                    RatingView(rating: $viewModel.rating)
+                    
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 

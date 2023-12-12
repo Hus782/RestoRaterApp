@@ -10,7 +10,7 @@ import CoreData.NSManagedObjectContext
 
 final class AddEditReviewViewModel: ObservableObject {
     var onAddCompletion: (() -> Void)?
-    @Published var rating: Double = 0
+    @Published var rating: Int = 0
     @Published var comment: String = ""
     @Published var visitDate = Date()
     private let scenario: ReviewViewScenario

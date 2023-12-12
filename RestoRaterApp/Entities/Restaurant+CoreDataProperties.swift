@@ -45,7 +45,7 @@ extension Restaurant : Identifiable {
     var averageRating: Double {
         guard let reviews = reviews?.allObjects as? [Review], !reviews.isEmpty else { return 0.0 }
         let totalRating = reviews.reduce(0) { $0 + $1.rating }
-        return totalRating / Double(reviews.count)
+        return Double(totalRating) / Double(reviews.count)
     }
     
     var highestRatedReview: Review? {
