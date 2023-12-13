@@ -15,7 +15,6 @@ enum ReviewViewScenario {
 struct AddEditReviewView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
-    
     @StateObject private var viewModel: AddEditReviewViewModel
     private let scenario: ReviewViewScenario
     var onAddCompletion: (() -> Void)?
@@ -30,11 +29,6 @@ struct AddEditReviewView: View {
         NavigationStack {
             Form {
                 Section(header: Text("Rating")) {
-//                    Picker("Rating", selection: $viewModel.rating) {
-//                        ForEach(0..<6) { number in
-//                            Text("\(number)")
-//                        }
-//                    }
                     RatingPickerView(rating: $viewModel.rating)
                     
                     .pickerStyle(SegmentedPickerStyle())

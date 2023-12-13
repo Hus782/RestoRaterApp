@@ -9,13 +9,13 @@ import Foundation
 import CoreData.NSManagedObjectContext
 
 final class AddEditRestaurantViewModel: ObservableObject {
-    var onAddCompletion: (() -> Void)?
     @Published var name: String = ""
     @Published var address: String = ""
     @Published var image: Data?
     private let scenario: RestaurantScenario
     private let restaurant: Restaurant?
-    
+    private let onAddCompletion: (() -> Void)?
+
     
     var title: String {
         switch scenario {
@@ -26,7 +26,8 @@ final class AddEditRestaurantViewModel: ObservableObject {
         }
     }
     
-    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil) {
+    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
+        self.onAddCompletion = onAddCompletion
         if let restaurant = restaurant {
             self.name = restaurant.name
             self.address = restaurant.address

@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+enum StarSize {
+    case small
+    case medium
+    case large
+
+    var value: CGFloat {
+        switch self {
+        case .small:
+            return 16
+        case .medium:
+            return 24
+        case .large:
+            return 40
+        }
+    }
+}
+
 struct DisplayRatingView: View {
     let rating: Double
     let maximumRating = 5
@@ -15,11 +32,19 @@ struct DisplayRatingView: View {
     let emptyStarImage = Image(systemName: "star")
     let offColor = Color.gray
     let onColor = Color.yellow
-
+    let starSize: StarSize
+    
+    init (rating: Double, starSize: StarSize = .small) {
+        self.rating = rating
+        self.starSize = starSize
+    }
+    
     var body: some View {
         HStack {
             ForEach(0..<maximumRating, id: \.self) { starIndex in
                 imageForRating(Double(starIndex))
+                    .resizable()
+                    .frame(width: starSize.value, height: starSize.value)
                     .foregroundColor(starIndex + 1 > Int(rating + 0.5) ? offColor : onColor)
             }
         }

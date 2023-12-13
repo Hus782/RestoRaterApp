@@ -12,15 +12,20 @@ struct ReviewView: View {
     let title: String
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.headline)
-            DisplayRatingView(rating: Double(review.rating))
-            Text("Rating: \(review.rating)/5")
-            Text("Visited on: \(review.dateVisited, formatter: dateFormatter)")
-                                .font(.subheadline)
-            Text(review.comment)
-                .font(.body)
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+                Text(review.dateVisited, formatter: dateFormatter)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                DisplayRatingView(rating: Double(review.rating))
+                //            Text("Rating: \(review.rating)/5")
+                
+                Text(review.comment)
+                    .font(.body)
+            }
+            Spacer()
         }
         .padding()
         .background(Color.gray.opacity(0.1))
@@ -28,7 +33,7 @@ struct ReviewView: View {
     }
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter
     }

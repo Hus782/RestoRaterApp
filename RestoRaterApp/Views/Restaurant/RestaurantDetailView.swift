@@ -38,27 +38,31 @@ struct RestaurantDetailView: View {
 
                 Divider()
 
-                DisplayRatingView(rating: restaurant.averageRating)
+                DisplayRatingView(rating: restaurant.averageRating, starSize: .medium)
                 Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
-
-                // Highest Rated Review
-                if let highestRatedReview = restaurant.highestRatedReview {
-                    ReviewView(review: highestRatedReview, title: "Highest Rated Review")
-                }
-
-                // Lowest Rated Review
-                if let lowestRatedReview = restaurant.lowestRatedReview {
-                    ReviewView(review: lowestRatedReview, title: "Lowest Rated Review")
-                }
 
                 // Latest Review
                 if let latestReview = restaurant.latestReview {
                     ReviewView(review: latestReview, title: "Latest Review")
                 }
-                
+                // Highest Rated Review
+                if let highestRatedReview = restaurant.highestRatedReview {
+                    ReviewView(review: highestRatedReview, title: "Highest Rated Review")
+                }
+                // Lowest Rated Review
+                if let lowestRatedReview = restaurant.lowestRatedReview {
+                    ReviewView(review: lowestRatedReview, title: "Lowest Rated Review")
+                }
+
                 Button("Add Review") {
                     showingAddRReviewView = true
                 }
+                .padding()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.blue)
+                   .foregroundColor(.white)
+                   .cornerRadius(8)
+                   .padding()
             }
             .padding()
         }

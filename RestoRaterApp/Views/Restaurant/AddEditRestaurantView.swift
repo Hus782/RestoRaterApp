@@ -20,11 +20,12 @@ struct AddEditRestaurantView: View {
     @State private var restaurantItem: PhotosPickerItem?
     @State private var restaurantImage: Image?
     private let scenario: RestaurantScenario
-    var onAddCompletion: (() -> Void)?
+    private let onAddCompletion: (() -> Void)?
     
-    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil) {
+    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, restaurant: restaurant))
+        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, restaurant: restaurant, onAddCompletion: onAddCompletion))
+        self.onAddCompletion = onAddCompletion
         
     }
     

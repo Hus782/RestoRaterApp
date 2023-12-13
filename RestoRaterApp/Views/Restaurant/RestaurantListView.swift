@@ -35,10 +35,16 @@ struct RestaurantListView: View {
             )
         }
         .onAppear {
-            viewModel.fetchRestaurants(context: viewContext)
+           fetch()
         }
         .sheet(isPresented: $showingAddRestaurantView) {
-            AddEditRestaurantView(scenario: .add)
+            AddEditRestaurantView(scenario: .add, onAddCompletion: {
+                fetch()
+            })
         }
+    }
+    
+    private func fetch() {
+        viewModel.fetchRestaurants(context: viewContext)
     }
 }
