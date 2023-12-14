@@ -34,6 +34,10 @@ struct RestaurantDetailView: View {
                 
                 ReviewSectionView(restaurant: restaurant)
                 
+                NavigationLink(destination: ReviewsListView(restaurant: restaurant)) {
+                    Text("Show NewView")
+                }
+                
                 Button("Add Review") {
                     showingAddRReviewView = true
                 }
@@ -54,7 +58,7 @@ struct RestaurantDetailView: View {
                 .background(Color.red)
                 .foregroundColor(.white)
                 .cornerRadius(8)
-                .padding(.bottom)
+                .padding()
                 
             }
             .padding()

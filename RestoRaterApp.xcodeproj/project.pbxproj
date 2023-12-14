@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */; };
+		3D2DE32C2B2B35BD00B57A7E /* ReviewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */; };
 		3D3332D02B23709D0063D286 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */; };
 		3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */; };
 		3D3332D82B2376AC0063D286 /* Review+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRatingView.swift; sourceTree = "<group>"; };
+		3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListView.swift; sourceTree = "<group>"; };
 		3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */,
 				3D3332D92B2377420063D286 /* ReviewView.swift */,
+				3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				3D3F690B2B2749700075DA53 /* Data .swift in Sources */,
 				3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */,
 				3D9EA85B2B27062E00603498 /* Restaurant+CoreDataClass.swift in Sources */,
+				3D2DE32C2B2B35BD00B57A7E /* ReviewsListView.swift in Sources */,
 				3DCCF0DB2B233D2800666731 /* RestaurantListView.swift in Sources */,
 				3DC6859A2B25B340006B5288 /* AddEditRestaurantViewModel.swift in Sources */,
 				3D3332DA2B2377420063D286 /* ReviewView.swift in Sources */,

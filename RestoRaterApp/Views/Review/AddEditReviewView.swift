@@ -17,11 +17,10 @@ struct AddEditReviewView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel: AddEditReviewViewModel
     private let scenario: ReviewViewScenario
-    var onAddCompletion: (() -> Void)?
     
-    init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil) {
+    init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, review: review, restaurant: restaurant))
+        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, review: review, restaurant: restaurant, onAddCompletion: onAddCompletion))
         
     }
     

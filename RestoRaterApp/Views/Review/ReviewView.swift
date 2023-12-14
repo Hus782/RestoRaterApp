@@ -11,16 +11,22 @@ struct ReviewView: View {
     let review: Review
     let title: String
     
+    init(review: Review, title: String = "") {
+        self.review = review
+        self.title = title
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.headline)
+                if !title.isEmpty {
+                    Text(title)
+                        .font(.headline)
+                }
                 Text(review.dateVisited, formatter: dateFormatter)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                 DisplayRatingView(rating: Double(review.rating))
-                //            Text("Rating: \(review.rating)/5")
                 
                 Text(review.comment)
                     .font(.body)

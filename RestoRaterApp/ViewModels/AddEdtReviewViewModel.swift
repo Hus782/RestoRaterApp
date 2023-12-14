@@ -9,13 +9,15 @@ import Foundation
 import CoreData.NSManagedObjectContext
 
 final class AddEditReviewViewModel: ObservableObject {
-    var onAddCompletion: (() -> Void)?
     @Published var rating: Int = 0
     @Published var comment: String = ""
     @Published var visitDate = Date()
     private let scenario: ReviewViewScenario
     private let review: Review?
     private let restaurant: Restaurant?
+    var onAddCompletion: (() -> Void)?
+
+    
     var title: String {
         switch scenario {
         case .add:
@@ -25,7 +27,8 @@ final class AddEditReviewViewModel: ObservableObject {
         }
     }
     
-    init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil) {
+    init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
+        self.onAddCompletion = onAddCompletion
         if let review = review {
             self.rating = review.rating
             self.comment = review.comment
@@ -71,6 +74,16 @@ final class AddEditReviewViewModel: ObservableObject {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
             // Handle the error, perhaps by showing an alert
+        }
+    }
+    
+    func deleteReview(review: Review, context: NSManagedObjectContext) {
+        context.delete(review)
+        onAddCompletion?()
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting restaurant: \(error)")
         }
     }
     
