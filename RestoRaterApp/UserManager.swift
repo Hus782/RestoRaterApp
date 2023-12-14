@@ -32,6 +32,14 @@ final class UserManager: ObservableObject {
         loadUserFromDefaults()
     }
     
+    func isCurrentUser(user: User) -> Bool {
+        if let currentName = currentUser?.name, let currentEmail = currentUser?.email, currentName == user.name, currentEmail == user.email {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func loginUser(user: User) {
         currentUser = UserData(name: user.name, email: user.email, isAdmin: user.isAdmin)
         isLoggedIn = true

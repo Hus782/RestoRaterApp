@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserDetailsView: View {
+    @EnvironmentObject private var userManager: UserManager
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject var viewModel = UsersViewModel()
     @State private var showingEditUserView = false
@@ -46,18 +47,20 @@ struct UserDetailsView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(12)
             .shadow(radius: 2)
-            
-            Button("Delete User") {
-                viewModel.deleteUser(user: user, context: viewContext)
-                dismiss()
-                onDeleteCompletion?()
+//            Prevent the admin from self deleting
+            if !userManager.isCurrentUser(user: user) {
+                Button("Delete User") {
+                    viewModel.deleteUser(user: user, context: viewContext)
+                    dismiss()
+                    onDeleteCompletion?()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                .padding(.horizontal)
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(8)
-            .padding(.horizontal)
         }
         .padding()
         
