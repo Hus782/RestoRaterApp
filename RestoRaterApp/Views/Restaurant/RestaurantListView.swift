@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantListView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var userManager: UserManager
     @State private var showingAddRestaurantView = false
     @State private var listKey = UUID() // Used for refreshing the list
     @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel()
@@ -30,11 +31,12 @@ struct RestaurantListView: View {
                 .listStyle(PlainListStyle())
                 .navigationBarTitle("Restaurants", displayMode: .inline)
                 .navigationBarItems(
-                    leading: EditButton(),
                     trailing: Button(action: {
                         showingAddRestaurantView = true
                     }) {
-                        Image(systemName: "plus")
+                        if userManager.currentUser?.isAdmin ?? false {
+                            Image(systemName: "plus")
+                        }
                     }
                 )
         }

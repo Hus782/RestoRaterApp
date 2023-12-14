@@ -13,6 +13,7 @@ struct RestaurantDetailView: View {
     @State private var showingAddRReviewView = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var userManager: UserManager
     @State var restaurant: Restaurant
     let onAddCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?
@@ -48,17 +49,19 @@ struct RestaurantDetailView: View {
                 .cornerRadius(8)
                 .padding()
                 
-                Button("Delete Restaurant") {
-                    viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
-                    dismiss()
-                    onDeleteCompletion?()
+                if userManager.currentUser?.isAdmin ?? false {
+                    Button("Delete Restaurant") {
+                        viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
+                        dismiss()
+                        onDeleteCompletion?()
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                    .padding()
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.red)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-                .padding()
                 
             }
             .padding()
@@ -68,7 +71,9 @@ struct RestaurantDetailView: View {
             trailing: Button(action: {
                 showingEditRestaurantView = true
             }) {
-                Text("Edit")
+                if userManager.currentUser?.isAdmin ?? false {
+                    Text("Edit")
+                }
             }
         )
         .sheet(isPresented: $showingEditRestaurantView) {

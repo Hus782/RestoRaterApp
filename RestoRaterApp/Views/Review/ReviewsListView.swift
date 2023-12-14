@@ -10,6 +10,7 @@ import SwiftUI
 struct ReviewsListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var userManager: UserManager
     @StateObject var viewModel = AddEditReviewViewModel(scenario: .edit)
     @State private var showingAddReviewView = false
     private let restaurant: Restaurant
@@ -27,17 +28,19 @@ struct ReviewsListView: View {
                     ReviewView(review: review)
                     
                         .swipeActions {
-                            Button {
-                                self.showingAddReviewView = true
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            .tint(.blue)
-                            
-                            Button(role: .destructive) {
-                                viewModel.deleteReview(review: review, context: viewContext)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
+                            if userManager.currentUser?.isAdmin ?? false {
+                                Button {
+                                    self.showingAddReviewView = true
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blue)
+                                
+                                Button(role: .destructive) {
+                                    viewModel.deleteReview(review: review, context: viewContext)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
                             }
                         }
                         .sheet(isPresented: $showingAddReviewView) {
