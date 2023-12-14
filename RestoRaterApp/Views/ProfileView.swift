@@ -11,25 +11,23 @@ struct ProfileView: View {
     @EnvironmentObject var userManager: UserManager
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                if let user = userManager.currentUser {
-                    Text("Name: \(user.name)")
-                        .font(.headline)
+        NavigationView {
+            HStack {
+                VStack(alignment: .leading, spacing: 20) {
                     
-                    Text("Email: \(user.email)")
-                        .font(.subheadline)
-                    
-                    if user.isAdmin {
-                        Text("Role: Admin")
-                            .foregroundColor(.green)
+                    if let user = userManager.currentUser {
+                        UserDetail(title: "Name", detail: user.name)
+                        UserDetail(title: "Email", detail: user.email)
+                        UserRoleDetail(user: user)
+                        Spacer()
+                        
                     } else {
-                        Text("Role: Regular User")
-                            .foregroundColor(.blue)
+                        Text("No user is currently logged in.")
+                            .foregroundColor(.secondary)
                     }
-                } else {
-                    Text("No user is currently logged in.")
+                    
                 }
+                Spacer()
             }
             .padding()
             .navigationBarTitle("Profile", displayMode: .inline)
@@ -38,6 +36,41 @@ struct ProfileView: View {
             }) {
                 Text("Logout")
             })
+        }
+    }
+}
+
+struct UserDetail: View {
+    var title: String
+    var detail: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.headline)
+                .foregroundColor(.secondary)
+            Text(detail)
+                .font(.title2)
+                .bold()
+        }
+    }
+}
+
+struct UserRoleDetail: View {
+    var user: UserData
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Role")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            Text(user.isAdmin ? "Admin" : "Regular User")
+                .fontWeight(.medium)
+                .padding(5)
+                .background(user.isAdmin ? Color.green : Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(5)
         }
     }
 }
