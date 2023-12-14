@@ -10,8 +10,10 @@ import SwiftUI
 struct RestaurantDetailView: View {
     @State private var showingEditRestaurantView = false
     @State private var showingAddRReviewView = false
-    let restaurant: Restaurant
-
+    @Environment(\.dismiss) private var dismiss
+    @State var restaurant: Restaurant
+    let onAddCompletion: (() -> Void)?
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
@@ -28,19 +30,19 @@ struct RestaurantDetailView: View {
                         .frame(height: 150)
                         .clipped()
                 }
-
+                
                 Text(restaurant.name)
                     .font(.largeTitle)
-
+                
                 Text(restaurant.address)
                     .font(.subheadline)
                     .foregroundColor(.gray)
-
+                
                 Divider()
-
+                
                 DisplayRatingView(rating: restaurant.averageRating, starSize: .medium)
                 Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
-
+                
                 // Latest Review
                 if let latestReview = restaurant.latestReview {
                     ReviewView(review: latestReview, title: "Latest Review")
@@ -53,16 +55,16 @@ struct RestaurantDetailView: View {
                 if let lowestRatedReview = restaurant.lowestRatedReview {
                     ReviewView(review: lowestRatedReview, title: "Lowest Rated Review")
                 }
-
+                
                 Button("Add Review") {
                     showingAddRReviewView = true
                 }
                 .padding()
-                   .frame(maxWidth: .infinity)
-                   .background(Color.blue)
-                   .foregroundColor(.white)
-                   .cornerRadius(8)
-                   .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                .padding()
             }
             .padding()
         }
@@ -75,11 +77,17 @@ struct RestaurantDetailView: View {
             }
         )
         .sheet(isPresented: $showingEditRestaurantView) {
-            AddEditRestaurantView(scenario: .edit, restaurant: restaurant)
+            AddEditRestaurantView(scenario: .edit, restaurant: restaurant, onAddCompletion: {
+                onEditCompletion()
+            })
         }
         .sheet(isPresented: $showingAddRReviewView) {
             AddEditReviewView(scenario: .add, restaurant: restaurant)
         }
     }
     
+    private func onEditCompletion() {
+        dismiss()
+        onAddCompletion?()
+    }
 }

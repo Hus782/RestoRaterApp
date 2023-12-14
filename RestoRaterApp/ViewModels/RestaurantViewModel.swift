@@ -11,11 +11,6 @@ import SwiftUI
 final class RestaurantViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
 
-//    init(context: NSManagedObjectContext) {
-//        self.context = context
-//        fetchRestaurants()
-//    }
-
     func fetchRestaurants(context: NSManagedObjectContext) {
         let request: NSFetchRequest<Restaurant> = Restaurant.createFetchRequest()
 
