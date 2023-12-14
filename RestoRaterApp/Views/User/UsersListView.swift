@@ -14,20 +14,20 @@ struct UsersListView: View {
     @State private var listKey = UUID() // Used for refreshing the list
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(viewModel.users, id: \.self) { user in
                     NavigationLink(destination: UserDetailsView(user: user, onAddCompletion: {
                         refreshList()
+                    }, onDeleteCompletion: {
+                        fetch()
                     })) {
                         Text(user.name)
                     }
                 }
-                .onDelete(perform: viewModel.deleteUser)
             }.id(listKey)
                 .navigationBarTitle("Users")
                 .navigationBarItems(
-                    leading: EditButton(),
                     trailing: Button(action: {
                         showingAddUserView = true
                     }) {

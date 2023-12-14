@@ -54,12 +54,12 @@ struct RestaurantDetailView: View {
                 .background(Color.red)
                 .foregroundColor(.white)
                 .cornerRadius(8)
-                .padding()
+                .padding(.bottom)
                 
             }
             .padding()
         }
-        .navigationBarTitle("Restaurant Details", displayMode: .inline)
+        .navigationBarTitle("Details", displayMode: .inline)
         .navigationBarItems(
             trailing: Button(action: {
                 showingEditRestaurantView = true

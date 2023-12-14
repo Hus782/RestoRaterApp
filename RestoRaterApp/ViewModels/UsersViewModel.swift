@@ -21,10 +21,13 @@ final class UsersViewModel: ObservableObject {
         }
     }
 
-    func deleteUser(at offsets: IndexSet) {
-        // Delete user
-        users.remove(atOffsets: offsets)
+    func deleteUser(user: User, context: NSManagedObjectContext) {
+        context.delete(user)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting restaurant: \(error)")
+        }
     }
-
-
 }
