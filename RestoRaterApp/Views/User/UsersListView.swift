@@ -22,11 +22,11 @@ struct UsersListView: View {
                     }, onDeleteCompletion: {
                         fetch()
                     })) {
-                        Text(user.name)
+                        UserRowView(user: user)
                     }
                 }
             }.id(listKey)
-                .navigationBarTitle("Users")
+                .navigationBarTitle("Users", displayMode: .inline)
                 .navigationBarItems(
                     trailing: Button(action: {
                         showingAddUserView = true

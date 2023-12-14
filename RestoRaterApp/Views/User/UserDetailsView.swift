@@ -12,23 +12,42 @@ struct UserDetailsView: View {
     @StateObject var viewModel = UsersViewModel()
     @State private var showingEditUserView = false
     @Environment(\.dismiss) private var dismiss
-    let user: User 
+    let user: User
     let onAddCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Name: \(user.name)")
-                .font(.title)
-
-            Text("Email: \(user.email)")
-                .font(.subheadline)
-
-            Text("Role: \(user.isAdmin ? "Admin" : "Regular User")")
-                .font(.subheadline)
-                .foregroundColor(user.isAdmin ? .green : .blue)
-                
-            Button("Delete Restaurant") {
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Name: \(user.name)")
+                        .font(.title2)
+                        .bold()
+                    
+                    Text("Email: \(user.email)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    HStack {
+                        Text("Role:")
+                        Text(user.isAdmin ? "Admin" : "Regular User")
+                            .fontWeight(.medium)
+                            .padding(5)
+                            .background(user.isAdmin ? Color.green : Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                    }
+                    .font(.subheadline)
+                }
+                Spacer()
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(12)
+            .shadow(radius: 2)
+            
+            Button("Delete User") {
                 viewModel.deleteUser(user: user, context: viewContext)
                 dismiss()
                 onDeleteCompletion?()
@@ -38,10 +57,11 @@ struct UserDetailsView: View {
             .background(Color.red)
             .foregroundColor(.white)
             .cornerRadius(8)
-            Spacer()
+            .padding(.horizontal)
         }
         .padding()
-        .navigationBarTitle("Details", displayMode: .inline)
+        
+        .navigationBarTitle("User Details", displayMode: .inline)
         .navigationBarItems(
             trailing: Button(action: {
                 showingEditUserView = true
@@ -55,8 +75,10 @@ struct UserDetailsView: View {
             })
         }
     }
+    
     private func onEditCompletion() {
         dismiss()
         onAddCompletion?()
     }
 }
+

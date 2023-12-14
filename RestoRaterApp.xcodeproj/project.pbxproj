@@ -20,6 +20,7 @@
 		3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE52B24707400458521 /* UsersViewModel.swift */; };
 		3D549AE92B24732800458521 /* AddEditUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE82B24732800458521 /* AddEditUserViewModel.swift */; };
 		3D549AEB2B24746300458521 /* AddEditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AEA2B24746300458521 /* AddEditUserView.swift */; };
+		3D77EB0C2B2B1CC500A38E11 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */; };
 		3D7F20D82B2B0364005E5422 /* RestaurantImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */; };
 		3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */; };
 		3D9EA8532B26FAD600603498 /* AddEditReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */; };
@@ -81,6 +82,7 @@
 		3D549AE52B24707400458521 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		3D549AE82B24732800458521 /* AddEditUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserViewModel.swift; sourceTree = "<group>"; };
 		3D549AEA2B24746300458521 /* AddEditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserView.swift; sourceTree = "<group>"; };
+		3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImageView.swift; sourceTree = "<group>"; };
 		3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSectionView.swift; sourceTree = "<group>"; };
 		3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				3D549AE32B24702600458521 /* UsersListView.swift */,
 				3D549AEA2B24746300458521 /* AddEditUserView.swift */,
 				3DB551E02B24A81400D27E90 /* UserDetailsView.swift */,
+				3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				3D549AEB2B24746300458521 /* AddEditUserView.swift in Sources */,
 				3D549AE02B2464A900458521 /* TabsView.swift in Sources */,
 				3D3332D82B2376AC0063D286 /* Review+CoreDataProperties.swift in Sources */,
+				3D77EB0C2B2B1CC500A38E11 /* UserRowView.swift in Sources */,
 				3DD4626E2B2316F500D200B3 /* UserManager.swift in Sources */,
 				3D3332D02B23709D0063D286 /* RestaurantDetailView.swift in Sources */,
 				3D9EA85C2B27062E00603498 /* Restaurant+CoreDataProperties.swift in Sources */,
