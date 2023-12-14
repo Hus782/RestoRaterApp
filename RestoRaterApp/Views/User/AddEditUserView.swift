@@ -32,9 +32,11 @@ struct AddEditUserView: View {
                 }
                 Section(header: Text("Email")) {
                     TextField("email", text: $viewModel.email)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
                 Section(header: Text("Password")) {
-                    TextField("password", text: $viewModel.password)
+                    SecureField("password", text: $viewModel.password)
                 }
                 Section(header: Text("Admin Access")) {
                     Toggle(isOn: $viewModel.isAdmin) {
