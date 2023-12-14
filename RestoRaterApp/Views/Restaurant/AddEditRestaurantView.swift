@@ -34,7 +34,11 @@ struct AddEditRestaurantView: View {
             Form {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $viewModel.name)
+                }
+                Section(header: Text("Address")) {
                     TextField("Address", text: $viewModel.address)
+                }
+                Section(header: Text("Image")) {
                     PhotosPicker("Select image", selection: $restaurantItem, matching: .images)
                     
                     restaurantImage?
@@ -69,6 +73,11 @@ struct AddEditRestaurantView: View {
                     presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
                 }
             )
+        }
+        .onAppear {
+            if let data = viewModel.image, let image = UIImage(data: data) {
+                restaurantImage = Image(uiImage: image)
+            }
         }
     }
     

@@ -31,7 +31,7 @@ final class AddEditRestaurantViewModel: ObservableObject {
         if let restaurant = restaurant {
             self.name = restaurant.name
             self.address = restaurant.address
-//            self.image = restaurant.image
+            self.image = restaurant.image
             self.scenario = .edit
             self.restaurant = restaurant
         } else {
