@@ -35,47 +35,48 @@ struct RestaurantDetailView: View {
                 
                 ReviewSectionView(restaurant: restaurant)
                 
-                NavigationLink(destination: ReviewsListView(restaurant: restaurant)) {
-                    Text("Show NewView")
+                if restaurant.hasReviews {
+                    NavigationLink(destination: ReviewsListView(restaurant: restaurant)) {
+                        Text("Show all reviews")
+                    }
+                    .underline()
+                    .foregroundColor(.blue)
                 }
-                
-                Button("Add Review") {
+                Button(action: {
                     showingAddRReviewView = true
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-                .padding()
-                
-                if userManager.currentUser?.isAdmin ?? false {
-                    Button("Delete Restaurant") {
-                        viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
-                        dismiss()
-                        onDeleteCompletion?()
+                }) {
+                    HStack {
+                        Image(systemName: "pencil")
+                        Text("Add Review")
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.red)
                     .foregroundColor(.white)
+                    .background(Color.blue)
                     .cornerRadius(8)
-                    .padding()
+                    .shadow(radius: 3)
                 }
+                .padding()
                 
             }
             .padding()
         }
         .navigationBarTitle("Details", displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(action: {
-                showingEditRestaurantView = true
-            }) {
-                if userManager.currentUser?.isAdmin ?? false {
-                    Text("Edit")
+        .navigationBarItems(trailing: HStack {
+            if userManager.currentUser?.isAdmin ?? false {
+                Menu {
+                    Button("Edit") {
+                        showingEditRestaurantView = true
+                    }
+                    Button("Delete", role: .destructive) {
+                        viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
+                        onDeleteCompletion?()
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
                 }
             }
-        )
+        })
         .sheet(isPresented: $showingEditRestaurantView) {
             AddEditRestaurantView(scenario: .edit, restaurant: restaurant, onAddCompletion: {
                 onEditCompletion()

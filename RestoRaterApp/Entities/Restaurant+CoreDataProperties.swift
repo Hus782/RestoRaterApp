@@ -59,4 +59,8 @@ extension Restaurant : Identifiable {
     var latestReview: Review? {
         return (reviews?.allObjects as? [Review])?.max(by: { $0.dateVisited < $1.dateVisited })
     }
+    
+    var hasReviews: Bool {
+        return (reviews?.count ?? 0) > 0
+    }
 }
