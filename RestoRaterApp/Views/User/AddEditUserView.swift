@@ -14,15 +14,14 @@ enum UserViewScenario {
 
 struct AddEditUserView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     @StateObject private var viewModel: AddEditUserViewModel
     private let scenario: UserViewScenario
-    var onAddCompletion: (() -> Void)?
     
-    init(scenario: UserViewScenario, user: User? = nil) {
+    init(scenario: UserViewScenario, user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, user: user))
-
+        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, user: user, onAddCompletion: onAddCompletion))
+        
     }
     
     var body: some View {
@@ -30,10 +29,16 @@ struct AddEditUserView: View {
             Form {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $viewModel.name)
+                }
+                Section(header: Text("Email")) {
                     TextField("email", text: $viewModel.email)
+                }
+                Section(header: Text("Password")) {
                     TextField("password", text: $viewModel.password)
+                }
+                Section(header: Text("Admin Access")) {
                     Toggle(isOn: $viewModel.isAdmin) {
-                        Text("Is Admin")
+                        Text("Admin Access")
                     }
                 }
                 
@@ -51,7 +56,7 @@ struct AddEditUserView: View {
                 }
             )
             .onAppear {
-
+                
             }
         }
     }

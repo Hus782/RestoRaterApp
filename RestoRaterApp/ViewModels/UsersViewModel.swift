@@ -21,11 +21,6 @@ final class UsersViewModel: ObservableObject {
         }
     }
 
-    func addUser(_ user: User) {
-        // Add a new user
-        users.append(user)
-    }
-
     func deleteUser(at offsets: IndexSet) {
         // Delete user
         users.remove(atOffsets: offsets)

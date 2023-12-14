@@ -9,14 +9,13 @@ import Foundation
 import CoreData.NSManagedObjectContext
 
 final class AddEditUserViewModel: ObservableObject {
-    var onAddCompletion: (() -> Void)?
     @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAdmin: Bool = false
     private let scenario: UserViewScenario
     private let user: User?
-    
+    private let onAddCompletion: (() -> Void)?
     
     var title: String {
         switch scenario {
@@ -27,7 +26,8 @@ final class AddEditUserViewModel: ObservableObject {
         }
     }
     
-    init(scenario: UserViewScenario, user: User? = nil) {
+    init(scenario: UserViewScenario, user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
+        self.onAddCompletion = onAddCompletion
         if let user = user {
             self.name = user.name
             self.email = user.email

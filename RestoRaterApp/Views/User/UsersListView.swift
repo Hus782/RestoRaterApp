@@ -11,32 +11,46 @@ struct UsersListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject var viewModel = UsersViewModel()
     @State private var showingAddUserView = false
+    @State private var listKey = UUID() // Used for refreshing the list
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.users, id: \.self) { user in
-                    NavigationLink(destination: UserDetailsView(user: user)) {
+                    NavigationLink(destination: UserDetailsView(user: user, onAddCompletion: {
+                        refreshList()
+                    })) {
                         Text(user.name)
                     }
                 }
                 .onDelete(perform: viewModel.deleteUser)
-            }
-            .navigationBarTitle("Users")
-            .navigationBarItems(
-                leading: EditButton(),
-                trailing: Button(action: {
-                    showingAddUserView = true
-                }) {
-                    Image(systemName: "plus")
-                }
-            )
+            }.id(listKey)
+                .navigationBarTitle("Users")
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing: Button(action: {
+                        showingAddUserView = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                )
         }
         .sheet(isPresented: $showingAddUserView) {
-            AddEditUserView(scenario: .add)
+            AddEditUserView(scenario: .add, onAddCompletion: {
+                fetch()
+            })
         }
         .onAppear {
-            viewModel.fetchUsers(context: viewContext)
+            fetch()
         }
     }
+    //    Used to force a refresh of the list view after editing an item
+    private func refreshList() {
+        listKey = UUID()
+    }
+    
+    private func fetch() {
+        viewModel.fetchUsers(context: viewContext)
+    }
+    
 }
