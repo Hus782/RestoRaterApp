@@ -327,54 +327,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D95C481C-A074-40F8-B774-31A3114D8441"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RestoRaterApp/Views/Restaurant/RestaurantDetailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "D95C481C-A074-40F8-B774-31A3114D8441 - 22ba32d0838022b0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text, SwiftUI.Divider, SwiftUI.Text, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in RestoRaterApp.RestaurantDetailView.body.getter : some"
-                  moduleName = "RestoRaterApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user249550/Desktop/projects/RestoRaterApp/RestoRaterApp/Views/Restaurant/RestaurantDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "2112">
-               </Location>
-               <Location
-                  uuid = "D95C481C-A074-40F8-B774-31A3114D8441 - 22ba32d0838022b0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text, SwiftUI.Divider, SwiftUI.Text, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, Swift.Optional&lt;RestoRaterApp.ReviewView&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in RestoRaterApp.RestaurantDetailView.body.getter : some"
-                  moduleName = "RestoRaterApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user249550/Desktop/projects/RestoRaterApp/RestoRaterApp/Views/Restaurant/RestaurantDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "2400">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8A013A96-A559-49E8-9176-909BF2F0A994"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -889,10 +841,10 @@
             filePath = "RestoRaterApp/Views/Restaurant/RestaurantListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "fetch()"
-            landmarkType = "7">
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "RestaurantListView"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -937,10 +889,10 @@
             filePath = "RestoRaterApp/Views/Restaurant/RestaurantDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "onEditCompletion()"
-            landmarkType = "7">
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

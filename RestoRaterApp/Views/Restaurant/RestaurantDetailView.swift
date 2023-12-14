@@ -8,32 +8,21 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
+    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel()
     @State private var showingEditRestaurantView = false
     @State private var showingAddRReviewView = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     @State var restaurant: Restaurant
     let onAddCompletion: (() -> Void)?
+    let onDeleteCompletion: (() -> Void)?
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                if let image = restaurant.image?.toImage() {
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 200)
-                        .clipped()
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 150)
-                        .clipped()
-                }
-                
+                RestaurantImageView(image: restaurant.image?.toImage())
                 Text(restaurant.name)
                     .font(.largeTitle)
-                
                 Text(restaurant.address)
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -43,18 +32,7 @@ struct RestaurantDetailView: View {
                 DisplayRatingView(rating: restaurant.averageRating, starSize: .medium)
                 Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
                 
-                // Latest Review
-                if let latestReview = restaurant.latestReview {
-                    ReviewView(review: latestReview, title: "Latest Review")
-                }
-                // Highest Rated Review
-                if let highestRatedReview = restaurant.highestRatedReview {
-                    ReviewView(review: highestRatedReview, title: "Highest Rated Review")
-                }
-                // Lowest Rated Review
-                if let lowestRatedReview = restaurant.lowestRatedReview {
-                    ReviewView(review: lowestRatedReview, title: "Lowest Rated Review")
-                }
+                ReviewSectionView(restaurant: restaurant)
                 
                 Button("Add Review") {
                     showingAddRReviewView = true
@@ -65,6 +43,19 @@ struct RestaurantDetailView: View {
                 .foregroundColor(.white)
                 .cornerRadius(8)
                 .padding()
+                
+                Button("Delete Restaurant") {
+                    viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
+                    dismiss()
+                    onDeleteCompletion?()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                .padding()
+                
             }
             .padding()
         }

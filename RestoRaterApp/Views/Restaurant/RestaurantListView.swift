@@ -22,6 +22,8 @@ struct RestaurantListView: View {
                     .background(
                         NavigationLink("", destination:  RestaurantDetailView(restaurant: restaurant, onAddCompletion: {
                             refreshList()
+                        }, onDeleteCompletion: {
+                            fetch()
                         }))
                         .opacity(0))
             }.id(listKey)

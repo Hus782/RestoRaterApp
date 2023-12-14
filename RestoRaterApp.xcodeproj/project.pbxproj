@@ -20,6 +20,8 @@
 		3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE52B24707400458521 /* UsersViewModel.swift */; };
 		3D549AE92B24732800458521 /* AddEditUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE82B24732800458521 /* AddEditUserViewModel.swift */; };
 		3D549AEB2B24746300458521 /* AddEditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AEA2B24746300458521 /* AddEditUserView.swift */; };
+		3D7F20D82B2B0364005E5422 /* RestaurantImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */; };
+		3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */; };
 		3D9EA8532B26FAD600603498 /* AddEditReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */; };
 		3D9EA8572B26FB8600603498 /* AddEdtReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */; };
 		3D9EA85B2B27062E00603498 /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */; };
@@ -79,6 +81,8 @@
 		3D549AE52B24707400458521 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		3D549AE82B24732800458521 /* AddEditUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserViewModel.swift; sourceTree = "<group>"; };
 		3D549AEA2B24746300458521 /* AddEditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserView.swift; sourceTree = "<group>"; };
+		3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImageView.swift; sourceTree = "<group>"; };
+		3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSectionView.swift; sourceTree = "<group>"; };
 		3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewView.swift; sourceTree = "<group>"; };
 		3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEdtReviewViewModel.swift; sourceTree = "<group>"; };
 		3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				3DCCF0DA2B233D2800666731 /* RestaurantListView.swift */,
 				3DC685972B25B228006B5288 /* AddEditRestaurantView.swift */,
 				3D3F69072B2746230075DA53 /* RestaurantView.swift */,
+				3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */,
+				3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				3D3F69082B2746230075DA53 /* RestaurantView.swift in Sources */,
 				3DD462622B2306DC00D200B3 /* User+CoreDataProperties.swift in Sources */,
 				3D9EA8572B26FB8600603498 /* AddEdtReviewViewModel.swift in Sources */,
+				3D7F20D82B2B0364005E5422 /* RestaurantImageView.swift in Sources */,
 				3DD4626C2B230F0A00D200B3 /* LoginView.swift in Sources */,
 				3DB551E12B24A81400D27E90 /* UserDetailsView.swift in Sources */,
 				3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */,
@@ -428,6 +435,7 @@
 				3D549AE42B24702700458521 /* UsersListView.swift in Sources */,
 				3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */,
 				3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */,
+				3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */,
 				3DD462682B23098F00D200B3 /* RegisterView.swift in Sources */,
 				3DD462212B23015200D200B3 /* RestoRaterApp.swift in Sources */,
 				3DCCF0D92B233CD000666731 /* RestaurantViewModel.swift in Sources */,
