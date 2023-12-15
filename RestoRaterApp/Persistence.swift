@@ -70,8 +70,8 @@ struct PersistenceController {
         let context = container.viewContext
         
         let restaurant1 = Restaurant(context: context)
-        restaurant1.name = "Restaurant 1"
-        restaurant1.address = "123 Main St"
+        restaurant1.name = "The Gourmet Haven"
+        restaurant1.address = "258 Oak Lane, Riverside"
 //        Should extract this in a separate class to avoid importing UIKit
         if let image = UIImage(named: "restaurant_image1"),
            let imageData = image.jpegData(compressionQuality: 1.0) {
@@ -79,31 +79,31 @@ struct PersistenceController {
         }
 
         let restaurant2 = Restaurant(context: context)
-        restaurant2.name = "Restaurant 2"
-        restaurant2.address = "123 Main St"
+        restaurant2.name = "Culinary Delights"
+        restaurant2.address = "145 Maple Avenue, Sunnyside"
         if let image = UIImage(named: "restaurant_image2"),
            let imageData = image.jpegData(compressionQuality: 1.0) {
             restaurant2.image = imageData
         }
 
         let restaurant3 = Restaurant(context: context)
-        restaurant3.name = "Restaurant 3"
-        restaurant3.address = "123 Main St"
+        restaurant3.name = "Seaside Bistro"
+        restaurant3.address = "932 Ocean View Road, Seaport"
         if let image = UIImage(named: "restaurant_image3"),
            let imageData = image.jpegData(compressionQuality: 1.0) {
             restaurant3.image = imageData
         }
         
         let user1 = User(context: context)
-        user1.name = "User A"
+        user1.name = "Test User"
         user1.password = "test"
-        user1.email = "test"
+        user1.email = "test@gmail.com"
         user1.isAdmin = false
 
         let user2 = User(context: context)
         user2.name = "Admin"
         user2.password = "admin"
-        user2.email = "admin"
+        user2.email = "admin@gmail.com"
         user2.isAdmin = true
 
         
