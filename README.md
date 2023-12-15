@@ -17,6 +17,31 @@ RestoRaterApp is a comprehensive restaurant review application designed for iOS.
 - **Review System**: Users can leave restaurant reviews with a 5-star rating system, date of visit, and comments.
 - **Admin control**: Administrators can add, edit, and delete restaurants, users, and reviews.
 
+## Prepopulated Data and Sample Accounts
+
+To enhance the user experience and demonstrate the app's capabilities, RestoRaterApp comes with prepopulated sample data including a list of restaurants and user accounts. This allows you to test and explore the app's features without the need to create data from scratch.
+
+### Sample Restaurants
+
+The app is preloaded with a variety of restaurants to showcase the listing, review, and rating functionalities.
+
+### Sample User Accounts
+
+For testing purposes, two user accounts with different roles are provided:
+
+1. **Regular User Account**
+   - Email: `test@gmail.com`
+   - Password: `test`
+   - Role: Regular user with the ability to rate and review restaurants.
+
+2. **Admin User Account**
+   - Email: `admin@gmail.com`
+   - Password: `admin`
+   - Role: Admin with the ability to add, edit, and delete restaurant information, manage users, and reviews.
+
+Feel free to use these credentials to log in and explore the different functionalities available to each user type.
+
+
 ### Screenshots
 <p float="left">
   <img src="https://github.com/Hus782/RestoRaterApp/blob/main/demo/1.jpg" width="250" />
