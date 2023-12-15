@@ -30,11 +30,13 @@ struct AddEditReviewView: View {
                 Section(header: Text("Rating")) {
                     RatingPickerView(rating: $viewModel.rating)
                     
-                    .pickerStyle(SegmentedPickerStyle())
+                        .pickerStyle(SegmentedPickerStyle())
                 }
                 
                 Section(header: Text("Comment")) {
-                    TextField("Comment", text: $viewModel.comment)
+                    TextEditor(text: $viewModel.comment)
+                        .font(.body) 
+                        .frame(minHeight: 100)
                 }
                 
                 Section(header: Text("Date of Visit")) {
