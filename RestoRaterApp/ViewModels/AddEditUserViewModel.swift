@@ -13,6 +13,8 @@ final class AddEditUserViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAdmin: Bool = false
+    @Published var showingAlert = false
+    @Published var alertMessage = ""
     private let scenario: UserViewScenario
     private let user: User?
     private let onAddCompletion: (() -> Void)?
@@ -54,7 +56,8 @@ final class AddEditUserViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     
@@ -71,7 +74,8 @@ final class AddEditUserViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     

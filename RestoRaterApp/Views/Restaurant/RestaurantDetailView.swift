@@ -69,8 +69,7 @@ struct RestaurantDetailView: View {
                         showingEditRestaurantView = true
                     }
                     Button("Delete", role: .destructive) {
-                        viewModel.deleteRestaurant(restaurant: restaurant, context: viewContext)
-                        onDeleteCompletion?()
+                        viewModel.promptDelete(restaurant: restaurant)
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -84,6 +83,22 @@ struct RestaurantDetailView: View {
         }
         .sheet(isPresented: $showingAddRReviewView) {
             AddEditReviewView(scenario: .add, restaurant: restaurant)
+        }
+        .alert(isPresented: $viewModel.showingAlert) {
+            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.showingDeleteConfirmation) {
+            Alert(
+                title: Text("Confirm Delete"),
+                message: Text("Are you sure you want to delete this restaurant?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteRestaurant(context: viewContext, completion: {
+                        dismiss()
+                        onDeleteCompletion?()
+                    })
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     

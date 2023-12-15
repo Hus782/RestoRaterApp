@@ -47,12 +47,10 @@ struct UserDetailsView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(12)
             .shadow(radius: 2)
-//            Prevent the admin from self deleting
+            //            Prevent the admin from self deleting
             if !userManager.isCurrentUser(user: user) {
                 Button("Delete User") {
-                    viewModel.deleteUser(user: user, context: viewContext)
-                    dismiss()
-                    onDeleteCompletion?()
+                    viewModel.promptDelete(user: user)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -76,6 +74,22 @@ struct UserDetailsView: View {
             AddEditUserView(scenario: .edit, user: user, onAddCompletion: {
                 onEditCompletion()
             })
+        }
+        .alert(isPresented: $viewModel.showingAlert) {
+            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.showingDeleteConfirmation) {
+            Alert(
+                title: Text("Confirm Delete"),
+                message: Text("Are you sure you want to delete this user?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteUser(context: viewContext, completion: {
+                        dismiss()
+                        onDeleteCompletion?()
+                    })
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     

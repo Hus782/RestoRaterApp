@@ -12,6 +12,8 @@ final class AddEditRestaurantViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var address: String = ""
     @Published var image: Data?
+    @Published var showingAlert = false
+    @Published var alertMessage = ""
     private let scenario: RestaurantScenario
     private let restaurant: Restaurant?
     private let onAddCompletion: (() -> Void)?
@@ -54,7 +56,8 @@ final class AddEditRestaurantViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     
@@ -72,7 +75,8 @@ final class AddEditRestaurantViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     

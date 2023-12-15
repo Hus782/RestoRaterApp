@@ -37,7 +37,7 @@ struct ReviewsListView: View {
                                 .tint(.blue)
                                 
                                 Button(role: .destructive) {
-                                    viewModel.deleteReview(review: review, context: viewContext)
+                                    viewModel.promptDelete(review: review)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -60,5 +60,19 @@ struct ReviewsListView: View {
                 dismiss()
             }
         }
+        .alert(isPresented: $viewModel.showingAlert) {
+            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.showingDeleteConfirmation) {
+            Alert(
+                title: Text("Confirm Delete"),
+                message: Text("Are you sure you want to delete this review?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteReview(context: viewContext)
+                },
+                secondaryButton: .cancel()
+            )
+        }
+        
     }
 }

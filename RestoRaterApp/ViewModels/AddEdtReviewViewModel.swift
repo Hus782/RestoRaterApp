@@ -12,6 +12,10 @@ final class AddEditReviewViewModel: ObservableObject {
     @Published var rating: Int = 0
     @Published var comment: String = ""
     @Published var visitDate = Date()
+    @Published var showingAlert = false
+    @Published var alertMessage = ""
+    @Published var reviewToDelete: Review?
+    @Published var showingDeleteConfirmation = false
     private let scenario: ReviewViewScenario
     private let review: Review?
     private let restaurant: Restaurant?
@@ -57,12 +61,17 @@ final class AddEditReviewViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     
     func editReview(context: NSManagedObjectContext) {
-        guard let review = review else { return }
+        guard let review = review else {
+            showingAlert = true
+            alertMessage = "Something went wrong"
+            return
+        }
         review.rating = rating
         review.comment = comment
         review.dateVisited = visitDate
@@ -73,17 +82,29 @@ final class AddEditReviewViewModel: ObservableObject {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            // Handle the error, perhaps by showing an alert
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
+    func promptDelete(review: Review) {
+        reviewToDelete = review
+        showingDeleteConfirmation = true
+    }
     
-    func deleteReview(review: Review, context: NSManagedObjectContext) {
+    func deleteReview(context: NSManagedObjectContext) {
+        guard let review = reviewToDelete else {
+            showingAlert = true
+            alertMessage = "Something went wrong"
+            return
+        }
+        
         context.delete(review)
-        onAddCompletion?()
         do {
             try context.save()
         } catch {
             print("Error deleting restaurant: \(error)")
+            showingAlert = true
+            alertMessage = error.localizedDescription
         }
     }
     
