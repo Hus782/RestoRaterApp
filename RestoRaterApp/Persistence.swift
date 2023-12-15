@@ -64,8 +64,6 @@ struct PersistenceController {
     }
     
     func insertInitialData() {
-        let imageNames = ["restaurant1", "restaurant2", "restaurant3"]
-
         // Insert initial data here
         let context = container.viewContext
         
