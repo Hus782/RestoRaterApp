@@ -91,7 +91,7 @@ final class AddEditReviewViewModel: ObservableObject {
         showingDeleteConfirmation = true
     }
     
-    func deleteReview(context: NSManagedObjectContext) {
+    func deleteReview(context: NSManagedObjectContext, completion: @escaping () -> Void) {
         guard let review = reviewToDelete else {
             showingAlert = true
             alertMessage = "Something went wrong"
@@ -101,6 +101,7 @@ final class AddEditReviewViewModel: ObservableObject {
         context.delete(review)
         do {
             try context.save()
+            completion()
         } catch {
             print("Error deleting restaurant: \(error)")
             showingAlert = true

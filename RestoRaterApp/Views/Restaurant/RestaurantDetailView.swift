@@ -11,10 +11,12 @@ struct RestaurantDetailView: View {
     @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel()
     @State private var showingEditRestaurantView = false
     @State private var showingAddRReviewView = false
+    @State private var refreshToggle = false
+
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var userManager: UserManager
-    @State var restaurant: Restaurant
+    @StateObject var restaurant: Restaurant
     let onAddCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?
     
@@ -34,6 +36,7 @@ struct RestaurantDetailView: View {
                 Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
                 
                 ReviewSectionView(restaurant: restaurant)
+                    .id(refreshToggle)
                 
                 if restaurant.hasReviews {
                     NavigationLink(destination: ReviewsListView(restaurant: restaurant)) {
@@ -105,5 +108,9 @@ struct RestaurantDetailView: View {
     private func onEditCompletion() {
         dismiss()
         onAddCompletion?()
+    }
+    
+    private func refreshView() {
+        refreshToggle.toggle()
     }
 }

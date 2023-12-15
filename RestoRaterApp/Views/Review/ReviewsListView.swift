@@ -68,7 +68,9 @@ struct ReviewsListView: View {
                 title: Text("Confirm Delete"),
                 message: Text("Are you sure you want to delete this review?"),
                 primaryButton: .destructive(Text("Delete")) {
-                    viewModel.deleteReview(context: viewContext)
+                    viewModel.deleteReview(context: viewContext, completion: {
+                        dismiss()
+                    })
                 },
                 secondaryButton: .cancel()
             )

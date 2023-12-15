@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewSectionView: View {
-    let restaurant: Restaurant
+    @StateObject var restaurant: Restaurant
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
