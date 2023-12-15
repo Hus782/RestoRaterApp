@@ -21,9 +21,10 @@ struct UsersListView: View {
                         refreshList()
                     }, onDeleteCompletion: {
                         fetch()
-                    })) {
-                        UserRowView(user: user)
-                    }
+                    })
+                        .toolbar(.hidden, for: .tabBar)) {
+                            UserRowView(user: user)
+                        }
                 }
             }.id(listKey)
                 .navigationBarTitle("Users", displayMode: .inline)

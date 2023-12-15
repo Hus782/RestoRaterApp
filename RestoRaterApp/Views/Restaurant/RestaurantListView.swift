@@ -25,7 +25,8 @@ struct RestaurantListView: View {
                             refreshList()
                         }, onDeleteCompletion: {
                             fetch()
-                        }))
+                        }).toolbar(.hidden, for: .tabBar)
+                                      )
                         .opacity(0))
             }.id(listKey)
                 .listStyle(PlainListStyle())
