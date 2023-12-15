@@ -14,7 +14,7 @@ struct TabsView: View {
         TabView {
             if userManager.currentUser?.isAdmin ?? false {
                 RestaurantListView().tabItem {
-                    Label("Restaurants", systemImage: "list.dash")
+                    Label("Restaurants", systemImage: "fork.knife")
                 }
                 UsersListView().tabItem {
                     Label("Users", systemImage: "person.3.fill")
