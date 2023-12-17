@@ -27,23 +27,22 @@ struct AddEditUserView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Name")) {
-                    TextField("Name", text: $viewModel.name)
+                Section(header: Text(Lingo.addEditUserName)) {
+                    TextField(Lingo.addEditUserName, text: $viewModel.name)
                 }
-                Section(header: Text("Email")) {
-                    TextField("email", text: $viewModel.email)
+                Section(header: Text(Lingo.addEditUserEmail)) {
+                    TextField(Lingo.addEditUserEmail, text: $viewModel.email)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                 }
-                Section(header: Text("Password")) {
-                    SecureField("password", text: $viewModel.password)
+                Section(header: Text(Lingo.addEditUserPassword)) {
+                    SecureField(Lingo.addEditUserPassword, text: $viewModel.password)
                 }
-                Section(header: Text("Admin Access")) {
+                Section(header: Text(Lingo.addEditUserAdminAccess)) {
                     Toggle(isOn: $viewModel.isAdmin) {
-                        Text("Admin Access")
+                        Text(Lingo.addEditUserAdminAccess)
                     }
                 }
-                
             }
             .navigationBarTitle(viewModel.title, displayMode: .inline)
             .navigationBarItems(
@@ -52,14 +51,11 @@ struct AddEditUserView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button("Save") {
+                trailing: Button(Lingo.addEditUserSaveButton) {
                     handleSave()
                     presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
                 }
             )
-            .onAppear {
-                
-            }
         }
     }
     

@@ -15,3 +15,12 @@
 "profile_view_role_title" = "Role";
 "profile_view_admin_role" = "Admin";
 "profile_view_regular_user_role" = "Regular User";
+
+// User tab labels
+"users_list_title" = "Users";
+"add_edit_user_name" = "Name";
+"add_edit_user_email" = "Email";
+"add_edit_user_password" = "Password";
+"add_edit_user_admin_access" = "Admin Access";
+"add_edit_user_save_button" = "Save";
+

@@ -27,7 +27,7 @@ struct UsersListView: View {
                         }
                 }
             }.id(listKey)
-                .navigationBarTitle("Users", displayMode: .inline)
+                .navigationBarTitle(Lingo.usersListTitle, displayMode: .inline)
                 .navigationBarItems(
                     trailing: Button(action: {
                         showingAddUserView = true
