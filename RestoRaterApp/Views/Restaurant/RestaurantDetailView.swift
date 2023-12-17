@@ -100,7 +100,7 @@ struct RestaurantDetailView: View {
                         onDeleteCompletion?()
                     })
                 },
-                secondaryButton: .cancel(Text(Lingo.commonOk))
+                secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
     }
