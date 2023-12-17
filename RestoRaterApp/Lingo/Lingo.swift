@@ -67,4 +67,23 @@ struct Lingo {
     static let reviewSectionHighestRatedReview = String(localized: "review_section_highest_rated_review")
     static let reviewSectionLowestRatedReview = String(localized: "review_section_lowest_rated_review")
 
+//    Reviews list
+    static let reviewsListViewError = String(localized: "reviews_list_view_error")
+    static let reviewsListViewOK = String(localized: "reviews_list_view_ok")
+    static let reviewsListViewConfirmDelete = String(localized: "reviews_list_view_confirm_delete")
+    static let reviewsListViewConfirmDeleteMessage = String(localized: "reviews_list_view_confirm_delete_message")
+    static let reviewsListViewDelete = String(localized: "reviews_list_view_delete")
+    static let reviewsListViewCancel = String(localized: "reviews_list_view_cancel")
+    static let reviewsListViewEdit = String(localized: "reviews_list_view_edit")
+    
+    static let addEditReviewRating = String(localized: "add_edit_review_rating")
+    static let addEditReviewComment = String(localized: "add_edit_review_comment")
+    static let addEditReviewDateOfVisit = String(localized: "add_edit_review_date_of_visit")
+    static let addEditReviewSubmitButton = String(localized: "add_edit_review_submit_button")
+    static let addEditReviewNavigationTitleAdd = String(localized: "add_edit_review_navigation_title_add")
+    static let addEditReviewNavigationTitleEdit = String(localized: "add_edit_review_navigation_title_edit")
+    static let addEditReviewCreateTitle = String(localized: "add_edit_review_create_title")
+    static let addEditReviewEditTitle = String(localized: "add_edit_review_edit_title")
+
+
 }

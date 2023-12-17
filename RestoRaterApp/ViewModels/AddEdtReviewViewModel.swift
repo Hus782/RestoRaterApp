@@ -20,14 +20,14 @@ final class AddEditReviewViewModel: ObservableObject {
     private let review: Review?
     private let restaurant: Restaurant?
     var onAddCompletion: (() -> Void)?
-
+    
     
     var title: String {
         switch scenario {
         case .add:
-            return "Create review"
+            return Lingo.addEditReviewCreateTitle
         case .edit:
-            return "Edit review"
+            return Lingo.addEditReviewEditTitle
         }
     }
     
@@ -54,7 +54,7 @@ final class AddEditReviewViewModel: ObservableObject {
         if let restaurant = restaurant {
             review.restaurant = restaurant
         }
-       
+        
         do {
             try context.save()
             onAddCompletion?() // Call the completion handler after saving

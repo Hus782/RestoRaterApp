@@ -24,22 +24,20 @@ struct ReviewsListView: View {
         NavigationStack {
             List {
                 ForEach(reviews, id: \.self) { review in
-                    
                     ReviewView(review: review)
-                    
                         .swipeActions {
                             if userManager.currentUser?.isAdmin ?? false {
                                 Button {
                                     self.showingAddReviewView = true
                                 } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                    Label(Lingo.reviewsListViewEdit, systemImage: "pencil")
                                 }
                                 .tint(.blue)
                                 
                                 Button(role: .destructive) {
                                     viewModel.promptDelete(review: review)
                                 } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    Label(Lingo.reviewsListViewDelete, systemImage: "trash")
                                 }
                             }
                         }
@@ -61,20 +59,19 @@ struct ReviewsListView: View {
             }
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.reviewsListViewError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.reviewsListViewOK)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text("Confirm Delete"),
-                message: Text("Are you sure you want to delete this review?"),
-                primaryButton: .destructive(Text("Delete")) {
+                title: Text(Lingo.reviewsListViewConfirmDelete),
+                message: Text(Lingo.reviewsListViewConfirmDeleteMessage),
+                primaryButton: .destructive(Text(Lingo.reviewsListViewDelete)) {
                     viewModel.deleteReview(context: viewContext, completion: {
                         dismiss()
                     })
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text(Lingo.reviewsListViewCancel))
             )
         }
-        
     }
 }

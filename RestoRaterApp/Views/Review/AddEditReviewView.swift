@@ -25,34 +25,33 @@ struct AddEditReviewView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section(header: Text("Rating")) {
-                    RatingPickerView(rating: $viewModel.rating)
+            NavigationStack {
+                Form {
+                    Section(header: Text(Lingo.addEditReviewRating)) {
+                        RatingPickerView(rating: $viewModel.rating)
+                            .pickerStyle(SegmentedPickerStyle())
+                    }
                     
-                        .pickerStyle(SegmentedPickerStyle())
-                }
-                
-                Section(header: Text("Comment")) {
-                    TextEditor(text: $viewModel.comment)
-                        .font(.body) 
-                        .frame(minHeight: 100)
-                }
-                
-                Section(header: Text("Date of Visit")) {
-                    DatePicker("Visit Date", selection: $viewModel.visitDate, displayedComponents: .date)
-                }
-                
-                Section {
-                    Button("Submit Review") {
-                        handleSave()
-                        presentationMode.wrappedValue.dismiss()
+                    Section(header: Text(Lingo.addEditReviewComment)) {
+                        TextEditor(text: $viewModel.comment)
+                            .font(.body)
+                            .frame(minHeight: 100)
+                    }
+                    
+                    Section(header: Text(Lingo.addEditReviewDateOfVisit)) {
+                        DatePicker(Lingo.addEditReviewDateOfVisit, selection: $viewModel.visitDate, displayedComponents: .date)
+                    }
+                    
+                    Section {
+                        Button(Lingo.addEditReviewSubmitButton) {
+                            handleSave()
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
+                .navigationBarTitle(scenario == .add ? Lingo.addEditReviewNavigationTitleAdd : Lingo.addEditReviewNavigationTitleEdit, displayMode: .inline)
             }
-            .navigationBarTitle("Add Review", displayMode: .inline)
         }
-    }
     
     private func handleSave() {
         switch scenario {
