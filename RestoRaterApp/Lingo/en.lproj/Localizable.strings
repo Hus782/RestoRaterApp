@@ -91,3 +91,12 @@
 "login_view_register_button" = "Register";
 "login_view_login_alert_title" = "Login";
 "login_view_login_alert_ok" = "OK";
+
+// register screen
+"register_view_email_placeholder" = "Email";
+"register_view_password_placeholder" = "Password";
+"register_view_name_placeholder" = "Name";
+"register_view_is_admin_label" = "Is Admin";
+"register_view_register_button" = "Register";
+"register_view_login_button" = "Login";
+

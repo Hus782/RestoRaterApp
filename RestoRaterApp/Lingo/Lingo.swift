@@ -93,4 +93,12 @@ struct Lingo {
     static let loginViewLoginAlertTitle = String(localized: "login_view_login_alert_title")
     static let loginViewLoginAlertOK = String(localized: "login_view_login_alert_ok")
 
+//     Register screen
+    static let registerViewEmailPlaceholder = String(localized: "register_view_email_placeholder")
+    static let registerViewPasswordPlaceholder = String(localized: "register_view_password_placeholder")
+    static let registerViewNamePlaceholder = String(localized: "register_view_name_placeholder")
+    static let registerViewIsAdminLabel = String(localized: "register_view_is_admin_label")
+    static let registerViewRegisterButton = String(localized: "register_view_register_button")
+    static let registerViewLoginButton = String(localized: "register_view_login_button")
+
 }
