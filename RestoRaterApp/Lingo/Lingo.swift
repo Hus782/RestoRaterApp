@@ -27,6 +27,8 @@ struct Lingo {
     static let addEditUserPassword = String(localized: "add_edit_user_password")
     static let addEditUserAdminAccess = String(localized: "add_edit_user_admin_access")
     static let addEditUserSaveButton = String(localized: "add_edit_user_save_button")
+    static let addEditUserCreateTitle = String(localized: "add_edit_user_create_title")
+    static let addEditUserEditTitle = String(localized: "add_edit_uesr_edit_title")
     
     static let userDetailsNameLabel = String(localized: "user_details_name_label")
      static let userDetailsEmailLabel = String(localized: "user_details_email_label")
@@ -41,5 +43,25 @@ struct Lingo {
      static let userDetailsDeleteConfirmationCancel = String(localized: "user_details_delete_confirmation_cancel")
      static let userDetailsErrorAlert = String(localized: "user_details_error_alert")
 
-    
+//    Restaurant tab labels
+    static let restaurantsListTitle = String(localized: "restaurants_list_title")
+    static let addEditRestaurantName = String(localized: "add_edit_restaurant_name")
+    static let addEditRestaurantAddress = String(localized: "add_edit_restaurant_address")
+    static let addEditRestaurantImage = String(localized: "add_edit_restaurant_image")
+    static let addEditRestaurantSelectImage = String(localized: "add_edit_restaurant_select_image")
+    static let addEditRestaurantSaveButton = String(localized: "add_edit_restaurant_save_button")
+    static let addEditRestaurantCreateTitle = String(localized: "add_edit_restaurant_create_title")
+    static let addEditRestaurantEditTitle = String(localized: "add_edit_restaurant_edit_title")
+
+    static let restaurantDetailTitle = String(localized: "restaurant_detail_title")
+     static let restaurantDetailAverageRating = String(localized: "restaurant_detail_average_rating")
+     static let restaurantDetailShowAllReviews = String(localized: "restaurant_detail_show_all_reviews")
+     static let restaurantDetailAddReview = String(localized: "restaurant_detail_add_review")
+     static let restaurantDetailEdit = String(localized: "restaurant_detail_edit")
+     static let restaurantDetailDelete = String(localized: "restaurant_detail_delete")
+     static let restaurantDetailConfirmDelete = String(localized: "restaurant_detail_confirm_delete")
+     static let restaurantDetailConfirmDeleteMessage = String(localized: "restaurant_detail_confirm_delete_message")
+     static let restaurantDetailError = String(localized: "restaurant_detail_error")
+     static let restaurantDetailOK = String(localized: "restaurant_detail_ok")
+
 }

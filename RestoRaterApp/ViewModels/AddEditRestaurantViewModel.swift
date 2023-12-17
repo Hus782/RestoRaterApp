@@ -17,14 +17,14 @@ final class AddEditRestaurantViewModel: ObservableObject {
     private let scenario: RestaurantScenario
     private let restaurant: Restaurant?
     private let onAddCompletion: (() -> Void)?
-
+    
     
     var title: String {
         switch scenario {
         case .add:
-            return "Create restaurant"
+            return Lingo.addEditRestaurantCreateTitle
         case .edit:
-            return "Edit restaurant"
+            return Lingo.addEditRestaurantEditTitle
         }
     }
     
@@ -54,8 +54,6 @@ final class AddEditRestaurantViewModel: ObservableObject {
             try context.save()
             onAddCompletion?() // Call the completion handler after saving
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
             showingAlert = true
             alertMessage = error.localizedDescription
         }
@@ -73,8 +71,6 @@ final class AddEditRestaurantViewModel: ObservableObject {
             try context.save()
             onAddCompletion?() // Call the completion handler after saving
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
             showingAlert = true
             alertMessage = error.localizedDescription
         }

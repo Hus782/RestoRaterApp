@@ -26,11 +26,11 @@ struct RestaurantListView: View {
                         }, onDeleteCompletion: {
                             fetch()
                         }).toolbar(.hidden, for: .tabBar)
-                                      )
+                                    )
                         .opacity(0))
             }.id(listKey)
                 .listStyle(PlainListStyle())
-                .navigationBarTitle("Restaurants", displayMode: .inline)
+                .navigationBarTitle(Lingo.restaurantsListTitle, displayMode: .inline)
                 .navigationBarItems(
                     trailing: Button(action: {
                         showingAddRestaurantView = true

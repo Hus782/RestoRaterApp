@@ -33,14 +33,14 @@ struct RestaurantDetailView: View {
                 Divider()
                 
                 DisplayRatingView(rating: restaurant.averageRating, starSize: .medium)
-                Text("Average Rating: \(restaurant.averageRating, specifier: "%.2f")")
+                Text(Lingo.restaurantDetailAverageRating +  String(restaurant.averageRating))
                 
                 ReviewSectionView(restaurant: restaurant)
                     .id(refreshToggle)
                 
                 if restaurant.hasReviews {
                     NavigationLink(destination: ReviewsListView(restaurant: restaurant)) {
-                        Text("Show all reviews")
+                        Text(Lingo.restaurantDetailShowAllReviews)
                     }
                     .underline()
                     .foregroundColor(.blue)
@@ -50,7 +50,7 @@ struct RestaurantDetailView: View {
                 }) {
                     HStack {
                         Image(systemName: "pencil")
-                        Text("Add Review")
+                        Text(Lingo.restaurantDetailAddReview)
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -64,14 +64,14 @@ struct RestaurantDetailView: View {
             }
             .padding()
         }
-        .navigationBarTitle("Details", displayMode: .inline)
+        .navigationBarTitle(Lingo.restaurantDetailTitle, displayMode: .inline)
         .navigationBarItems(trailing: HStack {
             if userManager.currentUser?.isAdmin ?? false {
                 Menu {
-                    Button("Edit") {
+                    Button(Lingo.restaurantDetailEdit) {
                         showingEditRestaurantView = true
                     }
-                    Button("Delete", role: .destructive) {
+                    Button(Lingo.restaurantDetailDelete, role: .destructive) {
                         viewModel.promptDelete(restaurant: restaurant)
                     }
                 } label: {
@@ -88,19 +88,19 @@ struct RestaurantDetailView: View {
             AddEditReviewView(scenario: .add, restaurant: restaurant)
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.restaurantDetailError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.restaurantDetailOK)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text("Confirm Delete"),
-                message: Text("Are you sure you want to delete this restaurant?"),
-                primaryButton: .destructive(Text("Delete")) {
+                title: Text(Lingo.restaurantDetailConfirmDelete),
+                message: Text(Lingo.restaurantDetailConfirmDeleteMessage),
+                primaryButton: .destructive(Text(Lingo.restaurantDetailDelete)) {
                     viewModel.deleteRestaurant(context: viewContext, completion: {
                         dismiss()
                         onDeleteCompletion?()
                     })
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text(Lingo.restaurantDetailOK))
             )
         }
     }
