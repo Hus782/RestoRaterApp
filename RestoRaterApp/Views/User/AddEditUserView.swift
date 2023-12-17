@@ -51,7 +51,7 @@ struct AddEditUserView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button(Lingo.addEditUserSaveButton) {
+                trailing: Button(Lingo.commonSave) {
                     handleSave()
                     presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
                 }

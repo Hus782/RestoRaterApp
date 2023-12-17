@@ -49,7 +49,7 @@ struct UserDetailsView: View {
             .shadow(radius: 2)
             
             if !userManager.isCurrentUser(user: user) {
-                Button(Lingo.userDetailsDeleteButton) {
+                Button(Lingo.commonDelete) {
                     viewModel.promptDelete(user: user)
                 }
                 .padding()
@@ -66,7 +66,7 @@ struct UserDetailsView: View {
             trailing: Button(action: {
                 showingEditUserView = true
             }) {
-                Text(Lingo.userDetailsEditButton)
+                Text(Lingo.commonEdit)
             }
         )
         .sheet(isPresented: $showingEditUserView) {
@@ -75,19 +75,19 @@ struct UserDetailsView: View {
             })
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text(Lingo.userDetailsErrorAlert), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.userDetailsErrorAlert), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text(Lingo.userDetailsDeleteConfirmation),
+                title: Text(Lingo.commonConfirmDelete),
                 message: Text("Are you sure you want to delete this user?"),
-                primaryButton: .destructive(Text(Lingo.userDetailsDeleteConfirmationDelete)) {
+                primaryButton: .destructive(Text(Lingo.commonDelete)) {
                     viewModel.deleteUser(context: viewContext, completion: {
                         dismiss()
                         onDeleteCompletion?()
                     })
                 },
-                secondaryButton: .cancel(Text(Lingo.userDetailsDeleteConfirmationCancel))
+                secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
     }

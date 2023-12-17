@@ -42,7 +42,7 @@ struct LoginView: View {
                  userManager.isRegistering = true // Switch back to registration flow
              })
              .alert(isPresented: $viewModel.showingAlert) {
-                 Alert(title: Text(Lingo.loginViewLoginAlertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.loginViewLoginAlertOK)))
+                 Alert(title: Text(Lingo.loginViewLoginAlertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
              }
          }
          .padding(30)

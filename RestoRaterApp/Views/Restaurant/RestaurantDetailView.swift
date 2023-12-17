@@ -68,10 +68,10 @@ struct RestaurantDetailView: View {
         .navigationBarItems(trailing: HStack {
             if userManager.currentUser?.isAdmin ?? false {
                 Menu {
-                    Button(Lingo.restaurantDetailEdit) {
+                    Button(Lingo.commonEdit) {
                         showingEditRestaurantView = true
                     }
-                    Button(Lingo.restaurantDetailDelete, role: .destructive) {
+                    Button(Lingo.commonDelete, role: .destructive) {
                         viewModel.promptDelete(restaurant: restaurant)
                     }
                 } label: {
@@ -88,19 +88,19 @@ struct RestaurantDetailView: View {
             AddEditReviewView(scenario: .add, restaurant: restaurant)
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text(Lingo.restaurantDetailError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.restaurantDetailOK)))
+            Alert(title: Text(Lingo.restaurantDetailError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text(Lingo.restaurantDetailConfirmDelete),
+                title: Text(Lingo.commonConfirmDelete),
                 message: Text(Lingo.restaurantDetailConfirmDeleteMessage),
-                primaryButton: .destructive(Text(Lingo.restaurantDetailDelete)) {
+                primaryButton: .destructive(Text(Lingo.commonDelete)) {
                     viewModel.deleteRestaurant(context: viewContext, completion: {
                         dismiss()
                         onDeleteCompletion?()
                     })
                 },
-                secondaryButton: .cancel(Text(Lingo.restaurantDetailOK))
+                secondaryButton: .cancel(Text(Lingo.commonOk))
             )
         }
     }

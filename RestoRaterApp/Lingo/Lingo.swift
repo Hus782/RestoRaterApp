@@ -10,6 +10,17 @@ import Foundation
 // All labels used in the app
 // This setup allows for an easy localization of the app and addition of multple languages
 struct Lingo {
+//    Common labels
+    static let commonOk = String(localized: "common_ok")
+       static let commonCancel = String(localized: "common_cancel")
+       static let commonDelete = String(localized: "common_delete")
+       static let commonEdit = String(localized: "common_edit")
+       static let commonSave = String(localized: "common_save")
+       static let commonError = String(localized: "common_error")
+       static let commonConfirmDelete = String(localized: "common_confirm_delete")
+       static let commonConfirmDeleteMessage = String(localized: "common_confirm_delete_message")
+
+    
     // ProfileView labels
     static let profileViewTitle = String(localized: "profile_view_title")
     static let profileViewNoUserLoggedIn = String(localized: "profile_view_no_user_logged_in")
@@ -35,12 +46,9 @@ struct Lingo {
      static let userDetailsRoleLabel = String(localized: "user_details_role_label")
      static let userDetailsRoleAdmin = String(localized: "user_details_role_admin")
      static let userDetailsRoleRegularUser = String(localized: "user_details_role_regular_user")
-     static let userDetailsDeleteButton = String(localized: "user_details_delete_button")
-     static let userDetailsEditButton = String(localized: "user_details_edit_button")
      static let userDetailsTitle = String(localized: "user_details_title")
      static let userDetailsDeleteConfirmation = String(localized: "user_details_delete_confirmation")
      static let userDetailsDeleteConfirmationDelete = String(localized: "user_details_delete_confirmation_delete")
-     static let userDetailsDeleteConfirmationCancel = String(localized: "user_details_delete_confirmation_cancel")
      static let userDetailsErrorAlert = String(localized: "user_details_error_alert")
 
 //    Restaurant tab labels
@@ -57,24 +65,15 @@ struct Lingo {
      static let restaurantDetailAverageRating = String(localized: "restaurant_detail_average_rating")
      static let restaurantDetailShowAllReviews = String(localized: "restaurant_detail_show_all_reviews")
      static let restaurantDetailAddReview = String(localized: "restaurant_detail_add_review")
-     static let restaurantDetailEdit = String(localized: "restaurant_detail_edit")
-     static let restaurantDetailDelete = String(localized: "restaurant_detail_delete")
-     static let restaurantDetailConfirmDelete = String(localized: "restaurant_detail_confirm_delete")
      static let restaurantDetailConfirmDeleteMessage = String(localized: "restaurant_detail_confirm_delete_message")
      static let restaurantDetailError = String(localized: "restaurant_detail_error")
-     static let restaurantDetailOK = String(localized: "restaurant_detail_ok")
     static let reviewSectionLatestReview = String(localized: "review_section_latest_review")
     static let reviewSectionHighestRatedReview = String(localized: "review_section_highest_rated_review")
     static let reviewSectionLowestRatedReview = String(localized: "review_section_lowest_rated_review")
 
 //    Reviews list
     static let reviewsListViewError = String(localized: "reviews_list_view_error")
-    static let reviewsListViewOK = String(localized: "reviews_list_view_ok")
-    static let reviewsListViewConfirmDelete = String(localized: "reviews_list_view_confirm_delete")
     static let reviewsListViewConfirmDeleteMessage = String(localized: "reviews_list_view_confirm_delete_message")
-    static let reviewsListViewDelete = String(localized: "reviews_list_view_delete")
-    static let reviewsListViewCancel = String(localized: "reviews_list_view_cancel")
-    static let reviewsListViewEdit = String(localized: "reviews_list_view_edit")
     
     static let addEditReviewRating = String(localized: "add_edit_review_rating")
     static let addEditReviewComment = String(localized: "add_edit_review_comment")
@@ -91,7 +90,6 @@ struct Lingo {
     static let loginViewLoginButton = String(localized: "login_view_login_button")
     static let loginViewRegisterButton = String(localized: "login_view_register_button")
     static let loginViewLoginAlertTitle = String(localized: "login_view_login_alert_title")
-    static let loginViewLoginAlertOK = String(localized: "login_view_login_alert_ok")
 
 //     Register screen
     static let registerViewEmailPlaceholder = String(localized: "register_view_email_placeholder")

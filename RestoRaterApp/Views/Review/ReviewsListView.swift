@@ -30,14 +30,14 @@ struct ReviewsListView: View {
                                 Button {
                                     self.showingAddReviewView = true
                                 } label: {
-                                    Label(Lingo.reviewsListViewEdit, systemImage: "pencil")
+                                    Label(Lingo.commonEdit, systemImage: "pencil")
                                 }
                                 .tint(.blue)
                                 
                                 Button(role: .destructive) {
                                     viewModel.promptDelete(review: review)
                                 } label: {
-                                    Label(Lingo.reviewsListViewDelete, systemImage: "trash")
+                                    Label(Lingo.commonDelete, systemImage: "trash")
                                 }
                             }
                         }
@@ -59,18 +59,18 @@ struct ReviewsListView: View {
             }
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text(Lingo.reviewsListViewError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.reviewsListViewOK)))
+            Alert(title: Text(Lingo.reviewsListViewError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text(Lingo.reviewsListViewConfirmDelete),
+                title: Text(Lingo.commonConfirmDelete),
                 message: Text(Lingo.reviewsListViewConfirmDeleteMessage),
-                primaryButton: .destructive(Text(Lingo.reviewsListViewDelete)) {
+                primaryButton: .destructive(Text(Lingo.commonDelete)) {
                     viewModel.deleteReview(context: viewContext, completion: {
                         dismiss()
                     })
                 },
-                secondaryButton: .cancel(Text(Lingo.reviewsListViewCancel))
+                secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
     }
