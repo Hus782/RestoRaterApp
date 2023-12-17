@@ -85,5 +85,12 @@ struct Lingo {
     static let addEditReviewCreateTitle = String(localized: "add_edit_review_create_title")
     static let addEditReviewEditTitle = String(localized: "add_edit_review_edit_title")
 
+// Login screen
+    static let loginViewEmailPlaceholder = String(localized: "login_view_email_placeholder")
+    static let loginViewPasswordPlaceholder = String(localized: "login_view_password_placeholder")
+    static let loginViewLoginButton = String(localized: "login_view_login_button")
+    static let loginViewRegisterButton = String(localized: "login_view_register_button")
+    static let loginViewLoginAlertTitle = String(localized: "login_view_login_alert_title")
+    static let loginViewLoginAlertOK = String(localized: "login_view_login_alert_ok")
 
 }
