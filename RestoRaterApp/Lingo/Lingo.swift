@@ -63,5 +63,8 @@ struct Lingo {
      static let restaurantDetailConfirmDeleteMessage = String(localized: "restaurant_detail_confirm_delete_message")
      static let restaurantDetailError = String(localized: "restaurant_detail_error")
      static let restaurantDetailOK = String(localized: "restaurant_detail_ok")
+    static let reviewSectionLatestReview = String(localized: "review_section_latest_review")
+    static let reviewSectionHighestRatedReview = String(localized: "review_section_highest_rated_review")
+    static let reviewSectionLowestRatedReview = String(localized: "review_section_lowest_rated_review")
 
 }

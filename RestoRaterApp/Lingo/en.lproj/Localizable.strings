@@ -61,3 +61,6 @@
 "restaurant_detail_confirm_delete_message" = "Are you sure you want to delete this restaurant?";
 "restaurant_detail_error" = "Error";
 "restaurant_detail_ok" = "OK";
+"review_section_latest_review" = "Latest Review";
+"review_section_highest_rated_review" = "Highest Rated Review";
+"review_section_lowest_rated_review" = "Lowest Rated Review";
