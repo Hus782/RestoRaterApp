@@ -22,17 +22,17 @@ struct UserDetailsView: View {
             HStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Name: \(user.name)")
+                    Text("\(Lingo.userDetailsNameLabel) \(user.name)")
                         .font(.title2)
                         .bold()
                     
-                    Text("Email: \(user.email)")
+                    Text("\(Lingo.userDetailsEmailLabel) \(user.email)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
                     HStack {
-                        Text("Role:")
-                        Text(user.isAdmin ? "Admin" : "Regular User")
+                        Text(Lingo.userDetailsRoleLabel)
+                        Text(user.isAdmin ? Lingo.userDetailsRoleAdmin : Lingo.userDetailsRoleRegularUser)
                             .fontWeight(.medium)
                             .padding(5)
                             .background(user.isAdmin ? Color.green : Color.blue)
@@ -47,9 +47,9 @@ struct UserDetailsView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(12)
             .shadow(radius: 2)
-            //            Prevent the admin from self deleting
+            
             if !userManager.isCurrentUser(user: user) {
-                Button("Delete User") {
+                Button(Lingo.userDetailsDeleteButton) {
                     viewModel.promptDelete(user: user)
                 }
                 .padding()
@@ -61,13 +61,12 @@ struct UserDetailsView: View {
             }
         }
         .padding()
-        
-        .navigationBarTitle("User Details", displayMode: .inline)
+        .navigationBarTitle(Lingo.userDetailsTitle, displayMode: .inline)
         .navigationBarItems(
             trailing: Button(action: {
                 showingEditUserView = true
             }) {
-                Text("Edit")
+                Text(Lingo.userDetailsEditButton)
             }
         )
         .sheet(isPresented: $showingEditUserView) {
@@ -76,19 +75,19 @@ struct UserDetailsView: View {
             })
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.userDetailsErrorAlert), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text("Confirm Delete"),
+                title: Text(Lingo.userDetailsDeleteConfirmation),
                 message: Text("Are you sure you want to delete this user?"),
-                primaryButton: .destructive(Text("Delete")) {
+                primaryButton: .destructive(Text(Lingo.userDetailsDeleteConfirmationDelete)) {
                     viewModel.deleteUser(context: viewContext, completion: {
                         dismiss()
                         onDeleteCompletion?()
                     })
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text(Lingo.userDetailsDeleteConfirmationCancel))
             )
         }
     }
@@ -98,4 +97,3 @@ struct UserDetailsView: View {
         onAddCompletion?()
     }
 }
-

@@ -28,4 +28,18 @@ struct Lingo {
     static let addEditUserAdminAccess = String(localized: "add_edit_user_admin_access")
     static let addEditUserSaveButton = String(localized: "add_edit_user_save_button")
     
+    static let userDetailsNameLabel = String(localized: "user_details_name_label")
+     static let userDetailsEmailLabel = String(localized: "user_details_email_label")
+     static let userDetailsRoleLabel = String(localized: "user_details_role_label")
+     static let userDetailsRoleAdmin = String(localized: "user_details_role_admin")
+     static let userDetailsRoleRegularUser = String(localized: "user_details_role_regular_user")
+     static let userDetailsDeleteButton = String(localized: "user_details_delete_button")
+     static let userDetailsEditButton = String(localized: "user_details_edit_button")
+     static let userDetailsTitle = String(localized: "user_details_title")
+     static let userDetailsDeleteConfirmation = String(localized: "user_details_delete_confirmation")
+     static let userDetailsDeleteConfirmationDelete = String(localized: "user_details_delete_confirmation_delete")
+     static let userDetailsDeleteConfirmationCancel = String(localized: "user_details_delete_confirmation_cancel")
+     static let userDetailsErrorAlert = String(localized: "user_details_error_alert")
+
+    
 }
