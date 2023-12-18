@@ -14,6 +14,8 @@ final class RestaurantViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var restaurantToDelete: Restaurant?
     @Published var showingDeleteConfirmation = false
+    @Published var isLoading = false
+
     private let dataManager: RestaurantDataManager
     
     init(dataManager: RestaurantDataManager) {
@@ -26,6 +28,8 @@ final class RestaurantViewModel: ObservableObject {
     
     func fetchRestaurants() async {
         do {
+            isLoading = true
+            defer { isLoading = false }  // Ensures isLoading is set to false when the function exits
             let fetchedRestaurants = try await dataManager.fetchRestaurants()
 
             await MainActor.run {
