@@ -478,8 +478,8 @@
             filePath = "RestoRaterApp/ViewModels/AddEditRestaurantViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "addRestaurant(context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -494,8 +494,8 @@
             filePath = "RestoRaterApp/ViewModels/AddEditRestaurantViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "addRestaurant(context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,9 +526,9 @@
             filePath = "RestoRaterApp/ViewModels/AddEditRestaurantViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "addRestaurant(context:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "init(scenario:restaurant:onAddCompletion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -574,8 +574,8 @@
             filePath = "RestoRaterApp/ViewModels/AddEditRestaurantViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "editRestaurant(context:)"
             landmarkType = "7">
          </BreakpointContent>
