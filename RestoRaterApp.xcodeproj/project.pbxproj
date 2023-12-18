@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */; };
+		3D2BC3A92B30AAEC00DD7DB3 /* RestaurantDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BC3A82B30AAEC00DD7DB3 /* RestaurantDataManager.swift */; };
 		3D2DE32C2B2B35BD00B57A7E /* ReviewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */; };
 		3D3332D02B23709D0063D286 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */; };
 		3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRatingView.swift; sourceTree = "<group>"; };
+		3D2BC3A82B30AAEC00DD7DB3 /* RestaurantDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataManager.swift; sourceTree = "<group>"; };
 		3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListView.swift; sourceTree = "<group>"; };
 		3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */,
 				3DD462262B23015300D200B3 /* Preview Content */,
 				3DD4626D2B2316F500D200B3 /* UserManager.swift */,
+				3D2BC3A82B30AAEC00DD7DB3 /* RestaurantDataManager.swift */,
 			);
 			path = RestoRaterApp;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */,
 				3DD4626A2B230EA100D200B3 /* LoginViewModel.swift in Sources */,
 				3D549AE42B24702700458521 /* UsersListView.swift in Sources */,
+				3D2BC3A92B30AAEC00DD7DB3 /* RestaurantDataManager.swift in Sources */,
 				3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */,
 				3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */,
 				3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */,

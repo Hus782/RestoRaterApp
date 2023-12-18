@@ -14,16 +14,26 @@ final class RestaurantViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var restaurantToDelete: Restaurant?
     @Published var showingDeleteConfirmation = false
+    private let dataManager: RestaurantDataManager
     
-    func fetchRestaurants(context: NSManagedObjectContext) {
-        let request: NSFetchRequest<Restaurant> = Restaurant.createFetchRequest()
-        
+    init(dataManager: RestaurantDataManager) {
+        self.dataManager = dataManager
+        Task {
+            
+            await fetchRestaurants()
+        }
+    }
+    
+    func fetchRestaurants() async {
         do {
-            restaurants = try context.fetch(request)
+            let fetchedRestaurants = try await dataManager.fetchRestaurants()
+
+            await MainActor.run {
+                self.restaurants = fetchedRestaurants
+            }
+            
         } catch {
             print("Error fetching restaurants: \(error)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
         }
     }
     

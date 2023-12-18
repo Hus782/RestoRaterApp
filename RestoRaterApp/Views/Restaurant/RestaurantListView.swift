@@ -12,7 +12,7 @@ struct RestaurantListView: View {
     @EnvironmentObject private var userManager: UserManager
     @State private var showingAddRestaurantView = false
     @State private var listKey = UUID() // Used for refreshing the list
-    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel()
+    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: RestaurantDataManager())
     
     var body: some View {
         NavigationStack {
@@ -24,7 +24,9 @@ struct RestaurantListView: View {
                         NavigationLink("", destination:  RestaurantDetailView(restaurant: restaurant, onAddCompletion: {
                             refreshList()
                         }, onDeleteCompletion: {
-                            fetch()
+                            Task {
+                                await fetch()
+                            }
                         }).toolbar(.hidden, for: .tabBar)
                                     )
                         .opacity(0))
@@ -42,11 +44,15 @@ struct RestaurantListView: View {
                 )
         }
         .onAppear {
-            fetch()
+            Task {
+                await fetch()
+            }
         }
         .sheet(isPresented: $showingAddRestaurantView) {
             AddEditRestaurantView(scenario: .add, onAddCompletion: {
-                fetch()
+                Task {
+                    await fetch()
+                }
             })
         }
     }
@@ -55,7 +61,7 @@ struct RestaurantListView: View {
         listKey = UUID()
     }
     
-    private func fetch() {
-        viewModel.fetchRestaurants(context: viewContext)
+    private func fetch() async {
+        await viewModel.fetchRestaurants()
     }
 }

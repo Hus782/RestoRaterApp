@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
-    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel()
+    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: RestaurantDataManager())
     @State private var showingEditRestaurantView = false
     @State private var showingAddRReviewView = false
     @State private var refreshToggle = false

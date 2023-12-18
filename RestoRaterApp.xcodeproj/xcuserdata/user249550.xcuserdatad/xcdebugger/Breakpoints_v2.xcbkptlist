@@ -558,8 +558,8 @@
             filePath = "RestoRaterApp/Views/Restaurant/RestaurantListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "fetch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -577,22 +577,6 @@
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "editRestaurant(context:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D523090B-FF75-4D49-98CD-3B3BAAE12ECB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RestoRaterApp/ViewModels/RestaurantViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "fetchRestaurants(context:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
