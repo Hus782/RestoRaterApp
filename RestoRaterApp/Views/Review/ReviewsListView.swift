@@ -11,7 +11,7 @@ struct ReviewsListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userManager: UserManager
-    @StateObject var viewModel = AddEditReviewViewModel(scenario: .edit)
+    @StateObject var viewModel = AddEditReviewViewModel(scenario: .edit, dataManager: CoreDataManager<Review>())
     @State private var showingAddReviewView = false
     private let restaurant: Restaurant
     @State private var reviews: [Review] = []
@@ -66,9 +66,11 @@ struct ReviewsListView: View {
                 title: Text(Lingo.commonConfirmDelete),
                 message: Text(Lingo.reviewsListViewConfirmDeleteMessage),
                 primaryButton: .destructive(Text(Lingo.commonDelete)) {
-                    viewModel.deleteReview(context: viewContext, completion: {
-                        dismiss()
-                    })
+                    Task {
+                        await viewModel.deleteReview(completion: {
+                            dismiss()
+                        })
+                    }
                 },
                 secondaryButton: .cancel(Text(Lingo.commonCancel))
             )

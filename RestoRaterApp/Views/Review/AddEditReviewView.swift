@@ -20,7 +20,7 @@ struct AddEditReviewView: View {
     
     init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, review: review, restaurant: restaurant, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, dataManager: CoreDataManager<Review>(), review: review, restaurant: restaurant, onAddCompletion: onAddCompletion))
         
     }
     
@@ -43,9 +43,8 @@ struct AddEditReviewView: View {
                     }
                     
                     Section {
-                        Button(Lingo.addEditReviewSubmitButton) {
-                            handleSave()
-                            presentationMode.wrappedValue.dismiss()
+                        LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.addEditReviewSubmitButton) {
+                            await handleSave()
                         }
                     }
                 }
@@ -53,12 +52,15 @@ struct AddEditReviewView: View {
             }
         }
     
-    private func handleSave() {
+    private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
-            viewModel.addReview(context: viewContext)
+            await viewModel.addReview()
         case .edit:
-            viewModel.editReview(context: viewContext)
+            await viewModel.editReview()
         }
+        viewModel.isLoading = false
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
     }
 }
