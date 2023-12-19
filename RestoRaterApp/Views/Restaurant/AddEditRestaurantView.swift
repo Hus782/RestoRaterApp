@@ -67,11 +67,10 @@ struct AddEditRestaurantView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button(Lingo.commonSave) {
-                    Task {
-                        await handleSave()
-                    }
+                trailing: LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.commonSave) {
+                    await handleSave()
                 }
+
             )
         }
         .onAppear {
@@ -82,12 +81,14 @@ struct AddEditRestaurantView: View {
     }
     
     private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
             await viewModel.addRestaurant()
         case .edit:
             await viewModel.editRestaurant()
         }
+        viewModel.isLoading = false
         presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
         
     }

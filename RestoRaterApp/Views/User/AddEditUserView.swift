@@ -51,22 +51,22 @@ struct AddEditUserView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button(Lingo.commonSave) {
-                    Task {
-                        await handleSave()
-                    }
+                trailing: LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.commonSave) {
+                    await handleSave()
                 }
             )
         }
     }
     
     private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
             await viewModel.addUser()
         case .edit:
             await viewModel.editUser()
         }
+        viewModel.isLoading = false
         presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
     }
 }

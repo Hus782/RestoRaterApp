@@ -14,6 +14,7 @@
 		3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */; };
 		3D3332D82B2376AC0063D286 /* Review+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */; };
 		3D3332DA2B2377420063D286 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D92B2377420063D286 /* ReviewView.swift */; };
+		3D37AFFB2B31D1CD0099A5AF /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */; };
 		3D3F69082B2746230075DA53 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F69072B2746230075DA53 /* RestaurantView.swift */; };
 		3D3F690B2B2749700075DA53 /* Data .swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F690A2B2749700075DA53 /* Data .swift */; };
 		3D549AE02B2464A900458521 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549ADF2B2464A900458521 /* TabsView.swift */; };
@@ -80,6 +81,7 @@
 		3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3D3332D92B2377420063D286 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		3D3F69072B2746230075DA53 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		3D3F690A2B2749700075DA53 /* Data .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data .swift"; sourceTree = "<group>"; };
 		3D549ADF2B2464A900458521 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				3DD4626F2B23176900D200B3 /* RootView.swift */,
 				3DB1EED72B289FE800A56471 /* RatingPickerView.swift */,
 				3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */,
+				3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				3DD4626C2B230F0A00D200B3 /* LoginView.swift in Sources */,
 				3DB551E12B24A81400D27E90 /* UserDetailsView.swift in Sources */,
 				3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */,
+				3D37AFFB2B31D1CD0099A5AF /* LoadingButton.swift in Sources */,
 				3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */,
 				3DD4626A2B230EA100D200B3 /* LoginViewModel.swift in Sources */,
 				3D549AE42B24702700458521 /* UsersListView.swift in Sources */,

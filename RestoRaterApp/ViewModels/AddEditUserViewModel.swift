@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData.NSManagedObjectContext
 
 final class AddEditUserViewModel: ObservableObject {
     @Published var name: String = ""
@@ -15,6 +14,7 @@ final class AddEditUserViewModel: ObservableObject {
     @Published var isAdmin: Bool = false
     @Published var showingAlert = false
     @Published var alertMessage = ""
+    @Published var isLoading = false
     private let scenario: UserViewScenario
     private let user: User?
     private let onAddCompletion: (() -> Void)?
