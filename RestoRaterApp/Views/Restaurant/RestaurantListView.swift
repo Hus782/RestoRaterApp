@@ -12,7 +12,7 @@ struct RestaurantListView: View {
     @EnvironmentObject private var userManager: UserManager
     @State private var showingAddRestaurantView = false
     @State private var listKey = UUID() // Used for refreshing the list
-    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: RestaurantDataManager())
+    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: CoreDataManager<Restaurant>())
     
     var body: some View {
         NavigationStack {

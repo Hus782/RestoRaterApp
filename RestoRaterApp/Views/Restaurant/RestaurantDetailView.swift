@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
-    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: RestaurantDataManager())
+    @StateObject var viewModel: RestaurantViewModel = RestaurantViewModel(dataManager: CoreDataManager<Restaurant>())
     @State private var showingEditRestaurantView = false
     @State private var showingAddRReviewView = false
     @State private var refreshToggle = false
@@ -95,10 +95,12 @@ struct RestaurantDetailView: View {
                 title: Text(Lingo.commonConfirmDelete),
                 message: Text(Lingo.restaurantDetailConfirmDeleteMessage),
                 primaryButton: .destructive(Text(Lingo.commonDelete)) {
-                    viewModel.deleteRestaurant(context: viewContext, completion: {
-                        dismiss()
-                        onDeleteCompletion?()
-                    })
+                    Task {
+                          await viewModel.deleteRestaurant {
+                              dismiss()
+                              onDeleteCompletion?()
+                          }
+                      }
                 },
                 secondaryButton: .cancel(Text(Lingo.commonCancel))
             )

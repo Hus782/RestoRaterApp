@@ -64,3 +64,6 @@ extension Restaurant : Identifiable {
         return (reviews?.count ?? 0) > 0
     }
 }
+
+// This is done to expose the createFetchRequest method to the generic CoreDataManager
+extension Restaurant: FetchRequestProvider { }

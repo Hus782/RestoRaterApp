@@ -5,7 +5,6 @@
 //  Created by user249550 on 12/8/23.
 //
 
-import CoreData
 import SwiftUI
 
 final class RestaurantViewModel: ObservableObject {
@@ -15,29 +14,33 @@ final class RestaurantViewModel: ObservableObject {
     @Published var restaurantToDelete: Restaurant?
     @Published var showingDeleteConfirmation = false
     @Published var isLoading = false
-
-    private let dataManager: RestaurantDataManager
+    private let dataManager: CoreDataManager<Restaurant>
     
-    init(dataManager: RestaurantDataManager) {
+    init(dataManager: CoreDataManager<Restaurant>) {
         self.dataManager = dataManager
         Task {
-            
             await fetchRestaurants()
         }
     }
     
     func fetchRestaurants() async {
         do {
-            isLoading = true
-            defer { isLoading = false }  // Ensures isLoading is set to false when the function exits
-            let fetchedRestaurants = try await dataManager.fetchRestaurants()
+            await MainActor.run { [weak self] in
+                self?.isLoading = true
+            }
 
-            await MainActor.run {
-                self.restaurants = fetchedRestaurants
+            let fetchedRestaurants = try await dataManager.fetchEntities()
+            await MainActor.run { [weak self] in
+                self?.restaurants = fetchedRestaurants
+                self?.isLoading = false
             }
             
         } catch {
-            print("Error fetching restaurants: \(error)")
+            await MainActor.run { [weak self] in
+                self?.isLoading = false
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
     }
     
@@ -46,23 +49,26 @@ final class RestaurantViewModel: ObservableObject {
         showingDeleteConfirmation = true
     }
     
-    func deleteRestaurant(context: NSManagedObjectContext, completion: @escaping () -> Void) {
-        guard let restaurant = restaurantToDelete else {
-            showingAlert = true
-            alertMessage = "Something went wrong"
-            return
-        }
-        context.delete(restaurant)
-        do {
-            try context.save()
-            completion()
-        } catch {
-            print("Error deleting restaurant: \(error)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
-        }
-        restaurantToDelete = nil
-        
-    }
+    func deleteRestaurant(completion: @escaping () -> Void) async {
+         guard let restaurant = restaurantToDelete else {
+             await MainActor.run { [weak self] in
+                 self?.showingAlert = true
+                 self?.alertMessage = "Something went wrong"
+             }
+             return
+         }
+         
+         do {
+             try await dataManager.deleteEntity(entity: restaurant)
+             await MainActor.run {
+                 completion()
+             }
+         } catch {
+             await MainActor.run { [weak self] in
+                 self?.showingAlert = true
+                 self?.alertMessage = error.localizedDescription
+             }
+         }
+     }
     
 }

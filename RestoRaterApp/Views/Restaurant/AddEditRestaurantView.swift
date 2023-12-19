@@ -24,7 +24,7 @@ struct AddEditRestaurantView: View {
     
     init(scenario: RestaurantScenario, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, restaurant: restaurant, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, dataManager: CoreDataManager<Restaurant>(context: PersistenceController.shared.container.viewContext),  restaurant: restaurant, onAddCompletion: onAddCompletion))
         self.onAddCompletion = onAddCompletion
         
     }
@@ -68,8 +68,9 @@ struct AddEditRestaurantView: View {
                     Image(systemName: "xmark")
                 },
                 trailing: Button(Lingo.commonSave) {
-                    handleSave()
-                    presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+                    Task {
+                        await handleSave()
+                    }
                 }
             )
         }
@@ -80,12 +81,14 @@ struct AddEditRestaurantView: View {
         }
     }
     
-    private func handleSave() {
+    private func handleSave() async {
         switch scenario {
         case .add:
-            viewModel.addRestaurant(context: viewContext)
+            await viewModel.addRestaurant()
         case .edit:
-            viewModel.editRestaurant(context: viewContext)
+            await viewModel.editRestaurant()
         }
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+        
     }
 }
