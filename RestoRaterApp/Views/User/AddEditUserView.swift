@@ -20,7 +20,7 @@ struct AddEditUserView: View {
     
     init(scenario: UserViewScenario, user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, user: user, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, dataManager: CoreDataManager<User>(), user: user, onAddCompletion: onAddCompletion))
         
     }
     
@@ -52,19 +52,21 @@ struct AddEditUserView: View {
                     Image(systemName: "xmark")
                 },
                 trailing: Button(Lingo.commonSave) {
-                    handleSave()
-                    presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+                    Task {
+                        await handleSave()
+                    }
                 }
             )
         }
     }
     
-    private func handleSave() {
+    private func handleSave() async {
         switch scenario {
         case .add:
-            viewModel.addUser(context: viewContext)
+            await viewModel.addUser()
         case .edit:
-            viewModel.editUser(context: viewContext)
+            await viewModel.editUser()
         }
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
     }
 }
