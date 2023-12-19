@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 final class UsersViewModel: ObservableObject {
     @Published var users: [User] = []

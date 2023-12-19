@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData.NSManagedObjectContext
 
 final class AddEditRestaurantViewModel: ObservableObject {
     @Published var name: String = ""

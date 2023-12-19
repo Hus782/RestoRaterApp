@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData.NSManagedObjectContext
 
 final class AddEditReviewViewModel: ObservableObject {
     @Published var rating: Int = 0
