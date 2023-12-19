@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext

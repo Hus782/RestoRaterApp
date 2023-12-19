@@ -160,6 +160,16 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		3D37AFFC2B31DFD50099A5AF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3DB1EED72B289FE800A56471 /* RatingPickerView.swift */,
+				3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */,
+				3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		3D3F69092B2749640075DA53 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +314,7 @@
 		3DD462662B23097100D200B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D37AFFC2B31DFD50099A5AF /* Common */,
 				3D9EA8582B26FEE500603498 /* Review */,
 				3DC685962B25B035006B5288 /* Restaurant */,
 				3DC685952B25B01C006B5288 /* User */,
@@ -312,9 +323,6 @@
 				3D549ADF2B2464A900458521 /* TabsView.swift */,
 				3D549AE12B2468EB00458521 /* ProfileView.swift */,
 				3DD4626F2B23176900D200B3 /* RootView.swift */,
-				3DB1EED72B289FE800A56471 /* RatingPickerView.swift */,
-				3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */,
-				3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
