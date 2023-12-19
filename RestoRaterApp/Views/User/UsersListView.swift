@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UsersListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject var viewModel = UsersViewModel()
+    @StateObject var viewModel = UsersViewModel(dataManager: CoreDataManager<User>())
     @State private var showingAddUserView = false
     @State private var listKey = UUID() // Used for refreshing the list
     
@@ -17,10 +17,12 @@ struct UsersListView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.users, id: \.self) { user in
-                    NavigationLink(destination: UserDetailsView(user: user, onAddCompletion: {
+                    NavigationLink(destination: UserDetailsView(user: user, onEditCompletion: {
                         refreshList()
                     }, onDeleteCompletion: {
-                        fetch()
+                        Task {
+                            await fetch()
+                        }
                     })
                         .toolbar(.hidden, for: .tabBar)) {
                             UserRowView(user: user)
@@ -38,20 +40,20 @@ struct UsersListView: View {
         }
         .sheet(isPresented: $showingAddUserView) {
             AddEditUserView(scenario: .add, onAddCompletion: {
-                fetch()
+                Task {
+                    await fetch()
+                }
             })
         }
-        .onAppear {
-            fetch()
-        }
+
     }
     //    Used to force a refresh of the list view after editing an item
     private func refreshList() {
         listKey = UUID()
     }
     
-    private func fetch() {
-        viewModel.fetchUsers(context: viewContext)
+    private func fetch() async {
+        await viewModel.fetchUsers()
     }
     
 }

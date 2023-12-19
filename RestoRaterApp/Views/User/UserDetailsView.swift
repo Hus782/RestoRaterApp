@@ -10,11 +10,11 @@ import SwiftUI
 struct UserDetailsView: View {
     @EnvironmentObject private var userManager: UserManager
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject var viewModel = UsersViewModel()
+    @StateObject var viewModel = UsersViewModel(dataManager: CoreDataManager<User>())
     @State private var showingEditUserView = false
     @Environment(\.dismiss) private var dismiss
     let user: User
-    let onAddCompletion: (() -> Void)?
+    let onEditCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?
     
     var body: some View {
@@ -71,7 +71,8 @@ struct UserDetailsView: View {
         )
         .sheet(isPresented: $showingEditUserView) {
             AddEditUserView(scenario: .edit, user: user, onAddCompletion: {
-                onEditCompletion()
+                onEditCompletion?()
+                dismiss()
             })
         }
         .alert(isPresented: $viewModel.showingAlert) {
@@ -82,18 +83,15 @@ struct UserDetailsView: View {
                 title: Text(Lingo.commonConfirmDelete),
                 message: Text("Are you sure you want to delete this user?"),
                 primaryButton: .destructive(Text(Lingo.commonDelete)) {
-                    viewModel.deleteUser(context: viewContext, completion: {
-                        dismiss()
-                        onDeleteCompletion?()
-                    })
+                    Task {
+                          await viewModel.deleteUser {
+                              dismiss()
+                              onDeleteCompletion?()
+                          }
+                      }
                 },
                 secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
-    }
-    
-    private func onEditCompletion() {
-        dismiss()
-        onAddCompletion?()
     }
 }

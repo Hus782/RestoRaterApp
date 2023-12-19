@@ -14,16 +14,34 @@ final class UsersViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var userToDelete: User?
     @Published var showingDeleteConfirmation = false
+    @Published var isLoading = false
+    private let dataManager: CoreDataManager<User>
     
-    func fetchUsers(context: NSManagedObjectContext) {
-        let request: NSFetchRequest<User> = User.createFetchRequest()
-
+    init(dataManager: CoreDataManager<User>) {
+        self.dataManager = dataManager
+        Task {
+            await fetchUsers()
+        }
+    }
+    
+    func fetchUsers() async {
         do {
-            users = try context.fetch(request)
+            await MainActor.run { [weak self] in
+                self?.isLoading = true
+            }
+
+            let fetchedUsers = try await dataManager.fetchEntities()
+            await MainActor.run { [weak self] in
+                self?.users = fetchedUsers
+                self?.isLoading = false
+            }
+            
         } catch {
-            print("Error fetching restaurants: \(error)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
+            await MainActor.run { [weak self] in
+                self?.isLoading = false
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
     }
 
@@ -32,21 +50,25 @@ final class UsersViewModel: ObservableObject {
         showingDeleteConfirmation = true
     }
     
-    func deleteUser(context: NSManagedObjectContext, completion: @escaping () -> Void) {
-        guard let user = userToDelete else {
-            showingAlert = true
-            alertMessage = "Something went wrong"
-            return
-        }
-        
-        context.delete(user)
-        completion()
-        do {
-            try context.save()
-        } catch {
-            print("Error deleting restaurant: \(error)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
-        }
-    }
+    func deleteUser(completion: @escaping () -> Void) async {
+         guard let user = userToDelete else {
+             await MainActor.run { [weak self] in
+                 self?.showingAlert = true
+                 self?.alertMessage = "Something went wrong"
+             }
+             return
+         }
+         
+         do {
+             try await dataManager.deleteEntity(entity: user)
+             await MainActor.run {
+                 completion()
+             }
+         } catch {
+             await MainActor.run { [weak self] in
+                 self?.showingAlert = true
+                 self?.alertMessage = error.localizedDescription
+             }
+         }
+     }
 }
