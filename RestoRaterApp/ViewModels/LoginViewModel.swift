@@ -15,25 +15,33 @@ final class LoginViewModel: ObservableObject {
     @Published var loginSuccessful = false
     @Published var showingAlert = false
     @Published var alertMessage = ""
-    
-    func loginUser(context: NSManagedObjectContext, userManager: UserManager) {
-        // Logic to check user credentials
-        // For simplicity, this is just a placeholder logic
-        let fetchRequest: NSFetchRequest<User> = User.createFetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            if let user = results.first, user.password == password { // Consider hashing the password
-                loginSuccessful = true
-                userManager.loginUser(user: user)
-            } else {
-                alertMessage = "Invalid credentials"
-                showingAlert = true
-            }
-        } catch {
-            alertMessage = "Login Failed: \(error.localizedDescription)"
-            showingAlert = true
-        }
+    private let dataManager: CoreDataManager<User>
+
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>()) {
+        self.dataManager = dataManager
     }
+    
+    func loginUser(userManager: UserManager) async {
+          let predicate = NSPredicate(format: "email == %@", email)
+
+          do {
+              let results = try await dataManager.fetchEntities(predicate: predicate)
+              if let user = results.first, user.password == password { // Consider hashing the password
+                  await MainActor.run {
+                      loginSuccessful = true
+                  }
+                  userManager.loginUser(user: user)
+              } else {
+                  await MainActor.run {
+                      alertMessage = "Invalid credentials"
+                      showingAlert = true
+                  }
+              }
+          } catch {
+              await MainActor.run {
+                  alertMessage = "Login Failed: \(error.localizedDescription)"
+                  showingAlert = true
+              }
+          }
+      }
 }

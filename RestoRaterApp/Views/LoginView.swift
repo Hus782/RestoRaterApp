@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var userManager: UserManager
-    @ObservedObject private var viewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject private var viewModel: LoginViewModel = LoginViewModel(dataManager: CoreDataManager<User>())
     
     var body: some View {
          VStack {
@@ -27,7 +27,7 @@ struct LoginView: View {
              Divider()
              
              Button(
-                 action: { viewModel.loginUser(context: viewContext, userManager: userManager) },
+                 action: { attemptLogin() },
                  label: {
                      Text(Lingo.loginViewLoginButton)
                          .font(.system(size: 24, weight: .bold, design: .default))
@@ -45,6 +45,11 @@ struct LoginView: View {
              }
          }
          .padding(30)
+     }
+    private func attemptLogin() {
+         Task {
+             await viewModel.loginUser(userManager: userManager)
+         }
      }
 }
 

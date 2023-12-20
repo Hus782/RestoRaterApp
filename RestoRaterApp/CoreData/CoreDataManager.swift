@@ -21,8 +21,9 @@ final class CoreDataManager<T: NSManagedObject> where T: FetchRequestProvider, T
         self.context = context
     }
     
-    func fetchEntities() async throws -> [T] {
+    func fetchEntities(predicate: NSPredicate? = nil) async throws -> [T] {
         let request = T.createFetchRequest()
+        request.predicate = predicate
         return try await context.perform {
             try self.context.fetch(request)
         }
