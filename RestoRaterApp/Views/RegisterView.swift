@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var userManager: UserManager
-    
     @ObservedObject private var viewModel: RegisterViewModel = RegisterViewModel()
     
     var body: some View {
@@ -55,7 +52,7 @@ struct RegisterView: View {
                 }
             )
             Button(Lingo.registerViewLoginButton, action: {
-                userManager.isRegistering = false
+                viewModel.navigateToLogin()
             })
         }
         .padding(30)
@@ -63,7 +60,7 @@ struct RegisterView: View {
     
     private func attemptRegister() {
         Task {
-            await viewModel.registerUser(userManager: userManager)
+            await viewModel.registerUser()
         }
     }
 }

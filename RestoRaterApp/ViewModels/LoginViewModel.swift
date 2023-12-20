@@ -10,17 +10,18 @@ import Foundation
 final class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-    
     @Published var loginSuccessful = false
     @Published var showingAlert = false
     @Published var alertMessage = ""
     private let dataManager: CoreDataManager<User>
+    private let userManager: UserManager
     
-    init(dataManager: CoreDataManager<User> = CoreDataManager<User>()) {
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManager = UserManager.shared) {
         self.dataManager = dataManager
+        self.userManager = userManager
     }
     
-    func loginUser(userManager: UserManager) async {
+    func loginUser() async {
         let predicate = NSPredicate(format: "email == %@", email)
         
         do {
@@ -28,7 +29,7 @@ final class LoginViewModel: ObservableObject {
             if let user = results.first, user.password == password { // Consider hashing the password
                 await MainActor.run { [weak self] in
                     self?.loginSuccessful = true
-                    userManager.loginUser(user: user)
+                    self?.userManager.loginUser(user: user)
                 }
                 
             } else {
@@ -43,5 +44,9 @@ final class LoginViewModel: ObservableObject {
                 self?.showingAlert = true
             }
         }
+    }
+    
+    func navigateToRegister() {
+        userManager.isRegistering = true
     }
 }

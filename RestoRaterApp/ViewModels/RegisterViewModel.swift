@@ -13,25 +13,25 @@ final class RegisterViewModel: ObservableObject {
     @Published var password = ""  // Consider hashing the password
     @Published var name = ""
     @Published var isAdmin = false
-    
     @Published var showingAlert = false
     @Published var alertMessage = ""
     @Published var registrationSuccessful = false
-    
     private let dataManager: CoreDataManager<User>
+    private let userManager: UserManager
     
-    init(dataManager: CoreDataManager<User> = CoreDataManager<User>()) {
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManager = UserManager.shared) {
         self.dataManager = dataManager
+        self.userManager = userManager
     }
     
-    func registerUser(userManager: UserManager) async {
+    func registerUser() async {
         do {
             try await dataManager.createEntity { [weak self] newUser in
                 self?.configureUser(newUser: newUser)
             }
             await MainActor.run { [weak self] in
                 self?.registrationSuccessful = true
-                userManager.isRegistering = false
+                self?.userManager.isRegistering = false
             }
         } catch {
             await MainActor.run { [weak self] in
@@ -46,5 +46,9 @@ final class RegisterViewModel: ObservableObject {
         newUser.password = password
         newUser.name = name
         newUser.isAdmin = isAdmin
+    }
+    
+    func navigateToLogin() {
+        userManager.isRegistering = false
     }
 }

@@ -15,7 +15,7 @@ struct RestaurantDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var userManager: UserManager
+    private let userManager: UserManager = UserManager.shared
     @StateObject var restaurant: Restaurant
     let onAddCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?

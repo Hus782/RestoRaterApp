@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var userManager: UserManager
+    private let userManager: UserManager = UserManager.shared
     
     var body: some View {
         NavigationView {

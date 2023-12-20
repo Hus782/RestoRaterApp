@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var userManager: UserManager
     @ObservedObject private var viewModel: LoginViewModel = LoginViewModel(dataManager: CoreDataManager<User>())
     
     var body: some View {
@@ -38,7 +37,7 @@ struct LoginView: View {
                 }
             )
             Button(Lingo.loginViewRegisterButton, action: {
-                userManager.isRegistering = true // Switch back to registration flow
+                viewModel.navigateToRegister()// Switch back to registration flow
             })
             .alert(isPresented: $viewModel.showingAlert) {
                 Alert(title: Text(Lingo.loginViewLoginAlertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
@@ -48,7 +47,7 @@ struct LoginView: View {
     }
     private func attemptLogin() {
         Task {
-            await viewModel.loginUser(userManager: userManager)
+            await viewModel.loginUser()
         }
     }
 }
