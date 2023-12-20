@@ -26,6 +26,7 @@
 		3D549AEB2B24746300458521 /* AddEditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AEA2B24746300458521 /* AddEditUserView.swift */; };
 		3D5FF68B2B332FAD00FE9534 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */; };
 		3D5FF68D2B332FBA00FE9534 /* MockUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */; };
+		3D5FF68F2B3336AF00FE9534 /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */; };
 		3D77EB0C2B2B1CC500A38E11 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */; };
 		3D7F20D82B2B0364005E5422 /* RestaurantImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */; };
 		3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */; };
@@ -100,6 +101,7 @@
 		3D549AEA2B24746300458521 /* AddEditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserView.swift; sourceTree = "<group>"; };
 		3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserManager.swift; sourceTree = "<group>"; };
+		3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
 		3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImageView.swift; sourceTree = "<group>"; };
 		3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSectionView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */,
 				3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */,
 				3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */,
+				3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */,
 			);
 			path = RestoRaterAppTests;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5FF68F2B3336AF00FE9534 /* RegisterViewModelTests.swift in Sources */,
 				3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */,
 				3D9177062B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift in Sources */,
 				3D91770C2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift in Sources */,
