@@ -31,7 +31,7 @@ final class AddEditUserViewModel: ObservableObject {
     
     init(scenario: UserViewScenario, dataManager: CoreDataManager<User>,  user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.onAddCompletion = onAddCompletion
-        self.scenario = .edit
+        self.scenario = scenario
         self.user = user
         self.dataManager = dataManager
         if let user = user {
