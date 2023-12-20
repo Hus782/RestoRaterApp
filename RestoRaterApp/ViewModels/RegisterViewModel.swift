@@ -17,9 +17,9 @@ final class RegisterViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var registrationSuccessful = false
     private let dataManager: CoreDataManager<User>
-    private let userManager: UserManager
+    private let userManager: UserManagerProtocol
     
-    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManager = UserManager.shared) {
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManagerProtocol = UserManager.shared) {
         self.dataManager = dataManager
         self.userManager = userManager
     }
@@ -31,7 +31,7 @@ final class RegisterViewModel: ObservableObject {
             }
             await MainActor.run { [weak self] in
                 self?.registrationSuccessful = true
-                self?.userManager.isRegistering = false
+                self?.userManager.setIsRegistering(false)
             }
         } catch {
             await MainActor.run { [weak self] in
@@ -49,6 +49,6 @@ final class RegisterViewModel: ObservableObject {
     }
     
     func navigateToLogin() {
-        userManager.isRegistering = false
+        userManager.setIsRegistering(false)
     }
 }

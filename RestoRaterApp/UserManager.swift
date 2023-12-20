@@ -17,13 +17,13 @@ protocol UserManagerProtocol {
     func loginUser(user: User)
     func isCurrentUser(user: User) -> Bool
     func logoutUser()
-    var isRegistering: Bool { get set }
+    func setIsRegistering(_ value: Bool)
 }
 
 final class UserManager: ObservableObject, UserManagerProtocol {
     @Published var currentUser: UserData?
     @Published var isLoggedIn: Bool = false
-    @Published var isRegistering: Bool = true
+    @Published private(set) var isRegistering: Bool = true
     
     // Keys for UserDefaults
     private let isLoggedInKey = "isLoggedIn"
@@ -57,6 +57,10 @@ final class UserManager: ObservableObject, UserManagerProtocol {
         self.currentUser = nil
         self.isLoggedIn = false
         clearUserDefaults()
+    }
+    
+    func setIsRegistering(_ value: Bool) {
+        isRegistering = value
     }
     
     private func saveUserToDefaults() {

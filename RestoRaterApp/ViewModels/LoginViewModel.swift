@@ -14,9 +14,9 @@ final class LoginViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var alertMessage = ""
     private let dataManager: CoreDataManager<User>
-    private let userManager: UserManager
+    private let userManager: UserManagerProtocol
     
-    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManager = UserManager.shared) {
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManagerProtocol = UserManager.shared) {
         self.dataManager = dataManager
         self.userManager = userManager
     }
@@ -47,6 +47,6 @@ final class LoginViewModel: ObservableObject {
     }
     
     func navigateToRegister() {
-        userManager.isRegistering = true
+        userManager.setIsRegistering(true)
     }
 }
