@@ -23,9 +23,9 @@ final class AddEditUserViewModel: ObservableObject {
     var title: String {
         switch scenario {
         case .add:
-            return "Create user"
+            return Lingo.addEditUserCreateTitle
         case .edit:
-            return "Edit user"
+            return Lingo.addEditUserEditTitle
         }
     }
     
