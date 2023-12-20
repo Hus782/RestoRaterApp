@@ -727,7 +727,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3809D182-CAF3-41C8-95A5-688CD4B2A538"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RestoRaterApp/ViewModels/AddEdtReviewViewModel.swift"

@@ -32,6 +32,7 @@
 		3D9177062B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */; };
 		3D9177082B32EF790045D9D7 /* AddEditUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */; };
 		3D91770A2B32F1AF0045D9D7 /* UsersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */; };
+		3D91770C2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */; };
 		3D9EA8532B26FAD600603498 /* AddEditReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */; };
 		3D9EA8572B26FB8600603498 /* AddEdtReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */; };
 		3D9EA85B2B27062E00603498 /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */; };
@@ -103,6 +104,7 @@
 		3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditRestaurantViewModelTests.swift; sourceTree = "<group>"; };
 		3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserViewModelTests.swift; sourceTree = "<group>"; };
 		3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModelTests.swift; sourceTree = "<group>"; };
+		3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewViewModelTests.swift; sourceTree = "<group>"; };
 		3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewView.swift; sourceTree = "<group>"; };
 		3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEdtReviewViewModel.swift; sourceTree = "<group>"; };
 		3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */,
 				3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */,
 				3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */,
+				3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */,
 			);
 			path = RestoRaterAppTests;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			files = (
 				3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */,
 				3D9177062B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift in Sources */,
+				3D91770C2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift in Sources */,
 				3D37AFFE2B31E2CA0099A5AF /* RestaurantViewModelTests.swift in Sources */,
 				3D9177082B32EF790045D9D7 /* AddEditUserViewModelTests.swift in Sources */,
 				3D91770A2B32F1AF0045D9D7 /* UsersViewModelTests.swift in Sources */,

@@ -33,7 +33,7 @@ final class AddEditReviewViewModel: ObservableObject {
     
     init(scenario: ReviewViewScenario, dataManager: CoreDataManager<Review>, review: Review? = nil, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.onAddCompletion = onAddCompletion
-        self.scenario = .edit
+        self.scenario = scenario
         self.review = review
         self.restaurant = restaurant
         self.dataManager = dataManager
