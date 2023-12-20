@@ -93,3 +93,7 @@
 "register_view_register_button" = "Register";
 "register_view_login_button" = "Login";
 
+// Login screen
+"invalidCredentialsKey" = "Invalid credentials";
+"loginFailedKey" = "Login Failed";
+

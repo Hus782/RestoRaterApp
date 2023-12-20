@@ -98,5 +98,10 @@ struct Lingo {
     static let registerViewIsAdminLabel = String(localized: "register_view_is_admin_label")
     static let registerViewRegisterButton = String(localized: "register_view_register_button")
     static let registerViewLoginButton = String(localized: "register_view_login_button")
+    
+//    Login screen
+    static let invalidCredentials = String(localized: "invalidCredentialsKey")
+    static let loginFailed = String(localized: "loginFailedKey")
+    
 
 }
