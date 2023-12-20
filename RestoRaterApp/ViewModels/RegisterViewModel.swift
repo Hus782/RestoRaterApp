@@ -10,30 +10,41 @@ import CoreData
 
 final class RegisterViewModel: ObservableObject {
     @Published var email = ""
-    @Published var password = ""
+    @Published var password = ""  // Consider hashing the password
     @Published var name = ""
     @Published var isAdmin = false
     
     @Published var showingAlert = false
     @Published var alertMessage = ""
     @Published var registrationSuccessful = false
+
+    private let dataManager: CoreDataManager<User>
+
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>()) {
+        self.dataManager = dataManager
+    }
     
-    func registerUser(context: NSManagedObjectContext, userManager: UserManager) {
-        let newUser = User(context: context)
+    func registerUser(userManager: UserManager) async {
+        do {
+            try await dataManager.createEntity { [weak self] newUser in
+                self?.configureUser(newUser: newUser)
+            }
+            await MainActor.run { [weak self] in
+                self?.registrationSuccessful = true
+                userManager.isRegistering = false
+            }
+        } catch {
+            await MainActor.run { [weak self] in
+                self?.alertMessage = "Registration Failed: \(error.localizedDescription)"
+                self?.showingAlert = true
+            }
+        }
+    }
+
+    private func configureUser(newUser: User) {
         newUser.email = email
-        newUser.password = password // Consider hashing the password
+        newUser.password = password
         newUser.name = name
         newUser.isAdmin = isAdmin
-        
-        do {
-            try context.save()
-            registrationSuccessful = true
-            userManager.isRegistering = false
-        } catch {
-            // Handle the error appropriately
-            print("Error saving context: \(error)")
-            alertMessage = "Registration Failed: \(error.localizedDescription)"
-            showingAlert = true
-        }
     }
 }

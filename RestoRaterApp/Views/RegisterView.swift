@@ -44,7 +44,7 @@ struct RegisterView: View {
             Spacer()
             
             Button(
-                action: { viewModel.registerUser(context: viewContext, userManager: userManager) },
+                action: { attemptRegister() },
                 label: {
                     Text(Lingo.registerViewRegisterButton)
                         .font(.system(size: 24, weight: .bold, design: .default))
@@ -61,6 +61,11 @@ struct RegisterView: View {
         .padding(30)
     }
     
+    private func attemptRegister() {
+        Task {
+            await viewModel.registerUser(userManager: userManager)
+        }
+    }
 }
 
 struct RegisterScreen_Previews: PreviewProvider {
