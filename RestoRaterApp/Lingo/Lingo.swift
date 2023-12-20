@@ -103,5 +103,7 @@ struct Lingo {
     static let invalidCredentials = String(localized: "invalidCredentialsKey")
     static let loginFailed = String(localized: "loginFailedKey")
     
+// Register screen
+    static let registrationFailed = String(localized: "registrationFailedKey")
 
 }

@@ -97,3 +97,6 @@
 "invalidCredentialsKey" = "Invalid credentials";
 "loginFailedKey" = "Login Failed";
 
+//Register screen
+"registrationFailedKey" = "Registration Failed";
+

@@ -17,9 +17,9 @@ final class RegisterViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var alertMessage = ""
     @Published var registrationSuccessful = false
-
+    
     private let dataManager: CoreDataManager<User>
-
+    
     init(dataManager: CoreDataManager<User> = CoreDataManager<User>()) {
         self.dataManager = dataManager
     }
@@ -35,12 +35,12 @@ final class RegisterViewModel: ObservableObject {
             }
         } catch {
             await MainActor.run { [weak self] in
-                self?.alertMessage = "Registration Failed: \(error.localizedDescription)"
+                self?.alertMessage = "\(Lingo.registrationFailed): \(error.localizedDescription)"
                 self?.showingAlert = true
             }
         }
     }
-
+    
     private func configureUser(newUser: User) {
         newUser.email = email
         newUser.password = password
