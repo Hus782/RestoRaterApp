@@ -5,8 +5,7 @@
 //  Created by user249550 on 12/8/23.
 //
 
-import SwiftUI
-import CoreData
+import Foundation
 
 final class LoginViewModel: ObservableObject {
     @Published var email = ""

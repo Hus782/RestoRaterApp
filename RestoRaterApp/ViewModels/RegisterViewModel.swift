@@ -6,7 +6,7 @@
 //
 
 
-import CoreData
+import Foundation
 
 final class RegisterViewModel: ObservableObject {
     @Published var email = ""
