@@ -53,7 +53,7 @@ final class RestaurantViewModel: ObservableObject {
          guard let restaurant = restaurantToDelete else {
              await MainActor.run { [weak self] in
                  self?.showingAlert = true
-                 self?.alertMessage = "Something went wrong"
+                 self?.alertMessage = Lingo.commonErrorMessage
              }
              return
          }

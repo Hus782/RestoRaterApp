@@ -19,7 +19,7 @@ struct Lingo {
        static let commonError = String(localized: "common_error")
        static let commonConfirmDelete = String(localized: "common_confirm_delete")
        static let commonConfirmDeleteMessage = String(localized: "common_confirm_delete_message")
-
+    static let commonErrorMessage = String(localized: "common_eror_message")
     
     // ProfileView labels
     static let profileViewTitle = String(localized: "profile_view_title")

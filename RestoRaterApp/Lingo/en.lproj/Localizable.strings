@@ -15,7 +15,7 @@
 "common_error" = "Error";
 "common_confirm_delete" = "Confirm Delete";
 "common_confirm_delete_message" = "Are you sure you want to delete this item?";
-
+"common_eror_message" = "Something went wrong";
 
 // Prifle tab labels
 "profile_view_title" = "Profile";
