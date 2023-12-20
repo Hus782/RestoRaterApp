@@ -13,6 +13,7 @@ class MockUserManager: UserManagerProtocol {
     var isLoggedIn = false
     var loggedInUser: UserData?
     var isCurrent = false
+    var isLoginSuccess = false
     
     func isCurrentUser(user: User) -> Bool {
         return isCurrent
@@ -28,8 +29,10 @@ class MockUserManager: UserManagerProtocol {
     }
     
     func loginUser(user: User) {
-        loggedInUser = UserData(name: user.name, email: user.email, isAdmin: user.isAdmin)
-        isLoggedIn = true
+        if isLoginSuccess {
+            loggedInUser = UserData(name: user.name, email: user.email, isAdmin: user.isAdmin)
+        }
+        isLoggedIn = isLoginSuccess
     }
 
 }
