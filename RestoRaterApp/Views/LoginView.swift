@@ -6,31 +6,29 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var userManager: UserManager
-    @ObservedObject private var viewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject private var viewModel: LoginViewModel = LoginViewModel(dataManager: CoreDataManager<User>())
     
     var body: some View {
         VStack {
-            TextField("Email", text: $viewModel.email)
+            TextField(Lingo.loginViewEmailPlaceholder, text: $viewModel.email)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .padding(.top, 20)
             
             Divider()
             
-            SecureField("Password", text: $viewModel.password)
+            SecureField(Lingo.loginViewPasswordPlaceholder, text: $viewModel.password)
                 .padding(.top, 20)
             
             Divider()
             
             Button(
-                action: { viewModel.loginUser(context: viewContext, userManager: userManager) },
+                action: { attemptLogin() },
                 label: {
-                    Text("Login")
+                    Text(Lingo.loginViewLoginButton)
                         .font(.system(size: 24, weight: .bold, design: .default))
                         .frame(maxWidth: .infinity, maxHeight: 60)
                         .foregroundColor(Color.white)
@@ -38,14 +36,19 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
             )
-            Button("Register", action: {
-                userManager.isRegistering = true // Switch back to registration flow
+            Button(Lingo.loginViewRegisterButton, action: {
+                viewModel.navigateToRegister()// Switch back to registration flow
             })
             .alert(isPresented: $viewModel.showingAlert) {
-                Alert(title: Text("Login"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                Alert(title: Text(Lingo.loginViewLoginAlertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
             }
         }
         .padding(30)
+    }
+    private func attemptLogin() {
+        Task {
+            await viewModel.loginUser()
+        }
     }
 }
 

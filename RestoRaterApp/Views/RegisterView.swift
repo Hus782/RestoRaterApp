@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject private var userManager: UserManager
-    
     @ObservedObject private var viewModel: RegisterViewModel = RegisterViewModel()
     
     var body: some View {
@@ -18,25 +15,25 @@ struct RegisterView: View {
             Spacer()
             
             VStack {
-                TextField("Email", text: $viewModel.email)
+                TextField(Lingo.registerViewEmailPlaceholder, text: $viewModel.email)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .padding(.top, 20)
                 
                 Divider()
                 
-                SecureField("Password", text: $viewModel.password)
+                SecureField(Lingo.registerViewPasswordPlaceholder, text: $viewModel.password)
                     .padding(.top, 20)
                 
                 Divider()
                 
-                TextField("Name", text: $viewModel.name)
+                TextField(Lingo.registerViewNamePlaceholder, text: $viewModel.name)
                     .padding(.top, 20)
                 
                 Divider()
                 
                 Toggle(isOn: $viewModel.isAdmin) {
-                    Text("Is Admin")
+                    Text(Lingo.registerViewIsAdminLabel)
                 }
                 .padding(.top, 20)
             }
@@ -44,9 +41,9 @@ struct RegisterView: View {
             Spacer()
             
             Button(
-                action: { viewModel.registerUser(context: viewContext, userManager: userManager) },
+                action: { attemptRegister() },
                 label: {
-                    Text("Register")
+                    Text(Lingo.registerViewRegisterButton)
                         .font(.system(size: 24, weight: .bold, design: .default))
                         .frame(maxWidth: .infinity, maxHeight: 60)
                         .foregroundColor(Color.white)
@@ -54,16 +51,18 @@ struct RegisterView: View {
                         .cornerRadius(10)
                 }
             )
-            Button("Login", action: {
-                userManager.isRegistering = false
+            Button(Lingo.registerViewLoginButton, action: {
+                viewModel.navigateToLogin()
             })
-            
-            
         }
         .padding(30)
-        
     }
     
+    private func attemptRegister() {
+        Task {
+            await viewModel.registerUser()
+        }
+    }
 }
 
 struct RegisterScreen_Previews: PreviewProvider {

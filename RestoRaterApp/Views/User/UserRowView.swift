@@ -24,7 +24,7 @@ struct UserRowView: View {
             Spacer()
             
             if user.isAdmin {
-                Text("Admin")
+                Text(Lingo.userDetailsRoleAdmin)
                     .font(.caption)
                     .fontWeight(.bold)
                     .padding(4)

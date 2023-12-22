@@ -20,46 +20,47 @@ struct AddEditReviewView: View {
     
     init(scenario: ReviewViewScenario, review: Review? = nil, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, review: review, restaurant: restaurant, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditReviewViewModel(scenario: scenario, dataManager: CoreDataManager<Review>(), review: review, restaurant: restaurant, onAddCompletion: onAddCompletion))
         
     }
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section(header: Text("Rating")) {
-                    RatingPickerView(rating: $viewModel.rating)
+            NavigationStack {
+                Form {
+                    Section(header: Text(Lingo.addEditReviewRating)) {
+                        RatingPickerView(rating: $viewModel.rating)
+                            .pickerStyle(SegmentedPickerStyle())
+                    }
                     
-                        .pickerStyle(SegmentedPickerStyle())
-                }
-                
-                Section(header: Text("Comment")) {
-                    TextEditor(text: $viewModel.comment)
-                        .font(.body) 
-                        .frame(minHeight: 100)
-                }
-                
-                Section(header: Text("Date of Visit")) {
-                    DatePicker("Visit Date", selection: $viewModel.visitDate, displayedComponents: .date)
-                }
-                
-                Section {
-                    Button("Submit Review") {
-                        handleSave()
-                        presentationMode.wrappedValue.dismiss()
+                    Section(header: Text(Lingo.addEditReviewComment)) {
+                        TextEditor(text: $viewModel.comment)
+                            .font(.body)
+                            .frame(minHeight: 100)
+                    }
+                    
+                    Section(header: Text(Lingo.addEditReviewDateOfVisit)) {
+                        DatePicker(Lingo.addEditReviewDateOfVisit, selection: $viewModel.visitDate, displayedComponents: .date)
+                    }
+                    
+                    Section {
+                        LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.addEditReviewSubmitButton) {
+                            await handleSave()
+                        }
                     }
                 }
+                .navigationBarTitle(scenario == .add ? Lingo.addEditReviewNavigationTitleAdd : Lingo.addEditReviewNavigationTitleEdit, displayMode: .inline)
             }
-            .navigationBarTitle("Add Review", displayMode: .inline)
         }
-    }
     
-    private func handleSave() {
+    private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
-            viewModel.addReview(context: viewContext)
+            await viewModel.addReview()
         case .edit:
-            viewModel.editReview(context: viewContext)
+            await viewModel.editReview()
         }
+        viewModel.isLoading = false
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
     }
 }

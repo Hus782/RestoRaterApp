@@ -24,7 +24,7 @@ struct AddEditRestaurantView: View {
     
     init(scenario: RestaurantScenario, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, restaurant: restaurant, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditRestaurantViewModel(scenario: scenario, dataManager: CoreDataManager<Restaurant>(context: PersistenceController.shared.container.viewContext),  restaurant: restaurant, onAddCompletion: onAddCompletion))
         self.onAddCompletion = onAddCompletion
         
     }
@@ -32,14 +32,14 @@ struct AddEditRestaurantView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Name")) {
-                    TextField("Name", text: $viewModel.name)
+                Section(header: Text(Lingo.addEditRestaurantName)) {
+                    TextField(Lingo.addEditRestaurantName, text: $viewModel.name)
                 }
-                Section(header: Text("Address")) {
-                    TextField("Address", text: $viewModel.address)
+                Section(header: Text(Lingo.addEditRestaurantAddress)) {
+                    TextField(Lingo.addEditRestaurantAddress, text: $viewModel.address)
                 }
-                Section(header: Text("Image")) {
-                    PhotosPicker("Select image", selection: $restaurantItem, matching: .images)
+                Section(header: Text(Lingo.addEditRestaurantImage)) {
+                    PhotosPicker(Lingo.addEditRestaurantSelectImage, selection: $restaurantItem, matching: .images)
                     
                     restaurantImage?
                         .resizable()
@@ -58,7 +58,6 @@ struct AddEditRestaurantView: View {
                         restaurantImage = Image(uiImage: image)
                         viewModel.image = imageData
                     }
-                    
                 }
             })
             .navigationBarTitle(viewModel.title, displayMode: .inline)
@@ -68,10 +67,10 @@ struct AddEditRestaurantView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button("Save") {
-                    handleSave()
-                    presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+                trailing: LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.commonSave) {
+                    await handleSave()
                 }
+
             )
         }
         .onAppear {
@@ -81,12 +80,16 @@ struct AddEditRestaurantView: View {
         }
     }
     
-    private func handleSave() {
+    private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
-            viewModel.addRestaurant(context: viewContext)
+            await viewModel.addRestaurant()
         case .edit:
-            viewModel.editRestaurant(context: viewContext)
+            await viewModel.editRestaurant()
         }
+        viewModel.isLoading = false
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+        
     }
 }

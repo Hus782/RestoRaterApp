@@ -12,10 +12,18 @@ struct UserData {
     let isAdmin: Bool
 }
 
-final class UserManager: ObservableObject {
+// Expose the important methods for testing and mocking
+protocol UserManagerProtocol {
+    func loginUser(user: User)
+    func isCurrentUser(user: User) -> Bool
+    func logoutUser()
+    func setIsRegistering(_ value: Bool)
+}
+
+final class UserManager: ObservableObject, UserManagerProtocol {
     @Published var currentUser: UserData?
     @Published var isLoggedIn: Bool = false
-    @Published var isRegistering: Bool = true
+    @Published private(set) var isRegistering: Bool = true
     
     // Keys for UserDefaults
     private let isLoggedInKey = "isLoggedIn"
@@ -26,9 +34,8 @@ final class UserManager: ObservableObject {
     // Singleton instance for global access
     static let shared = UserManager()
     
-//    private init() {} // Private constructor for singleton
-    
-    init() {
+    // Private constructor for singleton
+    private init() {
         loadUserFromDefaults()
     }
     
@@ -50,6 +57,10 @@ final class UserManager: ObservableObject {
         self.currentUser = nil
         self.isLoggedIn = false
         clearUserDefaults()
+    }
+    
+    func setIsRegistering(_ value: Bool) {
+        isRegistering = value
     }
     
     private func saveUserToDefaults() {

@@ -5,35 +5,48 @@
 //  Created by user249550 on 12/8/23.
 //
 
-import SwiftUI
-import CoreData
+import Foundation
 
 final class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-    
     @Published var loginSuccessful = false
     @Published var showingAlert = false
     @Published var alertMessage = ""
+    private let dataManager: CoreDataManager<User>
+    private let userManager: UserManagerProtocol
     
-    func loginUser(context: NSManagedObjectContext, userManager: UserManager) {
-        // Logic to check user credentials
-        // For simplicity, this is just a placeholder logic
-        let fetchRequest: NSFetchRequest<User> = User.createFetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+    init(dataManager: CoreDataManager<User> = CoreDataManager<User>(), userManager: UserManagerProtocol = UserManager.shared) {
+        self.dataManager = dataManager
+        self.userManager = userManager
+    }
+    
+    func loginUser() async {
+        let predicate = NSPredicate(format: "email == %@", email)
         
         do {
-            let results = try context.fetch(fetchRequest)
+            let results = try await dataManager.fetchEntities(predicate: predicate)
             if let user = results.first, user.password == password { // Consider hashing the password
-                loginSuccessful = true
-                userManager.loginUser(user: user)
+                await MainActor.run { [weak self] in
+                    self?.loginSuccessful = true
+                    self?.userManager.loginUser(user: user)
+                }
+                
             } else {
-                alertMessage = "Invalid credentials"
-                showingAlert = true
+                await MainActor.run { [weak self] in
+                    self?.alertMessage = Lingo.invalidCredentials
+                    self?.showingAlert = true
+                }
             }
         } catch {
-            alertMessage = "Login Failed: \(error.localizedDescription)"
-            showingAlert = true
+            await MainActor.run { [weak self] in
+                self?.alertMessage = "\(Lingo.loginFailed): \(error.localizedDescription)"
+                self?.showingAlert = true
+            }
         }
+    }
+    
+    func navigateToRegister() {
+        userManager.setIsRegistering(true)
     }
 }

@@ -11,7 +11,7 @@ struct ReviewsListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userManager: UserManager
-    @StateObject var viewModel = AddEditReviewViewModel(scenario: .edit)
+    @StateObject var viewModel = AddEditReviewViewModel(scenario: .edit, dataManager: CoreDataManager<Review>())
     @State private var showingAddReviewView = false
     private let restaurant: Restaurant
     @State private var reviews: [Review] = []
@@ -24,22 +24,20 @@ struct ReviewsListView: View {
         NavigationStack {
             List {
                 ForEach(reviews, id: \.self) { review in
-                    
                     ReviewView(review: review)
-                    
                         .swipeActions {
                             if userManager.currentUser?.isAdmin ?? false {
                                 Button {
                                     self.showingAddReviewView = true
                                 } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                    Label(Lingo.commonEdit, systemImage: "pencil")
                                 }
                                 .tint(.blue)
                                 
                                 Button(role: .destructive) {
                                     viewModel.promptDelete(review: review)
                                 } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    Label(Lingo.commonDelete, systemImage: "trash")
                                 }
                             }
                         }
@@ -61,20 +59,21 @@ struct ReviewsListView: View {
             }
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.reviewsListViewError), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text("Confirm Delete"),
-                message: Text("Are you sure you want to delete this review?"),
-                primaryButton: .destructive(Text("Delete")) {
-                    viewModel.deleteReview(context: viewContext, completion: {
-                        dismiss()
-                    })
+                title: Text(Lingo.commonConfirmDelete),
+                message: Text(Lingo.reviewsListViewConfirmDeleteMessage),
+                primaryButton: .destructive(Text(Lingo.commonDelete)) {
+                    Task {
+                        await viewModel.deleteReview(completion: {
+                            dismiss()
+                        })
+                    }
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
-        
     }
 }

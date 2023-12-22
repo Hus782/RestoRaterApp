@@ -26,3 +26,5 @@ extension Review {
 extension Review : Identifiable {
 
 }
+
+extension Review: FetchRequestProvider {}

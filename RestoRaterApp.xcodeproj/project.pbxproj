@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */; };
+		3D2BC3A92B30AAEC00DD7DB3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BC3A82B30AAEC00DD7DB3 /* CoreDataManager.swift */; };
 		3D2DE32C2B2B35BD00B57A7E /* ReviewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */; };
 		3D3332D02B23709D0063D286 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */; };
 		3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */; };
 		3D3332D82B2376AC0063D286 /* Review+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */; };
 		3D3332DA2B2377420063D286 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3332D92B2377420063D286 /* ReviewView.swift */; };
+		3D37AFFB2B31D1CD0099A5AF /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */; };
+		3D37AFFE2B31E2CA0099A5AF /* RestaurantViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D37AFFD2B31E2CA0099A5AF /* RestaurantViewModelTests.swift */; };
 		3D3F69082B2746230075DA53 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F69072B2746230075DA53 /* RestaurantView.swift */; };
 		3D3F690B2B2749700075DA53 /* Data .swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F690A2B2749700075DA53 /* Data .swift */; };
 		3D549AE02B2464A900458521 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549ADF2B2464A900458521 /* TabsView.swift */; };
@@ -21,9 +24,18 @@
 		3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE52B24707400458521 /* UsersViewModel.swift */; };
 		3D549AE92B24732800458521 /* AddEditUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AE82B24732800458521 /* AddEditUserViewModel.swift */; };
 		3D549AEB2B24746300458521 /* AddEditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D549AEA2B24746300458521 /* AddEditUserView.swift */; };
+		3D5FF68B2B332FAD00FE9534 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */; };
+		3D5FF68D2B332FBA00FE9534 /* MockUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */; };
+		3D5FF68F2B3336AF00FE9534 /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */; };
 		3D77EB0C2B2B1CC500A38E11 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */; };
 		3D7F20D82B2B0364005E5422 /* RestaurantImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */; };
 		3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */; };
+		3D8F744A2B2EE4D300E1168D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8F744C2B2EE4D300E1168D /* Localizable.strings */; };
+		3D8F744F2B2EE58D00E1168D /* Lingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F744E2B2EE58D00E1168D /* Lingo.swift */; };
+		3D9177062B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */; };
+		3D9177082B32EF790045D9D7 /* AddEditUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */; };
+		3D91770A2B32F1AF0045D9D7 /* UsersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */; };
+		3D91770C2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */; };
 		3D9EA8532B26FAD600603498 /* AddEditReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */; };
 		3D9EA8572B26FB8600603498 /* AddEdtReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */; };
 		3D9EA85B2B27062E00603498 /* Restaurant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */; };
@@ -71,11 +83,14 @@
 
 /* Begin PBXFileReference section */
 		3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRatingView.swift; sourceTree = "<group>"; };
+		3D2BC3A82B30AAEC00DD7DB3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3D2DE32B2B2B35BD00B57A7E /* ReviewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListView.swift; sourceTree = "<group>"; };
 		3D3332CF2B23709D0063D286 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		3D3332D32B2376AC0063D286 /* Review+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3D3332D42B2376AC0063D286 /* Review+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3D3332D92B2377420063D286 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		3D37AFFD2B31E2CA0099A5AF /* RestaurantViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModelTests.swift; sourceTree = "<group>"; };
 		3D3F69072B2746230075DA53 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		3D3F690A2B2749700075DA53 /* Data .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data .swift"; sourceTree = "<group>"; };
 		3D549ADF2B2464A900458521 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -84,9 +99,18 @@
 		3D549AE52B24707400458521 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		3D549AE82B24732800458521 /* AddEditUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserViewModel.swift; sourceTree = "<group>"; };
 		3D549AEA2B24746300458521 /* AddEditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserView.swift; sourceTree = "<group>"; };
+		3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserManager.swift; sourceTree = "<group>"; };
+		3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
 		3D77EB0B2B2B1CC500A38E11 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		3D7F20D72B2B0364005E5422 /* RestaurantImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImageView.swift; sourceTree = "<group>"; };
 		3D7F20D92B2B038C005E5422 /* ReviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSectionView.swift; sourceTree = "<group>"; };
+		3D8F744B2B2EE4D300E1168D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D8F744E2B2EE58D00E1168D /* Lingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lingo.swift; sourceTree = "<group>"; };
+		3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditRestaurantViewModelTests.swift; sourceTree = "<group>"; };
+		3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditUserViewModelTests.swift; sourceTree = "<group>"; };
+		3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModelTests.swift; sourceTree = "<group>"; };
+		3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewViewModelTests.swift; sourceTree = "<group>"; };
 		3D9EA8522B26FAD600603498 /* AddEditReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditReviewView.swift; sourceTree = "<group>"; };
 		3D9EA8562B26FB8600603498 /* AddEdtReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEdtReviewViewModel.swift; sourceTree = "<group>"; };
 		3D9EA8592B27062E00603498 /* Restaurant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -143,12 +167,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D3182DD2B31870400A2F48A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3D2BC3A82B30AAEC00DD7DB3 /* CoreDataManager.swift */,
+				3DD462292B23015300D200B3 /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3D37AFFC2B31DFD50099A5AF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3DB1EED72B289FE800A56471 /* RatingPickerView.swift */,
+				3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */,
+				3D37AFFA2B31D1CD0099A5AF /* LoadingButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		3D3F69092B2749640075DA53 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				3D3F690A2B2749700075DA53 /* Data .swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3D8F744D2B2EE57700E1168D /* Lingo */ = {
+			isa = PBXGroup;
+			children = (
+				3D8F744C2B2EE4D300E1168D /* Localizable.strings */,
+				3D8F744E2B2EE58D00E1168D /* Lingo.swift */,
+			);
+			path = Lingo;
 			sourceTree = "<group>";
 		};
 		3D9EA8582B26FEE500603498 /* Review */ = {
@@ -221,13 +273,14 @@
 		3DD4621F2B23015200D200B3 /* RestoRaterApp */ = {
 			isa = PBXGroup;
 			children = (
+				3D3182DD2B31870400A2F48A /* CoreData */,
+				3D8F744D2B2EE57700E1168D /* Lingo */,
 				3D3F69092B2749640075DA53 /* Extensions */,
 				3DCCF0D72B233C7400666731 /* Entities */,
 				3DD462662B23097100D200B3 /* Views */,
 				3DD462632B23084900D200B3 /* ViewModels */,
 				3DD462202B23015200D200B3 /* RestoRaterApp.swift */,
 				3DD462242B23015300D200B3 /* Assets.xcassets */,
-				3DD462292B23015300D200B3 /* Persistence.swift */,
 				3DD4622B2B23015300D200B3 /* RestoRaterApp.xcdatamodeld */,
 				3DD462262B23015300D200B3 /* Preview Content */,
 				3DD4626D2B2316F500D200B3 /* UserManager.swift */,
@@ -247,6 +300,14 @@
 			isa = PBXGroup;
 			children = (
 				3DD462362B23015300D200B3 /* RestoRaterAppTests.swift */,
+				3D37AFFD2B31E2CA0099A5AF /* RestaurantViewModelTests.swift */,
+				3D9177052B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift */,
+				3D9177072B32EF790045D9D7 /* AddEditUserViewModelTests.swift */,
+				3D9177092B32F1AF0045D9D7 /* UsersViewModelTests.swift */,
+				3D91770B2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift */,
+				3D5FF68A2B332FAD00FE9534 /* LoginViewModelTests.swift */,
+				3D5FF68C2B332FBA00FE9534 /* MockUserManager.swift */,
+				3D5FF68E2B3336AF00FE9534 /* RegisterViewModelTests.swift */,
 			);
 			path = RestoRaterAppTests;
 			sourceTree = "<group>";
@@ -277,6 +338,7 @@
 		3DD462662B23097100D200B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D37AFFC2B31DFD50099A5AF /* Common */,
 				3D9EA8582B26FEE500603498 /* Review */,
 				3DC685962B25B035006B5288 /* Restaurant */,
 				3DC685952B25B01C006B5288 /* User */,
@@ -285,8 +347,6 @@
 				3D549ADF2B2464A900458521 /* TabsView.swift */,
 				3D549AE12B2468EB00458521 /* ProfileView.swift */,
 				3DD4626F2B23176900D200B3 /* RootView.swift */,
-				3DB1EED72B289FE800A56471 /* RatingPickerView.swift */,
-				3D0D88712B28C1CF005E3067 /* DisplayRatingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DD462282B23015300D200B3 /* Preview Assets.xcassets in Resources */,
+				3D8F744A2B2EE4D300E1168D /* Localizable.strings in Resources */,
 				3DD462252B23015300D200B3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +487,7 @@
 				3DD4622A2B23015300D200B3 /* Persistence.swift in Sources */,
 				3D9EA85B2B27062E00603498 /* Restaurant+CoreDataClass.swift in Sources */,
 				3D2DE32C2B2B35BD00B57A7E /* ReviewsListView.swift in Sources */,
+				3D8F744F2B2EE58D00E1168D /* Lingo.swift in Sources */,
 				3DCCF0DB2B233D2800666731 /* RestaurantListView.swift in Sources */,
 				3DC6859A2B25B340006B5288 /* AddEditRestaurantViewModel.swift in Sources */,
 				3D3332DA2B2377420063D286 /* ReviewView.swift in Sources */,
@@ -437,9 +499,11 @@
 				3DD4626C2B230F0A00D200B3 /* LoginView.swift in Sources */,
 				3DB551E12B24A81400D27E90 /* UserDetailsView.swift in Sources */,
 				3DD4622D2B23015300D200B3 /* RestoRaterApp.xcdatamodeld in Sources */,
+				3D37AFFB2B31D1CD0099A5AF /* LoadingButton.swift in Sources */,
 				3D3332D72B2376AC0063D286 /* Review+CoreDataClass.swift in Sources */,
 				3DD4626A2B230EA100D200B3 /* LoginViewModel.swift in Sources */,
 				3D549AE42B24702700458521 /* UsersListView.swift in Sources */,
+				3D2BC3A92B30AAEC00DD7DB3 /* CoreDataManager.swift in Sources */,
 				3D0D88722B28C1CF005E3067 /* DisplayRatingView.swift in Sources */,
 				3D549AE62B24707400458521 /* UsersViewModel.swift in Sources */,
 				3D7F20DA2B2B038C005E5422 /* ReviewSectionView.swift in Sources */,
@@ -466,7 +530,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5FF68F2B3336AF00FE9534 /* RegisterViewModelTests.swift in Sources */,
 				3DD462372B23015300D200B3 /* RestoRaterAppTests.swift in Sources */,
+				3D9177062B32EB260045D9D7 /* AddEditRestaurantViewModelTests.swift in Sources */,
+				3D91770C2B32F2B90045D9D7 /* AddEditReviewViewModelTests.swift in Sources */,
+				3D37AFFE2B31E2CA0099A5AF /* RestaurantViewModelTests.swift in Sources */,
+				3D5FF68D2B332FBA00FE9534 /* MockUserManager.swift in Sources */,
+				3D9177082B32EF790045D9D7 /* AddEditUserViewModelTests.swift in Sources */,
+				3D5FF68B2B332FAD00FE9534 /* LoginViewModelTests.swift in Sources */,
+				3D91770A2B32F1AF0045D9D7 /* UsersViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +565,17 @@
 			targetProxy = 3DD4623D2B23015400D200B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D8F744C2B2EE4D300E1168D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8F744B2B2EE4D300E1168D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3DD462442B23015400D200B3 /* Debug */ = {

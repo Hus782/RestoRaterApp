@@ -10,11 +10,11 @@ import SwiftUI
 struct UserDetailsView: View {
     @EnvironmentObject private var userManager: UserManager
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject var viewModel = UsersViewModel()
+    @StateObject var viewModel = UsersViewModel(dataManager: CoreDataManager<User>())
     @State private var showingEditUserView = false
     @Environment(\.dismiss) private var dismiss
     let user: User
-    let onAddCompletion: (() -> Void)?
+    let onEditCompletion: (() -> Void)?
     let onDeleteCompletion: (() -> Void)?
     
     var body: some View {
@@ -22,17 +22,17 @@ struct UserDetailsView: View {
             HStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Name: \(user.name)")
+                    Text("\(Lingo.userDetailsNameLabel) \(user.name)")
                         .font(.title2)
                         .bold()
                     
-                    Text("Email: \(user.email)")
+                    Text("\(Lingo.userDetailsEmailLabel) \(user.email)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
                     HStack {
-                        Text("Role:")
-                        Text(user.isAdmin ? "Admin" : "Regular User")
+                        Text(Lingo.userDetailsRoleLabel)
+                        Text(user.isAdmin ? Lingo.userDetailsRoleAdmin : Lingo.userDetailsRoleRegularUser)
                             .fontWeight(.medium)
                             .padding(5)
                             .background(user.isAdmin ? Color.green : Color.blue)
@@ -47,9 +47,9 @@ struct UserDetailsView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(12)
             .shadow(radius: 2)
-            //            Prevent the admin from self deleting
+            
             if !userManager.isCurrentUser(user: user) {
-                Button("Delete User") {
+                Button(Lingo.commonDelete) {
                     viewModel.promptDelete(user: user)
                 }
                 .padding()
@@ -61,41 +61,37 @@ struct UserDetailsView: View {
             }
         }
         .padding()
-        
-        .navigationBarTitle("User Details", displayMode: .inline)
+        .navigationBarTitle(Lingo.userDetailsTitle, displayMode: .inline)
         .navigationBarItems(
             trailing: Button(action: {
                 showingEditUserView = true
             }) {
-                Text("Edit")
+                Text(Lingo.commonEdit)
             }
         )
         .sheet(isPresented: $showingEditUserView) {
             AddEditUserView(scenario: .edit, user: user, onAddCompletion: {
-                onEditCompletion()
+                onEditCompletion?()
+                dismiss()
             })
         }
         .alert(isPresented: $viewModel.showingAlert) {
-            Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Lingo.userDetailsErrorAlert), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Lingo.commonOk)))
         }
         .alert(isPresented: $viewModel.showingDeleteConfirmation) {
             Alert(
-                title: Text("Confirm Delete"),
+                title: Text(Lingo.commonConfirmDelete),
                 message: Text("Are you sure you want to delete this user?"),
-                primaryButton: .destructive(Text("Delete")) {
-                    viewModel.deleteUser(context: viewContext, completion: {
-                        dismiss()
-                        onDeleteCompletion?()
-                    })
+                primaryButton: .destructive(Text(Lingo.commonDelete)) {
+                    Task {
+                          await viewModel.deleteUser {
+                              dismiss()
+                              onDeleteCompletion?()
+                          }
+                      }
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text(Lingo.commonCancel))
             )
         }
     }
-    
-    private func onEditCompletion() {
-        dismiss()
-        onAddCompletion?()
-    }
 }
-

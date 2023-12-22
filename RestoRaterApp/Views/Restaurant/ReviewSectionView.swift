@@ -9,21 +9,19 @@ import SwiftUI
 
 struct ReviewSectionView: View {
     @StateObject var restaurant: Restaurant
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            // Latest Review
             if let latestReview = restaurant.latestReview {
-                ReviewView(review: latestReview, title: "Latest Review")
+                ReviewView(review: latestReview, title: Lingo.reviewSectionLatestReview)
             }
-            // Highest Rated Review
             if let highestRatedReview = restaurant.highestRatedReview {
-                ReviewView(review: highestRatedReview, title: "Highest Rated Review")
+                ReviewView(review: highestRatedReview, title: Lingo.reviewSectionHighestRatedReview)
             }
-            // Lowest Rated Review
             if let lowestRatedReview = restaurant.lowestRatedReview {
-                ReviewView(review: lowestRatedReview, title: "Lowest Rated Review")
+                ReviewView(review: lowestRatedReview, title: Lingo.reviewSectionLowestRatedReview)
             }
         }
     }
 }
+

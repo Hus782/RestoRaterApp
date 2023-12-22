@@ -26,3 +26,6 @@ extension User {
 extension User : Identifiable {
 
 }
+
+// This is done to expose the createFetchRequest method to the generic CoreDataManager
+extension User: FetchRequestProvider { }

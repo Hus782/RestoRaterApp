@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData.NSManagedObjectContext
 
 final class AddEditUserViewModel: ObservableObject {
     @Published var name: String = ""
@@ -15,53 +14,58 @@ final class AddEditUserViewModel: ObservableObject {
     @Published var isAdmin: Bool = false
     @Published var showingAlert = false
     @Published var alertMessage = ""
+    @Published var isLoading = false
     private let scenario: UserViewScenario
     private let user: User?
     private let onAddCompletion: (() -> Void)?
+    private let dataManager: CoreDataManager<User>
     
     var title: String {
         switch scenario {
         case .add:
-            return "Create user"
+            return Lingo.addEditUserCreateTitle
         case .edit:
-            return "Edit user"
+            return Lingo.addEditUserEditTitle
         }
     }
     
-    init(scenario: UserViewScenario, user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
+    init(scenario: UserViewScenario, dataManager: CoreDataManager<User>,  user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.onAddCompletion = onAddCompletion
+        self.scenario = scenario
+        self.user = user
+        self.dataManager = dataManager
         if let user = user {
             self.name = user.name
             self.email = user.email
             self.password = user.password
             self.isAdmin = user.isAdmin
-            self.scenario = .edit
-            self.user = user
-        } else {
-            self.scenario = .add
-            self.user = nil
         }
     }
     
-    func addUser(context: NSManagedObjectContext) {
-        let user = User(context: context)
+    private func configure(user: User) {
         user.name = name
         user.email = email
         user.password = password
         user.isAdmin = isAdmin
-        
+    }
+    
+    func addUser() async {
         do {
-            try context.save()
-            onAddCompletion?() // Call the completion handler after saving
+            try await dataManager.createEntity { [weak self] (user: User) in
+                self?.configure(user: user)
+            }
+            await MainActor.run { [weak self] in
+                self?.onAddCompletion?()
+            }
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
+            await MainActor.run { [weak self] in
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
     }
     
-    func editUser(context: NSManagedObjectContext) {
+    func editUser() async {
         guard let user = user else { return }
         user.name = name
         user.email = email
@@ -69,14 +73,15 @@ final class AddEditUserViewModel: ObservableObject {
         user.isAdmin = isAdmin
         
         do {
-            try context.save()
-            onAddCompletion?() // Call the completion handler after saving
+            try await dataManager.saveEntity(entity: user)
+            await MainActor.run { [weak self] in
+                self?.onAddCompletion?()
+            }
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
+            await MainActor.run { [weak self] in
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
     }
-    
 }

@@ -20,30 +20,29 @@ struct AddEditUserView: View {
     
     init(scenario: UserViewScenario, user: User? = nil, onAddCompletion: (() -> Void)? = nil) {
         self.scenario = scenario
-        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, user: user, onAddCompletion: onAddCompletion))
+        _viewModel = StateObject(wrappedValue: AddEditUserViewModel(scenario: scenario, dataManager: CoreDataManager<User>(), user: user, onAddCompletion: onAddCompletion))
         
     }
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Name")) {
-                    TextField("Name", text: $viewModel.name)
+                Section(header: Text(Lingo.addEditUserName)) {
+                    TextField(Lingo.addEditUserName, text: $viewModel.name)
                 }
-                Section(header: Text("Email")) {
-                    TextField("email", text: $viewModel.email)
+                Section(header: Text(Lingo.addEditUserEmail)) {
+                    TextField(Lingo.addEditUserEmail, text: $viewModel.email)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                 }
-                Section(header: Text("Password")) {
-                    SecureField("password", text: $viewModel.password)
+                Section(header: Text(Lingo.addEditUserPassword)) {
+                    SecureField(Lingo.addEditUserPassword, text: $viewModel.password)
                 }
-                Section(header: Text("Admin Access")) {
+                Section(header: Text(Lingo.addEditUserAdminAccess)) {
                     Toggle(isOn: $viewModel.isAdmin) {
-                        Text("Admin Access")
+                        Text(Lingo.addEditUserAdminAccess)
                     }
                 }
-                
             }
             .navigationBarTitle(viewModel.title, displayMode: .inline)
             .navigationBarItems(
@@ -52,23 +51,22 @@ struct AddEditUserView: View {
                 }) {
                     Image(systemName: "xmark")
                 },
-                trailing: Button("Save") {
-                    handleSave()
-                    presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
+                trailing: LoadingButton(isLoading: $viewModel.isLoading, title: Lingo.commonSave) {
+                    await handleSave()
                 }
             )
-            .onAppear {
-                
-            }
         }
     }
     
-    private func handleSave() {
+    private func handleSave() async {
+        viewModel.isLoading = true
         switch scenario {
         case .add:
-            viewModel.addUser(context: viewContext)
+            await viewModel.addUser()
         case .edit:
-            viewModel.editUser(context: viewContext)
+            await viewModel.editUser()
         }
+        viewModel.isLoading = false
+        presentationMode.wrappedValue.dismiss() // Dismiss the modal view after saving
     }
 }

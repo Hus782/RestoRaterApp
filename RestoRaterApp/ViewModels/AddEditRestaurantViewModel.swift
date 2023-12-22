@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData.NSManagedObjectContext
 
 final class AddEditRestaurantViewModel: ObservableObject {
     @Published var name: String = ""
@@ -14,70 +13,72 @@ final class AddEditRestaurantViewModel: ObservableObject {
     @Published var image: Data?
     @Published var showingAlert = false
     @Published var alertMessage = ""
+    @Published var isLoading = false
     private let scenario: RestaurantScenario
     private let restaurant: Restaurant?
     private let onAddCompletion: (() -> Void)?
-
+    private let dataManager: CoreDataManager<Restaurant>
     
     var title: String {
         switch scenario {
         case .add:
-            return "Create restaurant"
+            return Lingo.addEditRestaurantCreateTitle
         case .edit:
-            return "Edit restaurant"
+            return Lingo.addEditRestaurantEditTitle
         }
     }
     
-    init(scenario: RestaurantScenario, restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
+    init(scenario: RestaurantScenario, dataManager: CoreDataManager<Restaurant>,  restaurant: Restaurant? = nil, onAddCompletion: (() -> Void)? = nil) {
+        self.dataManager = dataManager
         self.onAddCompletion = onAddCompletion
+        self.scenario = scenario
+        self.restaurant = restaurant
         if let restaurant = restaurant {
             self.name = restaurant.name
             self.address = restaurant.address
             self.image = restaurant.image
-            self.scenario = .edit
-            self.restaurant = restaurant
-        } else {
-            self.scenario = .add
-            self.restaurant = nil
         }
     }
     
-    func addRestaurant(context: NSManagedObjectContext) {
-        let restaurant = Restaurant(context: context)
-        restaurant.name = name
-        restaurant.address = address
-        if let image = image {
-            restaurant.image = image
-        }
-        
+    func addRestaurant() async {
         do {
-            try context.save()
-            onAddCompletion?() // Call the completion handler after saving
+            try await dataManager.createEntity { [weak self] (restaurant: Restaurant) in
+                self?.configure(restaurant: restaurant)
+            }
+            await MainActor.run { [weak self] in
+                self?.onAddCompletion?()
+            }
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
+            await MainActor.run { [weak self] in
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
     }
     
-    func editRestaurant(context: NSManagedObjectContext) {
+    func editRestaurant() async {
         guard let restaurant = restaurant else { return }
         restaurant.name = name
         restaurant.address = address
-        if let image = image {
-            restaurant.image = image
-        }
+        restaurant.image = image
         
         do {
-            try context.save()
-            onAddCompletion?() // Call the completion handler after saving
+            try await dataManager.saveEntity(entity: restaurant)
+            await MainActor.run { [weak self] in
+                self?.onAddCompletion?()
+            }
         } catch {
-            let nsError = error as NSError
-            print("Unresolved error \(nsError), \(nsError.userInfo)")
-            showingAlert = true
-            alertMessage = error.localizedDescription
+            await MainActor.run { [weak self] in
+                self?.showingAlert = true
+                self?.alertMessage = error.localizedDescription
+            }
         }
+    }
+    
+    private func configure(restaurant: Restaurant) {
+        restaurant.name = self.name
+        restaurant.address = self.address
+        restaurant.image = self.image
     }
     
 }

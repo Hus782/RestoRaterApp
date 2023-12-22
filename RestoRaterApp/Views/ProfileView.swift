@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var userManager: UserManager
+    private let userManager: UserManager = UserManager.shared
     
     var body: some View {
         NavigationView {
@@ -16,13 +16,14 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     
                     if let user = userManager.currentUser {
-                        UserDetail(title: "Name", detail: user.name)
-                        UserDetail(title: "Email", detail: user.email)
+                        UserDetail(title: Lingo.profileViewNameTitle, detail: user.name)
+                        UserDetail(title: Lingo.profileViewEmailTitle, detail: user.email)
+                        
                         UserRoleDetail(user: user)
                         Spacer()
                         
                     } else {
-                        Text("No user is currently logged in.")
+                        Text(Lingo.profileViewNoUserLoggedIn)
                             .foregroundColor(.secondary)
                     }
                     
@@ -30,11 +31,11 @@ struct ProfileView: View {
                 Spacer()
             }
             .padding()
-            .navigationBarTitle("Profile", displayMode: .inline)
+            .navigationBarTitle(Lingo.profileViewTitle, displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 userManager.logoutUser()
             }) {
-                Text("Logout")
+                Text(Lingo.profileViewLogoutButton)
             })
         }
     }
@@ -61,11 +62,11 @@ struct UserRoleDetail: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Role")
+            Text(Lingo.profileViewRoleTitle)
                 .font(.headline)
                 .foregroundColor(.secondary)
             
-            Text(user.isAdmin ? "Admin" : "Regular User")
+            Text(user.isAdmin ? Lingo.profileViewAdminRole : Lingo.profileViewRegularUserRole)
                 .fontWeight(.medium)
                 .padding(5)
                 .background(user.isAdmin ? Color.green : Color.blue)
